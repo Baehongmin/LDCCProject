@@ -6,11 +6,3 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		
 </beans>
-<!-- 
-<beans id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
-	<property name="driverClass" value="org.mariadb.jdbc.Driver"/>
-	<property name="url" value="jdb:mariadb://localhost/test"/>
-	<property name="username" value="root"/>
-	<property name="password" value="root"/>
-</beans>
- -->
