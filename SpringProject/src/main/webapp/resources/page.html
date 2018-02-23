@@ -5,119 +5,106 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-        <title>Your First WebSocket!</title>
+<title>Your First WebSocket!</title>
 
 </head>
 
 <body>
 
-        <script type="text/javascript">
+	<script type="text/javascript">
+		var wsUri = "ws://localhost:8080/myapp/websocket/echo.do";
 
-           
+		function init() {
 
-            var wsUri = "ws://localhost:8080/myapp/websocket/echo.do";
+			output = document.getElementById("output");
 
-           
+		}
 
-            function init() {
+		function send_message() {
 
-                output = document.getElementById("output");
+			websocket = new WebSocket(wsUri);
 
-            }
+			websocket.onopen = function(evt) {
 
-            function send_message() {
+				onOpen(evt)
 
-                websocket = new WebSocket(wsUri);
+			};
 
-                websocket.onopen = function(evt) {
+			websocket.onmessage = function(evt) {
 
-                    onOpen(evt)
+				onMessage(evt)
 
-                };
+			};
 
-                websocket.onmessage = function(evt) {
+			websocket.onerror = function(evt) {
 
-                    onMessage(evt)
+				onError(evt)
 
-                };
+			};
 
-                websocket.onerror = function(evt) {
+		}
 
-                    onError(evt)
+		function onOpen(evt) {
 
-                };
+			writeToScreen("Connected to Endpoint!");
 
-            }
+			doSend(textID.value);
 
-           
+		}
 
-           
+		function onMessage(evt) {
 
-            function onOpen(evt) {
+			writeToScreen("Message Received: " + evt.data);
 
-                writeToScreen("Connected to Endpoint!");
+		}
 
-                doSend(textID.value);
+		function onError(evt) {
 
-            }
+			writeToScreen('ERROR: ' + evt.data);
 
-            function onMessage(evt) {
+		}
 
-                writeToScreen("Message Received: " + evt.data);
+		function doSend(message) {
 
-            }
+			writeToScreen("Message Sent: " + message);
 
-            function onError(evt) {
+			websocket.send(message);
 
-                writeToScreen('ERROR: ' + evt.data);
+			//websocket.close();
 
-            }
+		}
 
-            function doSend(message) {
+		function writeToScreen(message) {
 
-                writeToScreen("Message Sent: " + message);
+			var pre = document.createElement("p");
 
-                websocket.send(message);
+			pre.style.wordWrap = "break-word";
 
-                //websocket.close();
+			pre.innerHTML = message;
 
-            }
+			output.appendChild(pre);
 
-            function writeToScreen(message) {
+		}
 
-                var pre = document.createElement("p");
+		window.addEventListener("load", init, false);
+	</script>
 
-                pre.style.wordWrap = "break-word";
+	<h1 style="text-align: center;">Hello World WebSocket Client</h1>
 
-                pre.innerHTML = message;
+	<br>
 
-                
+	<div style="text-align: center;">
 
-                output.appendChild(pre);
+		<form action="">
 
-            }
+			<input onclick="send_message()" value="Send" type="button"> <input
+				id="textID" name="message" value="Hello WebSocket!" type="text"><br>
 
-            window.addEventListener("load", init, false);
+		</form>
 
-        </script>
+	</div>
 
-        <h1 style="text-align: center;">Hello World WebSocket Client</h1>
-
-        <br>
-
-        <div style="text-align: center;">
-
-            <form action="">
-
-                <input onclick="send_message()" value="Send" type="button">
-
-                <input id="textID" name="message" value="Hello WebSocket!" type="text"><br>
-
-            </form>
-
-        </div>
-
-        <div id="output"></div>
+	<div id="output"></div>
 
 </body>
 
