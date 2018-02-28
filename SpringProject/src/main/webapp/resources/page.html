@@ -12,7 +12,7 @@
 <body>
 
 	<script type="text/javascript">
-		var wsUri = "ws://localhost:8080/myapp/websocket/echo.do";
+		var wsUri = "ws://localhost:18080/myapp/websocket/echo.do";
 
 		function init() {
 
@@ -29,7 +29,7 @@
 				onOpen(evt)
 
 			};
-
+			
 			websocket.onmessage = function(evt) {
 
 				onMessage(evt)
@@ -61,6 +61,7 @@
 		function onError(evt) {
 
 			writeToScreen('ERROR: ' + evt.data);
+			
 
 		}
 

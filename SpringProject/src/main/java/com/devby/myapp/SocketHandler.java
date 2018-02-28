@@ -7,9 +7,14 @@ import java.util.Set;
 import org.apache.log4j.LogManager;
 
 import org.apache.log4j.Logger;
-
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.InitializingBean;
-
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.socket.CloseStatus;
 
 import org.springframework.web.socket.TextMessage;
@@ -34,6 +39,7 @@ public class SocketHandler extends TextWebSocketHandler implements InitializingB
 
 	}
 
+	
 	@Override
 
 	public void afterConnectionClosed(WebSocketSession session,
@@ -101,7 +107,7 @@ public class SocketHandler extends TextWebSocketHandler implements InitializingB
 			if (session.isOpen()) {
 
 				try {
-
+                    System.out.println("sssss : " +message);
 					session.sendMessage(new TextMessage(message));
 
 				} catch (Exception ignored) {
@@ -153,5 +159,5 @@ public class SocketHandler extends TextWebSocketHandler implements InitializingB
 		thread.start();
 
 	}
-
+	
 }
