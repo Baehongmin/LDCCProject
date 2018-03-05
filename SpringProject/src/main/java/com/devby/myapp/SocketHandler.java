@@ -30,9 +30,9 @@ public class SocketHandler extends TextWebSocketHandler implements InitializingB
 	private final Logger logger = LogManager.getLogger(getClass());
 
 	private Set<WebSocketSession> sessionSet = new HashSet<WebSocketSession>();
-
+	private static String K = "";
 	public SocketHandler() {
-
+		
 		super();
 
 		this.logger.info("create SocketHandler instance!");
@@ -47,7 +47,7 @@ public class SocketHandler extends TextWebSocketHandler implements InitializingB
 			CloseStatus status) throws Exception {
 
 		super.afterConnectionClosed(session, status);
-
+ 
 		sessionSet.remove(session);
 
 		this.logger.info("remove session!");
@@ -107,7 +107,7 @@ public class SocketHandler extends TextWebSocketHandler implements InitializingB
 			if (session.isOpen()) {
 
 				try {
-                    System.out.println("sssss : " +message);
+                    //System.out.println("sssss : " +message);
 					session.sendMessage(new TextMessage(message));
 
 				} catch (Exception ignored) {
@@ -121,7 +121,10 @@ public class SocketHandler extends TextWebSocketHandler implements InitializingB
 		}
 
 	}
-
+	public static void SetMe(String A) {
+		K=A;
+	}
+	
 	@Override
 
 	public void afterPropertiesSet() throws Exception {
@@ -138,7 +141,7 @@ public class SocketHandler extends TextWebSocketHandler implements InitializingB
 
 					try {
 
-						sendMessage("send message index " + i++);
+						sendMessage("send message index " + K);
 
 						Thread.sleep(1000);
 

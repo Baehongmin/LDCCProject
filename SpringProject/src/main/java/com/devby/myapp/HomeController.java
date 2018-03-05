@@ -43,6 +43,7 @@ public class HomeController {
 		
 		return "home";
 	}
+
 	private static String paser(String body) throws Exception {
 		JSONParser jsonParser = new JSONParser();
 		JSONObject result = (JSONObject) jsonParser.parse(body);
@@ -57,13 +58,16 @@ public class HomeController {
 			return "error";
 		}
 	}
+	
 	@RequestMapping(value = "/dashboard", method = RequestMethod.POST)
 	@ResponseBody
 	public String dashboard(@RequestBody String body, Model model) throws Exception {
 		body = paser(body);
 		System.out.println("body : " + body);
-		socketHandler.sendMessage(body);
+		//socketHandler.sendMessage(body);
+		SocketHandler.SetMe(body);
 		return body;
+		
 	}
 	
 	
