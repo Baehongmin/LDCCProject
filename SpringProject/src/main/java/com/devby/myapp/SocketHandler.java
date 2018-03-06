@@ -7,9 +7,14 @@ import java.util.Set;
 import org.apache.log4j.LogManager;
 
 import org.apache.log4j.Logger;
-
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.InitializingBean;
-
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.socket.CloseStatus;
 
 import org.springframework.web.socket.TextMessage;
@@ -25,15 +30,16 @@ public class SocketHandler extends TextWebSocketHandler implements InitializingB
 	private final Logger logger = LogManager.getLogger(getClass());
 
 	private Set<WebSocketSession> sessionSet = new HashSet<WebSocketSession>();
-
+	private static String K = "";
 	public SocketHandler() {
-
+		
 		super();
 
 		this.logger.info("create SocketHandler instance!");
 
 	}
 
+	
 	@Override
 
 	public void afterConnectionClosed(WebSocketSession session,
@@ -41,7 +47,7 @@ public class SocketHandler extends TextWebSocketHandler implements InitializingB
 			CloseStatus status) throws Exception {
 
 		super.afterConnectionClosed(session, status);
-
+ 
 		sessionSet.remove(session);
 
 		this.logger.info("remove session!");
@@ -101,7 +107,7 @@ public class SocketHandler extends TextWebSocketHandler implements InitializingB
 			if (session.isOpen()) {
 
 				try {
-
+                    //System.out.println("sssss : " +message);
 					session.sendMessage(new TextMessage(message));
 
 				} catch (Exception ignored) {
@@ -115,7 +121,10 @@ public class SocketHandler extends TextWebSocketHandler implements InitializingB
 		}
 
 	}
-
+	public static void SetMe(String A) {
+		K=A;
+	}
+	
 	@Override
 
 	public void afterPropertiesSet() throws Exception {
@@ -132,7 +141,7 @@ public class SocketHandler extends TextWebSocketHandler implements InitializingB
 
 					try {
 
-						sendMessage("send message index " + i++);
+						sendMessage("send message index " + K);
 
 						Thread.sleep(1000);
 
@@ -153,5 +162,5 @@ public class SocketHandler extends TextWebSocketHandler implements InitializingB
 		thread.start();
 
 	}
-
+	
 }

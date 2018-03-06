@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
+<%@ page session="false" pageEncoding="utf-8"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,10 +34,17 @@
 	href="${pageContext.request.contextPath}/resources/vendor/morrisjs/morris.css"
 	rel="stylesheet">
 
-<!-- Custom Fonts -->
-<link
-	href="${pageContext.request.contextPath}/resources/vendor/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
+<!-- button CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+<link rel='stylesheet prefetch'
+	href='https://fonts.googleapis.com/css?family=Montserrat:200,300,400,600,700'>
+<link rel='stylesheet prefetch'
+	href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'>
+
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/style.css">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -49,829 +56,391 @@
 </head>
 
 <body>
+	<br />
+	<!-- 
+	<input onclick="send_message()" value="Send" type="button">
+	<input type="submit" value="Stop" onclick="doClose()" />
+	<div id="output"></div>
+
+	<button type="button" class="btn btn-default">come</button>
+	<div class="col-sm-5">
+		<button type="button" class="btn btn-xs btn-toggle"
+			data-toggle="button" aria-pressed="false" autocomplete="off">
+			<div class="handle"></div>
+		</button>
+	</div>
+ -->
+
+    <div class="percentage">0 %</div>
+    <input type="text" class="text-box" />
+
+
+	<input onclick="send_message()" value="Send" type="button">
+	<input type="submit" value="Stop" onclick="doClose()" />
+	<div id="output"></div>
+
 
 	<div id="wrapper">
 
-		<!-- Navigation -->
-		<nav class="navbar navbar-default navbar-static-top" role="navigation"
-			style="margin-bottom: 0">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".navbar-collapse">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="index.html">Claude Admin</a>
+		<div class="row">
+			<div class="col-lg-12" align="Center">
+				<h1 class="page-header">Canon Dashboard</h1>
 			</div>
-			<!-- /.navbar-header -->
-
-			<ul class="nav navbar-top-links navbar-right">
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"> <i
-						class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
-				</a>
-					<ul class="dropdown-menu dropdown-messages">
-						<li><a href="#">
-								<div>
-									<strong>John Smith</strong> <span class="pull-right text-muted">
-										<em>Yesterday</em>
-									</span>
-								</div>
-								<div>Lorem ipsum dolor sit amet, consectetur adipiscing
-									elit. Pellentesque eleifend...</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a href="#">
-								<div>
-									<strong>John Smith</strong> <span class="pull-right text-muted">
-										<em>Yesterday</em>
-									</span>
-								</div>
-								<div>Lorem ipsum dolor sit amet, consectetur adipiscing
-									elit. Pellentesque eleifend...</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a href="#">
-								<div>
-									<strong>John Smith</strong> <span class="pull-right text-muted">
-										<em>Yesterday</em>
-									</span>
-								</div>
-								<div>Lorem ipsum dolor sit amet, consectetur adipiscing
-									elit. Pellentesque eleifend...</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a class="text-center" href="#"> <strong>Read
-									All Messages</strong> <i class="fa fa-angle-right"></i>
-						</a></li>
-					</ul> <!-- /.dropdown-messages --></li>
-				<!-- /.dropdown -->
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"> <i class="fa fa-tasks fa-fw"></i>
-						<i class="fa fa-caret-down"></i>
-				</a>
-					<ul class="dropdown-menu dropdown-tasks">
-						<li><a href="#">
-								<div>
-									<p>
-										<strong>Task 1</strong> <span class="pull-right text-muted">40%
-											Complete</span>
-									</p>
-									<div class="progress progress-striped active">
-										<div class="progress-bar progress-bar-success"
-											role="progressbar" aria-valuenow="40" aria-valuemin="0"
-											aria-valuemax="100" style="width: 40%">
-											<span class="sr-only">40% Complete (success)</span>
-										</div>
-									</div>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a href="#">
-								<div>
-									<p>
-										<strong>Task 2</strong> <span class="pull-right text-muted">20%
-											Complete</span>
-									</p>
-									<div class="progress progress-striped active">
-										<div class="progress-bar progress-bar-info" role="progressbar"
-											aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"
-											style="width: 20%">
-											<span class="sr-only">20% Complete</span>
-										</div>
-									</div>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a href="#">
-								<div>
-									<p>
-										<strong>Task 3</strong> <span class="pull-right text-muted">60%
-											Complete</span>
-									</p>
-									<div class="progress progress-striped active">
-										<div class="progress-bar progress-bar-warning"
-											role="progressbar" aria-valuenow="60" aria-valuemin="0"
-											aria-valuemax="100" style="width: 60%">
-											<span class="sr-only">60% Complete (warning)</span>
-										</div>
-									</div>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a href="#">
-								<div>
-									<p>
-										<strong>Task 4</strong> <span class="pull-right text-muted">80%
-											Complete</span>
-									</p>
-									<div class="progress progress-striped active">
-										<div class="progress-bar progress-bar-danger"
-											role="progressbar" aria-valuenow="80" aria-valuemin="0"
-											aria-valuemax="100" style="width: 80%">
-											<span class="sr-only">80% Complete (danger)</span>
-										</div>
-									</div>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a class="text-center" href="#"> <strong>See
-									All Tasks</strong> <i class="fa fa-angle-right"></i>
-						</a></li>
-					</ul> <!-- /.dropdown-tasks --></li>
-				<!-- /.dropdown -->
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"> <i class="fa fa-bell fa-fw"></i>
-						<i class="fa fa-caret-down"></i>
-				</a>
-					<ul class="dropdown-menu dropdown-alerts">
-						<li><a href="#">
-								<div>
-									<i class="fa fa-comment fa-fw"></i> New Comment <span
-										class="pull-right text-muted small">4 minutes ago</span>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a href="#">
-								<div>
-									<i class="fa fa-twitter fa-fw"></i> 3 New Followers <span
-										class="pull-right text-muted small">12 minutes ago</span>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a href="#">
-								<div>
-									<i class="fa fa-envelope fa-fw"></i> Message Sent <span
-										class="pull-right text-muted small">4 minutes ago</span>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a href="#">
-								<div>
-									<i class="fa fa-tasks fa-fw"></i> New Task <span
-										class="pull-right text-muted small">4 minutes ago</span>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a href="#">
-								<div>
-									<i class="fa fa-upload fa-fw"></i> Server Rebooted <span
-										class="pull-right text-muted small">4 minutes ago</span>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a class="text-center" href="#"> <strong>See
-									All Alerts</strong> <i class="fa fa-angle-right"></i>
-						</a></li>
-					</ul> <!-- /.dropdown-alerts --></li>
-				<!-- /.dropdown -->
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"> <i class="fa fa-user fa-fw"></i>
-						<i class="fa fa-caret-down"></i>
-				</a>
-					<ul class="dropdown-menu dropdown-user">
-						<li><a href="#"><i class="fa fa-user fa-fw"></i> User
-								Profile</a></li>
-						<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-						</li>
-						<li class="divider"></li>
-						<li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i>
-								Logout</a></li>
-					</ul> <!-- /.dropdown-user --></li>
-				<!-- /.dropdown -->
-			</ul>
-			<!-- /.navbar-top-links -->
-
-			<div class="navbar-default sidebar" role="navigation">
-				<div class="sidebar-nav navbar-collapse">
-					<ul class="nav" id="side-menu">
-						<li class="sidebar-search">
-							<div class="input-group custom-search-form">
-								<input type="text" class="form-control" placeholder="Search...">
-								<span class="input-group-btn">
-									<button class="btn btn-default" type="button">
-										<i class="fa fa-search"></i>
-									</button>
-								</span>
-							</div> <!-- /input-group -->
-						</li>
-						<li><a href="index.html"><i class="fa fa-dashboard fa-fw"></i>
-								Dashboard</a></li>
-						<li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>
-								Charts<span class="fa arrow"></span></a>
-							<ul class="nav nav-second-level">
-								<li><a href="flot.html">Flot Charts</a></li>
-								<li><a href="morris.html">Morris.js Charts</a></li>
-							</ul> <!-- /.nav-second-level --></li>
-						<li><a href="tables.html"><i class="fa fa-table fa-fw"></i>
-								Tables</a></li>
-						<li><a href="forms.html"><i class="fa fa-edit fa-fw"></i>
-								Forms</a></li>
-						<li><a href="#"><i class="fa fa-wrench fa-fw"></i> UI
-								Elements<span class="fa arrow"></span></a>
-							<ul class="nav nav-second-level">
-								<li><a href="panels-wells.html">Panels and Wells</a></li>
-								<li><a href="buttons.html">Buttons</a></li>
-								<li><a href="notifications.html">Notifications</a></li>
-								<li><a href="typography.html">Typography</a></li>
-								<li><a href="icons.html"> Icons</a></li>
-								<li><a href="grid.html">Grid</a></li>
-							</ul> <!-- /.nav-second-level --></li>
-						<li><a href="#"><i class="fa fa-sitemap fa-fw"></i>
-								Multi-Level Dropdown<span class="fa arrow"></span></a>
-							<ul class="nav nav-second-level">
-								<li><a href="#">Second Level Item</a></li>
-								<li><a href="#">Second Level Item</a></li>
-								<li><a href="#">Third Level <span class="fa arrow"></span></a>
-									<ul class="nav nav-third-level">
-										<li><a href="#">Third Level Item</a></li>
-										<li><a href="#">Third Level Item</a></li>
-										<li><a href="#">Third Level Item</a></li>
-										<li><a href="#">Third Level Item</a></li>
-									</ul> <!-- /.nav-third-level --></li>
-							</ul> <!-- /.nav-second-level --></li>
-						<li><a href="#"><i class="fa fa-files-o fa-fw"></i>
-								Sample Pages<span class="fa arrow"></span></a>
-							<ul class="nav nav-second-level">
-								<li><a href="blank.html">Blank Page</a></li>
-								<li><a href="login.html">Login Page</a></li>
-							</ul> <!-- /.nav-second-level --></li>
-					</ul>
-				</div>
-				<!-- /.sidebar-collapse -->
-			</div>
-			<!-- /.navbar-static-side -->
-		</nav>
-
-		<div id="page-wrapper">
-			<div class="row">
-				<div class="col-lg-12">
-					<h1 class="page-header">Dashboard</h1>
-				</div>
-				<!-- /.col-lg-12 -->
-			</div>
-			<!-- /.row -->
-			<div class="row">
-				<div class="col-lg-3 col-md-6">
-					<div class="panel panel-primary">
-						<div class="panel-heading">
-							<div class="row">
-								<div class="col-xs-3">
-									<i class="fa fa-comments fa-5x"></i>
-								</div>
-								<div class="col-xs-9 text-right">
-									<div class="huge">26</div>
-									<div>New Comments!</div>
-								</div>
-							</div>
-						</div>
-						<a href="#">
-							<div class="panel-footer">
-								<span class="pull-left">View Details</span> <span
-									class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-								<div class="clearfix"></div>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="panel panel-green">
-						<div class="panel-heading">
-							<div class="row">
-								<div class="col-xs-3">
-									<i class="fa fa-tasks fa-5x"></i>
-								</div>
-								<div class="col-xs-9 text-right">
-									<div class="huge">12</div>
-									<div>New Tasks!</div>
-								</div>
-							</div>
-						</div>
-						<a href="#">
-							<div class="panel-footer">
-								<span class="pull-left">View Details</span> <span
-									class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-								<div class="clearfix"></div>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="panel panel-yellow">
-						<div class="panel-heading">
-							<div class="row">
-								<div class="col-xs-3">
-									<i class="fa fa-shopping-cart fa-5x"></i>
-								</div>
-								<div class="col-xs-9 text-right">
-									<div class="huge">124</div>
-									<div>New Orders!</div>
-								</div>
-							</div>
-						</div>
-						<a href="#">
-							<div class="panel-footer">
-								<span class="pull-left">View Details</span> <span
-									class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-								<div class="clearfix"></div>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="panel panel-red">
-						<div class="panel-heading">
-							<div class="row">
-								<div class="col-xs-3">
-									<i class="fa fa-support fa-5x"></i>
-								</div>
-								<div class="col-xs-9 text-right">
-									<div class="huge">13</div>
-									<div>Support Tickets!</div>
-								</div>
-							</div>
-						</div>
-						<a href="#">
-							<div class="panel-footer">
-								<span class="pull-left">View Details</span> <span
-									class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-								<div class="clearfix"></div>
-							</div>
-						</a>
-					</div>
-				</div>
-			</div>
-			<!-- /.row -->
-			<div class="row">
-				<div class="col-lg-8">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<i class="fa fa-bar-chart-o fa-fw"></i> Area Chart Example
-							<div class="pull-right">
-								<div class="btn-group">
-									<button type="button"
-										class="btn btn-default btn-xs dropdown-toggle"
-										data-toggle="dropdown">
-										Actions <span class="caret"></span>
-									</button>
-									<ul class="dropdown-menu pull-right" role="menu">
-										<li><a href="#">Action</a></li>
-										<li><a href="#">Another action</a></li>
-										<li><a href="#">Something else here</a></li>
-										<li class="divider"></li>
-										<li><a href="#">Separated link</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<!-- /.panel-heading -->
-						<div class="panel-body">
-							<div id="morris-area-chart"></div>
-						</div>
-						<!-- /.panel-body -->
-					</div>
-					<!-- /.panel -->
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<i class="fa fa-bar-chart-o fa-fw"></i> Bar Chart Example
-							<div class="pull-right">
-								<div class="btn-group">
-									<button type="button"
-										class="btn btn-default btn-xs dropdown-toggle"
-										data-toggle="dropdown">
-										Actions <span class="caret"></span>
-									</button>
-									<ul class="dropdown-menu pull-right" role="menu">
-										<li><a href="#">Action</a></li>
-										<li><a href="#">Another action</a></li>
-										<li><a href="#">Something else here</a></li>
-										<li class="divider"></li>
-										<li><a href="#">Separated link</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<!-- /.panel-heading -->
-						<div class="panel-body">
-							<div class="row">
-								<div class="col-lg-4">
-									<div class="table-responsive">
-										<table class="table table-bordered table-hover table-striped">
-											<thead>
-												<tr>
-													<th>#</th>
-													<th>Date</th>
-													<th>Time</th>
-													<th>Amount</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>3326</td>
-													<td>10/21/2013</td>
-													<td>3:29 PM</td>
-													<td>$321.33</td>
-												</tr>
-												<tr>
-													<td>3325</td>
-													<td>10/21/2013</td>
-													<td>3:20 PM</td>
-													<td>$234.34</td>
-												</tr>
-												<tr>
-													<td>3324</td>
-													<td>10/21/2013</td>
-													<td>3:03 PM</td>
-													<td>$724.17</td>
-												</tr>
-												<tr>
-													<td>3323</td>
-													<td>10/21/2013</td>
-													<td>3:00 PM</td>
-													<td>$23.71</td>
-												</tr>
-												<tr>
-													<td>3322</td>
-													<td>10/21/2013</td>
-													<td>2:49 PM</td>
-													<td>$8345.23</td>
-												</tr>
-												<tr>
-													<td>3321</td>
-													<td>10/21/2013</td>
-													<td>2:23 PM</td>
-													<td>$245.12</td>
-												</tr>
-												<tr>
-													<td>3320</td>
-													<td>10/21/2013</td>
-													<td>2:15 PM</td>
-													<td>$5663.54</td>
-												</tr>
-												<tr>
-													<td>3319</td>
-													<td>10/21/2013</td>
-													<td>2:13 PM</td>
-													<td>$943.45</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-									<!-- /.table-responsive -->
-								</div>
-								<!-- /.col-lg-4 (nested) -->
-								<div class="col-lg-8">
-									<div id="morris-bar-chart"></div>
-								</div>
-								<!-- /.col-lg-8 (nested) -->
-							</div>
-							<!-- /.row -->
-						</div>
-						<!-- /.panel-body -->
-					</div>
-					<!-- /.panel -->
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<i class="fa fa-clock-o fa-fw"></i> Responsive Timeline
-						</div>
-						<!-- /.panel-heading -->
-						<div class="panel-body">
-							<ul class="timeline">
-								<li>
-									<div class="timeline-badge">
-										<i class="fa fa-check"></i>
-									</div>
-									<div class="timeline-panel">
-										<div class="timeline-heading">
-											<h4 class="timeline-title">Lorem ipsum dolor</h4>
-											<p>
-												<small class="text-muted"><i class="fa fa-clock-o"></i>
-													11 hours ago via Twitter</small>
-											</p>
-										</div>
-										<div class="timeline-body">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit. Libero laboriosam dolor perspiciatis omnis
-												exercitationem. Beatae, officia pariatur? Est cum veniam
-												excepturi. Maiores praesentium, porro voluptas suscipit
-												facere rem dicta, debitis.</p>
-										</div>
-									</div>
-								</li>
-								<li class="timeline-inverted">
-									<div class="timeline-badge warning">
-										<i class="fa fa-credit-card"></i>
-									</div>
-									<div class="timeline-panel">
-										<div class="timeline-heading">
-											<h4 class="timeline-title">Lorem ipsum dolor</h4>
-										</div>
-										<div class="timeline-body">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit. Autem dolorem quibusdam, tenetur commodi provident
-												cumque magni voluptatem libero, quis rerum. Fugiat esse
-												debitis optio, tempore. Animi officiis alias, officia
-												repellendus.</p>
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit. Laudantium maiores odit qui est tempora eos, nostrum
-												provident explicabo dignissimos debitis vel! Adipisci eius
-												voluptates, ad aut recusandae minus eaque facere.</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="timeline-badge danger">
-										<i class="fa fa-bomb"></i>
-									</div>
-									<div class="timeline-panel">
-										<div class="timeline-heading">
-											<h4 class="timeline-title">Lorem ipsum dolor</h4>
-										</div>
-										<div class="timeline-body">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit. Repellendus numquam facilis enim eaque, tenetur nam id
-												qui vel velit similique nihil iure molestias aliquam,
-												voluptatem totam quaerat, magni commodi quisquam.</p>
-										</div>
-									</div>
-								</li>
-								<li class="timeline-inverted">
-									<div class="timeline-panel">
-										<div class="timeline-heading">
-											<h4 class="timeline-title">Lorem ipsum dolor</h4>
-										</div>
-										<div class="timeline-body">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit. Voluptates est quaerat asperiores sapiente, eligendi,
-												nihil. Itaque quos, alias sapiente rerum quas odit! Aperiam
-												officiis quidem delectus libero, omnis ut debitis!</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="timeline-badge info">
-										<i class="fa fa-save"></i>
-									</div>
-									<div class="timeline-panel">
-										<div class="timeline-heading">
-											<h4 class="timeline-title">Lorem ipsum dolor</h4>
-										</div>
-										<div class="timeline-body">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit. Nobis minus modi quam ipsum alias at est molestiae
-												excepturi delectus nesciunt, quibusdam debitis amet, beatae
-												consequuntur impedit nulla qui! Laborum, atque.</p>
-											<hr>
-											<div class="btn-group">
-												<button type="button"
-													class="btn btn-primary btn-sm dropdown-toggle"
-													data-toggle="dropdown">
-													<i class="fa fa-gear"></i> <span class="caret"></span>
-												</button>
-												<ul class="dropdown-menu" role="menu">
-													<li><a href="#">Action</a></li>
-													<li><a href="#">Another action</a></li>
-													<li><a href="#">Something else here</a></li>
-													<li class="divider"></li>
-													<li><a href="#">Separated link</a></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="timeline-panel">
-										<div class="timeline-heading">
-											<h4 class="timeline-title">Lorem ipsum dolor</h4>
-										</div>
-										<div class="timeline-body">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit. Sequi fuga odio quibusdam. Iure expedita, incidunt
-												unde quis nam! Quod, quisquam. Officia quam qui adipisci
-												quas consequuntur nostrum sequi. Consequuntur, commodi.</p>
-										</div>
-									</div>
-								</li>
-								<li class="timeline-inverted">
-									<div class="timeline-badge success">
-										<i class="fa fa-graduation-cap"></i>
-									</div>
-									<div class="timeline-panel">
-										<div class="timeline-heading">
-											<h4 class="timeline-title">Lorem ipsum dolor</h4>
-										</div>
-										<div class="timeline-body">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit. Deserunt obcaecati, quaerat tempore officia voluptas
-												debitis consectetur culpa amet, accusamus dolorum fugiat,
-												animi dicta aperiam, enim incidunt quisquam maxime neque
-												eaque.</p>
-										</div>
-									</div>
-								</li>
-							</ul>
-						</div>
-						<!-- /.panel-body -->
-					</div>
-					<!-- /.panel -->
-				</div>
-				<!-- /.col-lg-8 -->
-				<div class="col-lg-4">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<i class="fa fa-bell fa-fw"></i> Notifications Panel
-						</div>
-						<!-- /.panel-heading -->
-						<div class="panel-body">
-							<div class="list-group">
-								<a href="#" class="list-group-item"> <i
-									class="fa fa-comment fa-fw"></i> New Comment <span
-									class="pull-right text-muted small"><em>4 minutes
-											ago</em> </span>
-								</a> <a href="#" class="list-group-item"> <i
-									class="fa fa-twitter fa-fw"></i> 3 New Followers <span
-									class="pull-right text-muted small"><em>12 minutes
-											ago</em> </span>
-								</a> <a href="#" class="list-group-item"> <i
-									class="fa fa-envelope fa-fw"></i> Message Sent <span
-									class="pull-right text-muted small"><em>27 minutes
-											ago</em> </span>
-								</a> <a href="#" class="list-group-item"> <i
-									class="fa fa-tasks fa-fw"></i> New Task <span
-									class="pull-right text-muted small"><em>43 minutes
-											ago</em> </span>
-								</a> <a href="#" class="list-group-item"> <i
-									class="fa fa-upload fa-fw"></i> Server Rebooted <span
-									class="pull-right text-muted small"><em>11:32 AM</em> </span>
-								</a> <a href="#" class="list-group-item"> <i
-									class="fa fa-bolt fa-fw"></i> Server Crashed! <span
-									class="pull-right text-muted small"><em>11:13 AM</em> </span>
-								</a> <a href="#" class="list-group-item"> <i
-									class="fa fa-warning fa-fw"></i> Server Not Responding <span
-									class="pull-right text-muted small"><em>10:57 AM</em> </span>
-								</a> <a href="#" class="list-group-item"> <i
-									class="fa fa-shopping-cart fa-fw"></i> New Order Placed <span
-									class="pull-right text-muted small"><em>9:49 AM</em> </span>
-								</a> <a href="#" class="list-group-item"> <i
-									class="fa fa-money fa-fw"></i> Payment Received <span
-									class="pull-right text-muted small"><em>Yesterday</em> </span>
-								</a>
-							</div>
-							<!-- /.list-group -->
-							<a href="#" class="btn btn-default btn-block">View All Alerts</a>
-						</div>
-						<!-- /.panel-body -->
-					</div>
-					<!-- /.panel -->
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<i class="fa fa-bar-chart-o fa-fw"></i> Donut Chart Example
-						</div>
-						<div class="panel-body">
-							<div id="morris-donut-chart"></div>
-							<a href="#" class="btn btn-default btn-block">View Details</a>
-						</div>
-						<!-- /.panel-body -->
-					</div>
-					<!-- /.panel -->
-					<div class="chat-panel panel panel-default">
-						<div class="panel-heading">
-							<i class="fa fa-comments fa-fw"></i> Chat
-							<div class="btn-group pull-right">
-								<button type="button"
-									class="btn btn-default btn-xs dropdown-toggle"
-									data-toggle="dropdown">
-									<i class="fa fa-chevron-down"></i>
-								</button>
-								<ul class="dropdown-menu slidedown">
-									<li><a href="#"> <i class="fa fa-refresh fa-fw"></i>
-											Refresh
-									</a></li>
-									<li><a href="#"> <i class="fa fa-check-circle fa-fw"></i>
-											Available
-									</a></li>
-									<li><a href="#"> <i class="fa fa-times fa-fw"></i>
-											Busy
-									</a></li>
-									<li><a href="#"> <i class="fa fa-clock-o fa-fw"></i>
-											Away
-									</a></li>
-									<li class="divider"></li>
-									<li><a href="#"> <i class="fa fa-sign-out fa-fw"></i>
-											Sign Out
-									</a></li>
-								</ul>
-							</div>
-						</div>
-						<!-- /.panel-heading -->
-						<div class="panel-body">
-							<ul class="chat">
-								<li class="left clearfix"><span class="chat-img pull-left">
-										<img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar"
-										class="img-circle" />
-								</span>
-									<div class="chat-body clearfix">
-										<div class="header">
-											<strong class="primary-font">Jack Sparrow</strong> <small
-												class="pull-right text-muted"> <i
-												class="fa fa-clock-o fa-fw"></i> 12 mins ago
-											</small>
-										</div>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing
-											elit. Curabitur bibendum ornare dolor, quis ullamcorper
-											ligula sodales.</p>
-									</div></li>
-								<li class="right clearfix"><span
-									class="chat-img pull-right"> <img
-										src="http://placehold.it/50/FA6F57/fff" alt="User Avatar"
-										class="img-circle" />
-								</span>
-									<div class="chat-body clearfix">
-										<div class="header">
-											<small class=" text-muted"> <i
-												class="fa fa-clock-o fa-fw"></i> 13 mins ago
-											</small> <strong class="pull-right primary-font">Bhaumik
-												Patel</strong>
-										</div>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing
-											elit. Curabitur bibendum ornare dolor, quis ullamcorper
-											ligula sodales.</p>
-									</div></li>
-								<li class="left clearfix"><span class="chat-img pull-left">
-										<img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar"
-										class="img-circle" />
-								</span>
-									<div class="chat-body clearfix">
-										<div class="header">
-											<strong class="primary-font">Jack Sparrow</strong> <small
-												class="pull-right text-muted"> <i
-												class="fa fa-clock-o fa-fw"></i> 14 mins ago
-											</small>
-										</div>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing
-											elit. Curabitur bibendum ornare dolor, quis ullamcorper
-											ligula sodales.</p>
-									</div></li>
-								<li class="right clearfix"><span
-									class="chat-img pull-right"> <img
-										src="http://placehold.it/50/FA6F57/fff" alt="User Avatar"
-										class="img-circle" />
-								</span>
-									<div class="chat-body clearfix">
-										<div class="header">
-											<small class=" text-muted"> <i
-												class="fa fa-clock-o fa-fw"></i> 15 mins ago
-											</small> <strong class="pull-right primary-font">Bhaumik
-												Patel</strong>
-										</div>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing
-											elit. Curabitur bibendum ornare dolor, quis ullamcorper
-											ligula sodales.</p>
-									</div></li>
-							</ul>
-						</div>
-						<!-- /.panel-body -->
-						<div class="panel-footer">
-							<div class="input-group">
-								<input id="btn-input" type="text" class="form-control input-sm"
-									placeholder="Type your message here..." /> <span
-									class="input-group-btn">
-									<button class="btn btn-warning btn-sm" id="btn-chat">
-										Send</button>
-								</span>
-							</div>
-						</div>
-						<!-- /.panel-footer -->
-					</div>
-					<!-- /.panel .chat-panel -->
-				</div>
-				<!-- /.col-lg-4 -->
-			</div>
-			<!-- /.row -->
+			<!-- /.col-lg-12 -->
 		</div>
-		<!-- /#page-wrapper -->
+		<div class="row">
+			<div style="border: 1px; padding: 10px; height: 200px;">
+				<h1 class="page-header"></h1>
+			</div>
+		</div>
 
+		<!-- /.row -->
+		<div class="row">
+			<div class="col-lg-3 col-md-6">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<div class="row" style="margin: auto; display: inline;">
+							<div class="huge" style="margin: auto; text-align: center;">
+								<textarea id="messageWindow0" readonly="true"
+									style="color: black; font-size: smaller; border: 0 solid black; background-color: transparent; overflow: hidden;"
+									rows="1" cols="8"></textarea>
+							</div>
+							<div style="margin: auto; text-align: center;">Bottom RFID</div>
+
+						</div>
+					</div>
+					<a href="#">
+						<div class="panel-footer">
+							<span class="pull-left">Activating</span> <span
+								class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+							<div class="clearfix"></div>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="panel panel-green">
+					<div class="panel-heading">
+						<div class="row" style="margin: auto; display: inline;">
+							<div class="huge" style="margin: auto; text-align: center;">
+								<textarea id="messageWindow1" readonly="true"
+									style="text-align: center; color: black; font-size: smaller; border: 0 solid black; background-color: transparent; overflow: hidden;"
+									rows="1" cols="8"></textarea>
+							</div>
+							<div style="margin: auto; text-align: center;">Top RFID</div>
+						</div>
+					</div>
+					<a href="#">
+						<div class="panel-footer">
+							<span class="pull-left">Activating</span> <span
+								class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+							<div class="clearfix"></div>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="panel panel-yellow">
+					<div class="panel-heading">
+						<div class="row" style="margin: auto; display: inline;">
+							<div class="huge" style="margin: auto; text-align: center;">
+								<fieldset>
+									<textarea id="messageWindow2" readonly="true"
+										style="color: black; font-size: smaller; border: 0 solid black; background-color: transparent; overflow: hidden;"
+										rows="1" cols="8"></textarea>
+
+								</fieldset>
+							</div>
+							<div style="margin: auto; text-align: center;">Line Error</div>
+
+						</div>
+					</div>
+					<a href="#">
+						<div class="panel-footer">
+							<span class="pull-left">Activating</span> <span
+								class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+							<div class="clearfix"></div>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="panel panel-red">
+					<div class="panel-heading">
+						<div class="row" style="margin: auto; display: inline;">
+							<div class="huge" style="margin: auto; text-align: center;">
+								<textarea id="messageWindow3" readonly="true"
+									style="color: black; text-align: center; font-size: smaller; border: 0 solid black; background-color: transparent; overflow: hidden;"
+									rows="1" cols="16"></textarea>
+							</div>
+							<div style="margin: auto; text-align: center;">Crash Check</div>
+
+						</div>
+					</div>
+					<a href="#">
+						<div class="panel-footer">
+							<span class="pull-left">Activating</span> <span
+								class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+							<div class="clearfix"></div>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<div class="row" style="margin: auto; display: inline;">
+
+
+							<div class="huge" style="margin: auto; text-align: center">
+								<textarea id="messageWindow4" readonly="true"
+									style="color: black; border: 0 solid black; font-size: smaller; background-color: transparent; overflow: hidden;"
+									rows="1" cols="8"></textarea>
+							</div>
+							<div style="margin: auto; text-align: center">Front
+								Detection</div>
+
+						</div>
+					</div>
+					<a href="#">
+						<div class="panel-footer">
+							<span class="pull-left">Activating</span> <span
+								class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+							<div class="clearfix"></div>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="panel panel-green">
+					<div class="panel-heading">
+						<div class="row" style="margin: auto; display: inline;">
+<!-- 
+							<div class="huge" style="margin: auto; text-align: center">
+								<textarea id="messageWindow5" readonly="true"
+									style="color: black; text-align: center; font-size: smaller; border: 0 solid black; background-color: transparent; overflow: hidden;"
+									rows="1" cols="16"></textarea>
+							</div>
+ -->
+							<div class="container">
+								<div class="guage-holder">
+									<div class="circle-mask">
+										<div class="circle">
+											<div class="circle-inner"></div>
+										</div>
+									</div>
+									<div class="gauge-copy"></div>
+								</div>
+							</div>
+							<div style="margin: auto; text-align: center;">Bettery</div>
+
+						</div>
+					</div>
+					<a href="#">
+						<div class="panel-footer">
+							<span class="pull-left">Activating</span> <span
+								class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+							<div class="clearfix"></div>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="panel panel-yellow">
+					<div class="panel-heading">
+						<div class="row" style="margin: auto; display: inline;">
+							<div class="huge" style="margin: auto; text-align: center">
+
+								<button type="button" class="btn btn-toggle active"
+									data-toggle="button" aria-pressed="true" autocomplete="off"
+									style="align-items: left">
+									<div class="handle"></div>
+								</button>
+							</div>
+							<div style="margin: auto; text-align: center;">AGV ON/OFF</div>
+						</div>
+					</div>
+					<a href="#">
+						<div class="panel-footer">
+							<span class="pull-left">Activating</span> <span
+								class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+							<div class="clearfix"></div>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="panel panel-red">
+					<div class="panel-heading">
+						<div class="row" style="margin: auto; display: inline;">
+							<div class="huge" style="margin: auto; text-align: center;">
+								<button type="button"
+									class="btn btn-lg btn-secondary btn-toggle active"
+									data-toggle="button" aria-pressed="true" autocomplete="off">
+									<div class="handle"></div>
+								</button>
+							</div>
+							<div style="margin: auto; text-align: center;">Action
+								Control</div>
+
+						</div>
+					</div>
+					<a href="#">
+						<div class="panel-footer">
+							<span class="pull-left">Activating</span> <span
+								class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+							<div class="clearfix"></div>
+						</div>
+					</a>
+				</div>
+			</div>
+
+			<!-- /#page-wrapper -->
+
+		</div>
+
+		<div class="col-lg-4"></div>
+		<!-- /#wrapper -->
+		<div class="col-lg-6">
+			<div class="panel panel-default">
+				<div class="panel-heading">Moving Line Chart Example</div>
+				<!-- /.panel-heading -->
+				<div class="panel-body">
+					<div class="flot-chart">
+						<div class="flot-chart-content" id="flot-line-chart-moving"
+							style="padding: 0px; position: relative;">
+							<canvas class="flot-base" width="540" height="400"
+								style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 540px; height: 400px;"></canvas>
+							<div class="flot-text"
+								style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);">
+								<div class="flot-y-axis flot-y1-axis yAxis y1Axis"
+									style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;">
+									<div class="flot-tick-label tickLabel"
+										style="position: absolute; top: 361px; left: 34px; text-align: right;">0</div>
+									<div class="flot-tick-label tickLabel"
+										style="position: absolute; top: 298px; left: 27px; text-align: right;">20</div>
+									<div class="flot-tick-label tickLabel"
+										style="position: absolute; top: 234px; left: 27px; text-align: right;">40</div>
+									<div class="flot-tick-label tickLabel"
+										style="position: absolute; top: 171px; left: 27px; text-align: right;">60</div>
+									<div class="flot-tick-label tickLabel"
+										style="position: absolute; top: 107px; left: 27px; text-align: right;">80</div>
+									<div class="flot-tick-label tickLabel"
+										style="position: absolute; top: 44px; left: 21px; text-align: right;">100</div>
+								</div>
+							</div>
+							<canvas class="flot-overlay" width="540" height="400"
+								style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 540px; height: 400px;"></canvas>
+						</div>
+					</div>
+				</div>
+				<!-- /.panel-body -->
+			</div>
+			<!-- /.panel -->
+		</div>
 	</div>
-	<!-- /#wrapper -->
+
+
+
+
+
+	<script type="text/javascript">
+		var text = new Array();
+		for (i = 0; i < 6; i++) {
+			text[i] = document.getElementById("messageWindow" + i);
+		}
+		var wsUri = "ws://127.0.0.1:18080/echo";
+		var textarea = document.getElementById("messageWindow");
+		//var textarea1 = document.getElementById("messageWindow1");
+		var textarea2 = document.getElementById("messageWindow2");
+		function onMessage(event) {
+			//textvalue clear checek
+			//for(i=0; i<7; i++){
+			//	text[i] = "";
+			//}
+			//textarea.value += "Message Received: " + event.data + "\n";
+			text[0].value = "도착지A " + event.data + "\n";
+			text[1].value = "출발" + event.data + "\n";
+			text[2].value = "라인이탈" + event.data + "\n";
+			text[3].value = "충돌방지를 위해 우선 작동 중" + event.data + "\n";
+			text[4].value = "전방장애물" + event.data + "\n";
+			text[5].value = "AGV 동작제한" + event.data + "\n";
+			//text[6].value = "전원" + event.data + "\n";
+		}
+		function send_message() {
+
+			websocket = new WebSocket(wsUri);
+
+			websocket.onopen = function(event) {
+
+				onOpen(event)
+
+			};
+
+			websocket.onmessage = function(event) {
+
+				onMessage(event)
+
+			};
+
+			websocket.onerror = function(event) {
+
+				onError(event)
+
+			};
+
+		}
+		/*
+		function onMessage(event) {
+			//textarea.value += "상대 : " + event.data + "\n";
+
+		}
+		 */
+
+		function onOpen(event) {
+			textarea.value += "connect\n";
+		}
+		function onError(event) {
+			alert(event.data);
+		}
+
+		function doClose() {
+
+			websocket.close();
+
+		}
+	</script>
 
 	<!-- jQuery -->
-	<script src="resources/vendor/jquery/jquery.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
 
+	-->
 	<!-- Bootstrap Core JavaScript -->
-	<script src="resources/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
 
 	<!-- Metis Menu Plugin JavaScript -->
-	<script src="resources/vendor/metisMenu/metisMenu.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/vendor/metisMenu/metisMenu.min.js"></script>
 
 	<!-- Morris Charts JavaScript -->
-	<script src="resources/vendor/raphael/raphael.min.js"></script>
-	<script src="resources/vendor/morrisjs/morris.min.js"></script>
-	<script src="resources/data/morris-data.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/vendor/raphael/raphael.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/vendor/morrisjs/morris.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/data/morris-data.js"></script>
 
 	<!-- Custom Theme JavaScript -->
-	<script src="resources/dist/js/sb-admin-2.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/dist/js/sb-admin-2.js"></script>
 
+
+	<script
+		src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'>jQuery.noConflict();</script>
+
+	<script src="../../resources/js/index.js"></script>
 </body>
 
 </html>
