@@ -379,13 +379,11 @@
 
 		function onClickC() {
 			document.getElementById('text').value = '50';
-			$(document.getElementById('text')).keyup();
-			$(document.getElementById('greenbutton')).attr('disabled', false);
-			$(document.getElementById('greenbutton')).click();
-			$(document.getElementById('greenbutton')).attr('disabled', true);
-			
+			$(document.getElementById('text')).keyup();		
 		}
-		
+		//$(document.getElementById('greenbutton')).attr('disabled', false);
+		//$(document.getElementById('greenbutton')).click();
+		//$(document.getElementById('greenbutton')).attr('disabled', true);		
 		function stateButtonOn(){
 			if($(document.getElementById('greenbutton')).attr('aria-pressed') == 'true'){
 			$(document.getElementById('greenbutton')).attr('disabled', false);
