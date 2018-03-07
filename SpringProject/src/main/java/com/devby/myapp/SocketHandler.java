@@ -141,8 +141,8 @@ public class SocketHandler extends TextWebSocketHandler implements InitializingB
 
 					try {
 
-						sendMessage("send message index " + K);
-
+						//sendMessage("send message index " + K);
+						sendMessage(K);
 						Thread.sleep(1000);
 
 					} catch (InterruptedException e) {

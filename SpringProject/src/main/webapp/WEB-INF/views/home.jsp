@@ -71,29 +71,71 @@
 	</div>
  -->
 
-    <div class="percentage">0 %</div>
-    <input type="text" class="text-box" />
 
-
-	<input onclick="send_message()" value="Send" type="button">
-	<input type="submit" value="Stop" onclick="doClose()" />
-	<div id="output"></div>
-
-
+	<style>
+#title {
+	text-align: center;
+	color: #fff;
+	box-shadow: none;
+	text-shadow: rgb(255, 255, 255) 0px 0px 10px, rgb(255, 255, 255) 0px 0px
+		20px, rgb(255, 255, 255) 0px 0px 30px, rgb(0, 255, 255) 0px 0px 40px,
+		rgb(0, 255, 255) 0px 0px 70px, rgb(0, 255, 255) 0px 0px 80px,
+		rgb(0, 255, 255) 0px 0px 100px;
+	transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+	-webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+	-webkit-transform: none;
+	transform: none;
+	-webkit-transform-origin: 50% 50% 0px;
+	transform-origin: 50% 50% 0px;
+}
+</style>
+ 
 	<div id="wrapper">
 
-		<div class="row">
+		<div class="row" style="background-color: black;">
 			<div class="col-lg-12" align="Center">
-				<h1 class="page-header">Canon Dashboard</h1>
+				<div id="title">
+					<h1>Canon Dashboard</h1>
+					<!-- <h1 class="page-header">Canon Dashboard</h1> -->
+				</div>
 			</div>
 			<!-- /.col-lg-12 -->
 		</div>
+		<!-- 
+		<style>
+		
+.video-container {
+	margin: 0;
+	padding-bottom: 75%;
+	max-width: 100%;
+	height: 0;
+	position: relative;
+	overflow: hidden;
+}
+
+.video-container iframe, .video-container object, .video-container embed
+	{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+</style>
+		<div class="video-container"
+			style="border: 1px; padding: 10px; height: 500px;">
+
+			<iframe width="100" height="100" src="http://www.lotte.net"></iframe>
+		</div>
+
+-->
 		<div class="row">
-			<div style="border: 1px; padding: 10px; height: 200px;">
+			<div style="border: 1px; padding: 10px; height: 300px;">
 				<h1 class="page-header"></h1>
 			</div>
 		</div>
-
 		<!-- /.row -->
 		<div class="row">
 			<div class="col-lg-3 col-md-6">
@@ -102,20 +144,23 @@
 						<div class="row" style="margin: auto; display: inline;">
 							<div class="huge" style="margin: auto; text-align: center;">
 								<textarea id="messageWindow0" readonly="true"
-									style="color: black; font-size: smaller; border: 0 solid black; background-color: transparent; overflow: hidden;"
+									style="color: white; font-size: smaller; border: 0 solid black; background-color: transparent; overflow: hidden;"
 									rows="1" cols="8"></textarea>
 							</div>
-							<div style="margin: auto; text-align: center;">Bottom RFID</div>
+							<div style="margin: auto; text-align: center;">
+								<div class="huge">Bottom RFID</div>
+							</div>
 
 						</div>
 					</div>
-					<a href="#">
-						<div class="panel-footer">
-							<span class="pull-left">Activating</span> <span
-								class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-							<div class="clearfix"></div>
-						</div>
-					</a>
+
+					<div class="panel-footer">
+						<span class="pull-left">Activating</span> <span class="pull-right"><i
+							class="fa fa-arrow-circle-right"></i></span>
+						<div class="clearfix"></div>
+
+					</div>
+
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6">
@@ -124,44 +169,21 @@
 						<div class="row" style="margin: auto; display: inline;">
 							<div class="huge" style="margin: auto; text-align: center;">
 								<textarea id="messageWindow1" readonly="true"
-									style="text-align: center; color: black; font-size: smaller; border: 0 solid black; background-color: transparent; overflow: hidden;"
+									style="text-align: center; color: white; font-size: smaller; border: 0 solid black; background-color: transparent; overflow: hidden;"
 									rows="1" cols="8"></textarea>
 							</div>
-							<div style="margin: auto; text-align: center;">Top RFID</div>
-						</div>
-					</div>
-					<a href="#">
-						<div class="panel-footer">
-							<span class="pull-left">Activating</span> <span
-								class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-							<div class="clearfix"></div>
-						</div>
-					</a>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-6">
-				<div class="panel panel-yellow">
-					<div class="panel-heading">
-						<div class="row" style="margin: auto; display: inline;">
-							<div class="huge" style="margin: auto; text-align: center;">
-								<fieldset>
-									<textarea id="messageWindow2" readonly="true"
-										style="color: black; font-size: smaller; border: 0 solid black; background-color: transparent; overflow: hidden;"
-										rows="1" cols="8"></textarea>
-
-								</fieldset>
+							<div style="margin: auto; text-align: center;">
+								<div class="huge">Top RFID</div>
 							</div>
-							<div style="margin: auto; text-align: center;">Line Error</div>
-
 						</div>
 					</div>
-					<a href="#">
-						<div class="panel-footer">
-							<span class="pull-left">Activating</span> <span
-								class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-							<div class="clearfix"></div>
-						</div>
-					</a>
+
+					<div class="panel-footer">
+						<span class="pull-left">Activating</span> <span class="pull-right"><i
+							class="fa fa-arrow-circle-right"></i></span>
+						<div class="clearfix"></div>
+					</div>
+
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6">
@@ -169,56 +191,86 @@
 					<div class="panel-heading">
 						<div class="row" style="margin: auto; display: inline;">
 							<div class="huge" style="margin: auto; text-align: center;">
-								<textarea id="messageWindow3" readonly="true"
-									style="color: black; text-align: center; font-size: smaller; border: 0 solid black; background-color: transparent; overflow: hidden;"
-									rows="1" cols="16"></textarea>
+								<fieldset>
+									<textarea id="messageWindow2" readonly="true"
+										style="color: white; font-size: smaller; border: 0 solid black; background-color: transparent; overflow: hidden;"
+										rows="1" cols="8"></textarea>
+
+								</fieldset>
 							</div>
-							<div style="margin: auto; text-align: center;">Crash Check</div>
+							<div style="margin: auto; text-align: center;">
+								<div class="huge">Line Error</div>
+							</div>
 
 						</div>
 					</div>
-					<a href="#">
-						<div class="panel-footer">
-							<span class="pull-left">Activating</span> <span
-								class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-							<div class="clearfix"></div>
-						</div>
-					</a>
+
+					<div class="panel-footer">
+						<span class="pull-left">Activating</span> <span class="pull-right"><i
+							class="fa fa-arrow-circle-right"></i></span>
+						<div class="clearfix"></div>
+					</div>
+
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6">
-				<div class="panel panel-primary">
+				<div class="panel panel-yellow">
+					<div class="panel-heading">
+						<div class="row" style="margin: auto; display: inline;">
+							<div class="huge" style="margin: auto; text-align: center;">
+								<textarea id="messageWindow3" readonly="true"
+									style="color: white; text-align: center; font-size: smaller; border: 0 solid black; background-color: transparent; overflow: hidden;"
+									rows="1" cols="16"></textarea>
+							</div>
+							<div style="margin: auto; text-align: center;">
+								<div class="huge">Crash Check</div>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="panel-footer">
+						<span class="pull-left">Activating</span> <span class="pull-right"><i
+							class="fa fa-arrow-circle-right"></i></span>
+						<div class="clearfix"></div>
+					</div>
+
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="panel panel-red">
 					<div class="panel-heading">
 						<div class="row" style="margin: auto; display: inline;">
 
 
 							<div class="huge" style="margin: auto; text-align: center">
 								<textarea id="messageWindow4" readonly="true"
-									style="color: black; border: 0 solid black; font-size: smaller; background-color: transparent; overflow: hidden;"
+									style="color: white; border: 0 solid black; font-size: smaller; background-color: transparent; overflow: hidden;"
 									rows="1" cols="8"></textarea>
 							</div>
-							<div style="margin: auto; text-align: center">Front
-								Detection</div>
+							<div style="margin: auto; text-align: center">
+								<div class="huge">Front Detection</div>
+							</div>
 
 						</div>
 					</div>
-					<a href="#">
-						<div class="panel-footer">
-							<span class="pull-left">Activating</span> <span
-								class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-							<div class="clearfix"></div>
-						</div>
-					</a>
+
+					<div class="panel-footer">
+						<span class="pull-left">Activating</span> <span class="pull-right"><i
+							class="fa fa-arrow-circle-right"></i></span>
+						<div class="clearfix"></div>
+					</div>
+
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6">
-				<div class="panel panel-green">
+				<div class="panel panel-yellow">
 					<div class="panel-heading">
 						<div class="row" style="margin: auto; display: inline;">
-<!-- 
+							<!-- 
 							<div class="huge" style="margin: auto; text-align: center">
 								<textarea id="messageWindow5" readonly="true"
-									style="color: black; text-align: center; font-size: smaller; border: 0 solid black; background-color: transparent; overflow: hidden;"
+									style="color: white; text-align: center; font-size: smaller; border: 0 solid black; background-color: transparent; overflow: hidden;"
 									rows="1" cols="16"></textarea>
 							</div>
  -->
@@ -232,66 +284,69 @@
 									<div class="gauge-copy"></div>
 								</div>
 							</div>
-							<div style="margin: auto; text-align: center;">Bettery</div>
+							<div style="margin: auto; text-align: center;">
+								<div class="huge">Bettery</div>
+							</div>
 
 						</div>
 					</div>
-					<a href="#">
-						<div class="panel-footer">
-							<span class="pull-left">Activating</span> <span
-								class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-							<div class="clearfix"></div>
-						</div>
-					</a>
+
+					<div class="panel-footer">
+						<span class="pull-left">Activating</span> <span class="pull-right"><i
+							class="fa fa-arrow-circle-right"></i></span>
+						<div class="clearfix"></div>
+					</div>
+
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6">
-				<div class="panel panel-yellow">
+				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<div class="row" style="margin: auto; display: inline;">
 							<div class="huge" style="margin: auto; text-align: center">
 
-								<button type="button" class="btn btn-toggle active"
-									data-toggle="button" aria-pressed="true" autocomplete="off"
-									style="align-items: left">
+								<button id="greenbutton" type="button"
+									class="btn btn-lg btn-secondary btn-toggle active" data-toggle="button"
+									aria-pressed="true" autocomplete="off"
+									style="align-items: center" disabled="disable">
 									<div class="handle"></div>
 								</button>
 							</div>
-							<div style="margin: auto; text-align: center;">AGV ON/OFF</div>
+							<div style="margin: auto; text-align: center;">
+								<div class="huge">AGV ON/OFF</div>
+							</div>
 						</div>
 					</div>
-					<a href="#">
-						<div class="panel-footer">
-							<span class="pull-left">Activating</span> <span
-								class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-							<div class="clearfix"></div>
-						</div>
-					</a>
+
+					<div class="panel-footer">
+						<span class="pull-left">Activating</span> <span class="pull-right"><i
+							class="fa fa-arrow-circle-right"></i></span>
+						<div class="clearfix"></div>
+					</div>
+
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6">
-				<div class="panel panel-red">
+				<div class="panel panel-green">
 					<div class="panel-heading">
 						<div class="row" style="margin: auto; display: inline;">
 							<div class="huge" style="margin: auto; text-align: center;">
-								<button type="button"
-									class="btn btn-lg btn-secondary btn-toggle active"
-									data-toggle="button" aria-pressed="true" autocomplete="off">
-									<div class="handle"></div>
-								</button>
+<button id="Onbutt" type="button" class="btn btn-primary" onclick="stateButtonOn()">On</button>
+<button id="Offbutt" type="button" class="btn btn-primary"onclick="stateButtonOff()">Off</button>
 							</div>
-							<div style="margin: auto; text-align: center;">Action
-								Control</div>
+							<div style="margin: auto; text-align: center;">
+								<div class="huge">Action Control</div>
+							</div>
 
 						</div>
 					</div>
-					<a href="#">
-						<div class="panel-footer">
-							<span class="pull-left">Activating</span> <span
-								class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-							<div class="clearfix"></div>
-						</div>
-					</a>
+
+					<div class="panel-footer">
+						<span class="pull-left">Activating</span> <span class="pull-right"><i
+							class="fa fa-arrow-circle-right"></i></span>
+						<div class="clearfix"></div>
+					</div>
+
 				</div>
 			</div>
 
@@ -301,51 +356,19 @@
 
 		<div class="col-lg-4"></div>
 		<!-- /#wrapper -->
-		<div class="col-lg-6">
-			<div class="panel panel-default">
-				<div class="panel-heading">Moving Line Chart Example</div>
-				<!-- /.panel-heading -->
-				<div class="panel-body">
-					<div class="flot-chart">
-						<div class="flot-chart-content" id="flot-line-chart-moving"
-							style="padding: 0px; position: relative;">
-							<canvas class="flot-base" width="540" height="400"
-								style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 540px; height: 400px;"></canvas>
-							<div class="flot-text"
-								style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);">
-								<div class="flot-y-axis flot-y1-axis yAxis y1Axis"
-									style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;">
-									<div class="flot-tick-label tickLabel"
-										style="position: absolute; top: 361px; left: 34px; text-align: right;">0</div>
-									<div class="flot-tick-label tickLabel"
-										style="position: absolute; top: 298px; left: 27px; text-align: right;">20</div>
-									<div class="flot-tick-label tickLabel"
-										style="position: absolute; top: 234px; left: 27px; text-align: right;">40</div>
-									<div class="flot-tick-label tickLabel"
-										style="position: absolute; top: 171px; left: 27px; text-align: right;">60</div>
-									<div class="flot-tick-label tickLabel"
-										style="position: absolute; top: 107px; left: 27px; text-align: right;">80</div>
-									<div class="flot-tick-label tickLabel"
-										style="position: absolute; top: 44px; left: 21px; text-align: right;">100</div>
-								</div>
-							</div>
-							<canvas class="flot-overlay" width="540" height="400"
-								style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 540px; height: 400px;"></canvas>
-						</div>
-					</div>
-				</div>
-				<!-- /.panel-body -->
-			</div>
-			<!-- /.panel -->
-		</div>
+
+
+
+		<input id='text' type="text" class="text-box" value="2"
+			visible='hidden' style='display: none' /> <input
+			onclick="send_message()" value="Send" type="button"> <input
+			type="submit" value="Stop" onclick="doClose()" /> <input
+			type="button" value="Go" onclick='onClickC()' />
+
 	</div>
-
-
-
-
-
 	<script type="text/javascript">
-		var text = new Array();
+
+	var text = new Array();
 		for (i = 0; i < 6; i++) {
 			text[i] = document.getElementById("messageWindow" + i);
 		}
@@ -353,19 +376,46 @@
 		var textarea = document.getElementById("messageWindow");
 		//var textarea1 = document.getElementById("messageWindow1");
 		var textarea2 = document.getElementById("messageWindow2");
+
+		function onClickC() {
+			document.getElementById('text').value = '50';
+			$(document.getElementById('text')).keyup();
+			$(document.getElementById('greenbutton')).attr('disabled', false);
+			$(document.getElementById('greenbutton')).click();
+			$(document.getElementById('greenbutton')).attr('disabled', true);
+			
+		}
+		
+		function stateButtonOn(){
+			if($(document.getElementById('greenbutton')).attr('aria-pressed') == 'true'){
+			$(document.getElementById('greenbutton')).attr('disabled', false);
+			$(document.getElementById('greenbutton')).click();
+			$(document.getElementById('greenbutton')).attr('disabled', true);
+			}
+		}
+		function stateButtonOff(){
+			if($(document.getElementById('greenbutton')).attr('aria-pressed') == 'false'){
+			$(document.getElementById('greenbutton')).attr('disabled', false);
+			$(document.getElementById('greenbutton')).click();
+			$(document.getElementById('greenbutton')).attr('disabled', true);
+			}
+		}
+		
 		function onMessage(event) {
 			//textvalue clear checek
 			//for(i=0; i<7; i++){
 			//	text[i] = "";
 			//}
 			//textarea.value += "Message Received: " + event.data + "\n";
-			text[0].value = "도착지A " + event.data + "\n";
+			//text[0].value = "도착지A " + event.data + "\n";
+			text[0].value = event.data;
 			text[1].value = "출발" + event.data + "\n";
 			text[2].value = "라인이탈" + event.data + "\n";
 			text[3].value = "충돌방지를 위해 우선 작동 중" + event.data + "\n";
 			text[4].value = "전방장애물" + event.data + "\n";
-			text[5].value = "AGV 동작제한" + event.data + "\n";
+			//text[5].value = "AGV 동작제한" + event.data + "\n";
 			//text[6].value = "전원" + event.data + "\n";
+
 		}
 		function send_message() {
 
@@ -407,7 +457,9 @@
 		function doClose() {
 
 			websocket.close();
-
+			for (i = 0; i < 6; i++) {
+				text[i].value = "";
+			}
 		}
 	</script>
 
@@ -415,7 +467,7 @@
 	<script
 		src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
 
-	-->
+
 	<!-- Bootstrap Core JavaScript -->
 	<script
 		src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -438,9 +490,50 @@
 
 
 	<script
-		src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'>jQuery.noConflict();</script>
+		src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'>
+		jQuery.noConflict();
+	</script>
 
 	<script src="../../resources/js/index.js"></script>
+	<!-- Ajax Script
+	<script type="text/javascript">
+	// Request Method :: GET 
+jQuery.ajax({
+ type: “GET”, 
+ dataType: “json”,
+ url: “http://openapi.xxx.com/path/getapi.do”,
+ data: “id=”+id.val()+”&password=”+password.val()+”&name=”+name.val(),
+ success: reqGetResponse,
+ error: errorNoti
+});
+ 
+function reqGetResponse(data) {
+ if(data.result) {
+  alert(“Good Job!!”);
+ }
+}
+ 
+// Request Method :: POST 
+jQuery.ajax({
+ type: “POST”, 
+ dataType: “json”,
+ url: “http://openapi.xxx.com/path/postapi.do”,
+ data: {id:id.val(), password:password.val(). name:name.val() },
+ success: reqPostResponse,
+ error: errorNoti
+});
+ 
+function reqPostResponse(data) {
+ if(data.result) {
+  alert(“Good Job!!”);
+ }
+}
+ 
+function errorNoti() {
+ alert(“Request Fail!!”);
+}
+</script>
+-->
 </body>
 
 </html>

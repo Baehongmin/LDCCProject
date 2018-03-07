@@ -70,5 +70,14 @@ public class HomeController {
 		
 	}
 	
-	
+//	@RequestMapping(value = "/dashboard", method = RequestMethod.POST)
+//	@ResponseBody
+//	public String sandonoff(@RequestBody String body, Model model) throws Exception {
+		//body = paser(body);
+		//System.out.println("body : " + body);
+		//socketHandler.sendMessage(body);
+		//SocketHandler.SetMe(body);
+//		return body;
+		
+//	}
 }
