@@ -116,7 +116,8 @@ body {
   left: 0.4125rem;
   width: 2.325rem;
 }
-.btn-toggle.btn-sm:before {
+
+-toggle.btn-sm:before {
   text-align: right;
 }
 .btn-toggle.btn-sm:after {

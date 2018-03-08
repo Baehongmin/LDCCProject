@@ -89,7 +89,7 @@
 	transform-origin: 50% 50% 0px;
 }
 </style>
- 
+
 	<div id="wrapper">
 
 		<div class="row" style="background-color: black;">
@@ -140,6 +140,11 @@
 		<div class="row">
 			<div class="col-lg-3 col-md-6">
 				<div class="panel panel-primary">
+					<div class="panel-footer">
+						<span class="pull-left">Bottom RFID</span> <span
+							class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+						<div class="clearfix"></div>
+					</div>
 					<div class="panel-heading">
 						<div class="row" style="margin: auto; display: inline;">
 							<div class="huge" style="margin: auto; text-align: center;">
@@ -153,18 +158,15 @@
 
 						</div>
 					</div>
-
-					<div class="panel-footer">
-						<span class="pull-left">Activating</span> <span class="pull-right"><i
-							class="fa fa-arrow-circle-right"></i></span>
-						<div class="clearfix"></div>
-
-					</div>
-
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6">
 				<div class="panel panel-green">
+					<div class="panel-footer">
+						<span class="pull-left">Top RFID</span> <span class="pull-right"><i
+							class="fa fa-arrow-circle-right"></i></span>
+						<div class="clearfix"></div>
+					</div>
 					<div class="panel-heading">
 						<div class="row" style="margin: auto; display: inline;">
 							<div class="huge" style="margin: auto; text-align: center;">
@@ -177,17 +179,15 @@
 							</div>
 						</div>
 					</div>
-
-					<div class="panel-footer">
-						<span class="pull-left">Activating</span> <span class="pull-right"><i
-							class="fa fa-arrow-circle-right"></i></span>
-						<div class="clearfix"></div>
-					</div>
-
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6">
 				<div class="panel panel-red">
+					<div class="panel-footer">
+						<span class="pull-left">Line Error</span> <span class="pull-right"><i
+							class="fa fa-arrow-circle-right"></i></span>
+						<div class="clearfix"></div>
+					</div>
 					<div class="panel-heading">
 						<div class="row" style="margin: auto; display: inline;">
 							<div class="huge" style="margin: auto; text-align: center;">
@@ -204,17 +204,15 @@
 
 						</div>
 					</div>
-
-					<div class="panel-footer">
-						<span class="pull-left">Activating</span> <span class="pull-right"><i
-							class="fa fa-arrow-circle-right"></i></span>
-						<div class="clearfix"></div>
-					</div>
-
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6">
 				<div class="panel panel-yellow">
+					<div class="panel-footer">
+						<span class="pull-left">Crash Check</span> <span
+							class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+						<div class="clearfix"></div>
+					</div>
 					<div class="panel-heading">
 						<div class="row" style="margin: auto; display: inline;">
 							<div class="huge" style="margin: auto; text-align: center;">
@@ -228,21 +226,17 @@
 
 						</div>
 					</div>
-
-					<div class="panel-footer">
-						<span class="pull-left">Activating</span> <span class="pull-right"><i
-							class="fa fa-arrow-circle-right"></i></span>
-						<div class="clearfix"></div>
-					</div>
-
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6">
 				<div class="panel panel-red">
+					<div class="panel-footer">
+						<span class="pull-left">Front Detection</span> <span
+							class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+						<div class="clearfix"></div>
+					</div>
 					<div class="panel-heading">
 						<div class="row" style="margin: auto; display: inline;">
-
-
 							<div class="huge" style="margin: auto; text-align: center">
 								<textarea id="messageWindow4" readonly="true"
 									style="color: white; border: 0 solid black; font-size: smaller; background-color: transparent; overflow: hidden;"
@@ -254,17 +248,15 @@
 
 						</div>
 					</div>
-
-					<div class="panel-footer">
-						<span class="pull-left">Activating</span> <span class="pull-right"><i
-							class="fa fa-arrow-circle-right"></i></span>
-						<div class="clearfix"></div>
-					</div>
-
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6">
 				<div class="panel panel-yellow">
+					<div class="panel-footer">
+						<span class="pull-left">Bettery</span> <span class="pull-right"><i
+							class="fa fa-arrow-circle-right"></i></span>
+						<div class="clearfix"></div>
+					</div>
 					<div class="panel-heading">
 						<div class="row" style="margin: auto; display: inline;">
 							<!-- 
@@ -290,49 +282,23 @@
 
 						</div>
 					</div>
-
-					<div class="panel-footer">
-						<span class="pull-left">Activating</span> <span class="pull-right"><i
-							class="fa fa-arrow-circle-right"></i></span>
-						<div class="clearfix"></div>
-					</div>
-
 				</div>
 			</div>
-			<div class="col-lg-3 col-md-6">
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-						<div class="row" style="margin: auto; display: inline;">
-							<div class="huge" style="margin: auto; text-align: center">
 
-								<button id="greenbutton" type="button"
-									class="btn btn-lg btn-secondary btn-toggle active" data-toggle="button"
-									aria-pressed="true" autocomplete="off"
-									style="align-items: center" disabled="disable">
-									<div class="handle"></div>
-								</button>
-							</div>
-							<div style="margin: auto; text-align: center;">
-								<div class="huge">AGV ON/OFF</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="panel-footer">
-						<span class="pull-left">Activating</span> <span class="pull-right"><i
-							class="fa fa-arrow-circle-right"></i></span>
-						<div class="clearfix"></div>
-					</div>
-
-				</div>
-			</div>
 			<div class="col-lg-3 col-md-6">
 				<div class="panel panel-green">
+					<div class="panel-footer">
+						<span class="pull-left">Action Control</span> <span
+							class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+						<div class="clearfix"></div>
+					</div>
 					<div class="panel-heading">
 						<div class="row" style="margin: auto; display: inline;">
 							<div class="huge" style="margin: auto; text-align: center;">
-<button id="Onbutt" type="button" class="btn btn-primary" onclick="stateButtonOn()">On</button>
-<button id="Offbutt" type="button" class="btn btn-primary"onclick="stateButtonOff()">Off</button>
+								<button id="Onbutt" type="button" class="btn btn-primary"
+									onclick="stateButtonOn()">On</button>
+								<button id="Offbutt" type="button" class="btn btn-primary"
+									onclick="stateButtonOff()">Off</button>
 							</div>
 							<div style="margin: auto; text-align: center;">
 								<div class="huge">Action Control</div>
@@ -340,16 +306,40 @@
 
 						</div>
 					</div>
-
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="panel panel-primary">
 					<div class="panel-footer">
-						<span class="pull-left">Activating</span> <span class="pull-right"><i
+						<span class="pull-left">AGV ON/OFF</span> <span class="pull-right"><i
 							class="fa fa-arrow-circle-right"></i></span>
 						<div class="clearfix"></div>
 					</div>
-
+					<div class="panel-heading">
+						<div class="row"
+							style="margin: auto; display: inline; text-align: center;">
+							<!-- 
+							<div class="huge" style="margin: auto; text-align: center">
+								<button id="greenbutton" type="button"
+									class="btn btn-lg btn-secondary btn-toggle active"
+									data-toggle="button" aria-pressed="true" autocomplete="off"
+									style="align-items: center" disabled="disable">
+									<div class="handle"></div>
+								</button>
+							</div>
+							 -->
+							<div id="title">
+								<div id="Onb" style="text-align: center; display: none;"
+									class="huge">ON</div>
+							</div>
+							<div id="title">
+								<div id="Offb" style="text-align: center; display: block;"
+									class="huge">OFF</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-
 			<!-- /#page-wrapper -->
 
 		</div>
@@ -363,12 +353,12 @@
 			visible='hidden' style='display: none' /> <input
 			onclick="send_message()" value="Send" type="button"> <input
 			type="submit" value="Stop" onclick="doClose()" /> <input
-			type="button" value="Go" onclick='onClickC()' />
+			type="button" value="Go" onclick='onClickC()' /> <input id="joinOk"
+			type="button" value="Check" />
 
 	</div>
 	<script type="text/javascript">
-
-	var text = new Array();
+		var text = new Array();
 		for (i = 0; i < 6; i++) {
 			text[i] = document.getElementById("messageWindow" + i);
 		}
@@ -379,26 +369,24 @@
 
 		function onClickC() {
 			document.getElementById('text').value = '50';
-			$(document.getElementById('text')).keyup();		
+			$(document.getElementById('text')).keyup();
 		}
 		//$(document.getElementById('greenbutton')).attr('disabled', false);
 		//$(document.getElementById('greenbutton')).click();
 		//$(document.getElementById('greenbutton')).attr('disabled', true);		
-		function stateButtonOn(){
-			if($(document.getElementById('greenbutton')).attr('aria-pressed') == 'true'){
-			$(document.getElementById('greenbutton')).attr('disabled', false);
-			$(document.getElementById('greenbutton')).click();
-			$(document.getElementById('greenbutton')).attr('disabled', true);
+		function stateButtonOn() {
+			if (document.getElementById("Offb").style.display == 'block') {
+				document.getElementById("Offb").style.display = 'none';
+				document.getElementById("Onb").style.display = 'block';
 			}
 		}
-		function stateButtonOff(){
-			if($(document.getElementById('greenbutton')).attr('aria-pressed') == 'false'){
-			$(document.getElementById('greenbutton')).attr('disabled', false);
-			$(document.getElementById('greenbutton')).click();
-			$(document.getElementById('greenbutton')).attr('disabled', true);
+		function stateButtonOff() {
+			if (document.getElementById("Onb").style.display == 'block') {
+				document.getElementById("Onb").style.display = 'none';
+				document.getElementById("Offb").style.display = 'block';
 			}
 		}
-		
+
 		function onMessage(event) {
 			//textvalue clear checek
 			//for(i=0; i<7; i++){
@@ -461,10 +449,12 @@
 		}
 	</script>
 
-	<!-- jQuery -->
+	<!-- jQuery 
 	<script
 		src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-
+		-->
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 	<!-- Bootstrap Core JavaScript -->
 	<script
@@ -499,7 +489,7 @@
 jQuery.ajax({
  type: “GET”, 
  dataType: “json”,
- url: “http://openapi.xxx.com/path/getapi.do”,
+ url: “/onem2m/data”,
  data: “id=”+id.val()+”&password=”+password.val()+”&name=”+name.val(),
  success: reqGetResponse,
  error: errorNoti
@@ -532,6 +522,41 @@ function errorNoti() {
 }
 </script>
 -->
+	<script type="text/javascript">
+		var device_id = "";
+		$("#joinOk").bind("click", function() {
+			var param = {
+				device_id : "S0001000100010001_device002"
+			};
+
+			$.ajax({
+				url : "/onem2m/data",
+				type : "POST",
+				//dataType : 'json',
+				//contentType : "application/json",
+				data : param,
+				success : function(data) {
+					console.log(data);
+				},
+				error : function(data) {
+					console.log("s : " + data);
+					//alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+
+				}
+
+			});
+		});
+	</script>
+	<!-- 
+	POST /~/charlot/base/S0001000100010001_device002/temperature HTTP/1.1
+	Host: 127.0.0.1:8080 Accept: application/json X-M2M-RI:
+	1520472953_11_3ad439ed-f5e0-45e3-b3c9-237d878b1257 X-M2M-Origin:
+	/S0001000100010001_device002 Content-Type:
+	application/vnd.onem2m-res+json;ty=4 Authorization: Bearer
+	b6f05af0-9850-081a-0def-4ebb4c465295 Cache-Control: no-cache
+	Postman-Token: 8b2d1fd8-ff7f-495e-9af5-d03885bc1752 { "m2m:cin": {
+	"cnf": "text", "con": "15" } }
+ -->
 </body>
 
 </html>
