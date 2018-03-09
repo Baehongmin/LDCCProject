@@ -1,6 +1,8 @@
 package com.devby.myapp;
 
+import java.io.IOException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.Locale;
 
@@ -21,6 +23,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 
 /**
  * Handles requests for the application home page.
@@ -91,7 +99,7 @@ public class HomeController {
 		//System.out.println(request.getAttributeNames());
 		//System.out.println(request.getParameterNames().asIterator().next().toString());
 		System.out.println(body.split("=")[1]);
-		
+		System.out.println(body);
 		String device_id = body.split("=")[1];
 		
 		
@@ -99,6 +107,62 @@ public class HomeController {
 
 	}
 
+	/**
+	 * 
+	 * @param iotPlatformUrl
+	 *            : iot플랫폼 주소
+	 * @param device_id
+	 *            : OID(디바이스아이디)
+	 * @param cmdName
+	 *            : 명령키 (ex..switch)
+	 * @param cmd
+	 *            : 명령값 (ex..0 or 1, ON or OFF, on or off ..etc)
+	 * @param cmdName1
+	 * @param cmd1
+	 * @param dKey
+	 *            : 디바이스인증키
+	 * @throws ParseException
+	 * @throws IOException
+	 */
+	public void sendMgmt(String iotPlatformUrl, String device_id, String cmdName, String cmd, String cmdName1,
+			String cmd1, String dKey) throws ParseException, IOException {
+		String resourceUrl = iotPlatformUrl + "/controller-" + device_id;
+		System.out.println("iotPlatformResourceUrl : " + resourceUrl);
+		System.out.println("OID : " + device_id);
+		System.out.println("commandName : " + cmdName);
+		System.out.println("command : " + cmd);
+		CloseableHttpClient httpclient = HttpClients.createDefault();
+		try {
+			HttpPut httpPut = new HttpPut(resourceUrl);
+			httpPut.setHeader("X-M2M-RI", "RQI0001"); //
+			httpPut.setHeader("X-M2M-Origin", "/S" + device_id); //
+			httpPut.setHeader("Accept", "application/json");
+			httpPut.setHeader("Authorization", "Bearer " + dKey);
+			httpPut.setHeader("Content-Type", "application/vnd.onem2m-res+json");
+			String body = "{ \"m2m:mgc\": {\"cmt\": 4,\"exra\": { \"any\":[{\"nm\" :\"" + cmdName + "\", \"val\" : \""
+					+ cmd + "\"} ]},\"exm\" : 1,\"exe\":true,\"pexinc\":false}}";
+			System.out.println(body);
+			httpPut.setEntity(new StringEntity(body));
+
+			CloseableHttpResponse res = httpclient.execute(httpPut);
+
+			try {
+				if (res.getStatusLine().getStatusCode() == 200) {
+					org.apache.http.HttpEntity entity = (org.apache.http.HttpEntity) res.getEntity();
+					System.out.println(EntityUtils.toString(entity));
+				} else {
+					System.out.println("sendMgmt eerr");
+				}
+			} finally {
+				res.close();
+			}
+		} finally {
+			httpclient.close();
+		}
+
+	}
+	
+	
 
 	// @RequestMapping(value = "/dashboard", method = RequestMethod.POST)
 	// @ResponseBody
