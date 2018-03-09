@@ -437,7 +437,6 @@ body {
 
 
 
-
 @import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i');
 
 * {
@@ -458,25 +457,25 @@ ul {
 }
 
 .guage-holder {
-  width: 110px;
-  margin: 25px auto 0;
+  width: 220px;
+  margin: 50px auto 0;
   position: relative;
   text-align: center;
 }
 
 .circle-mask {
-  width: 110px;
-  height: 50px;
-  padding: 2px 5px 0;
-  border-bottom: 0.5px solid #ccc;
+  width: 220px;
+  height: 106px;
+  padding: 5px 10px 0;
+  border-bottom: 1px solid #ccc;
   position: relative;
   text-align: center;
   overflow: hidden;
 }
 
 .circle, .circle-inner {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   border: 10px solid #ccc;
   position: relative;
@@ -486,9 +485,9 @@ ul {
   position: absolute;
   top: -10px;
   left: -10px;
-  border: 5px solid transparent;
-  border-bottom: 5px solid #ec567b;
-  border-left: 5px solid #ec567b;
+  border: 10px solid transparent;
+  border-bottom: 10px solid #ec567b;
+  border-left: 10px solid #ec567b;
   transition: .3s ease-in-out;
   transform: rotate(-45deg);
 }
@@ -500,13 +499,13 @@ ul {
   height: 10px;
   border-radius: 50%;
   background: white;
-  border: 5px solid #ec567b;
-  left: 0px;
-  top: 5px;
+  border: 4px solid #ec567b;
+  left: 14px;
+  top: 14px;
 }
 
 .percentage {
-  margin: 25px 0;
+  margin: 20px 0;
   font-weight: bold;
   color: #ed557b;
   font-size: 15px;
@@ -522,24 +521,24 @@ ul {
 }
 
 .gauge-copy {
-  width: 15px;
-  height: 15px;
-  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
   position: absolute;
   background: #b4dbc0;
-  top: 90%;
+  top: 92%;
   left: 50%;
   transition: .3s ease-in-out;
-  transform: translate(-25%, -25%) rotate(0deg);
-  margin: 4px 0 0;
+  transform: translate(-50%, -50%) rotate(0deg);
+  margin: 8px 0 0;
 }
 
 .gauge-copy:after {
   content: "";
   position: absolute;
-  width: 11px;
-  height: 11px;
-  border-radius: 100%;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
   background: #f3ffbd;
   top: 50%;
   left: 50%;
@@ -549,12 +548,10 @@ ul {
 .gauge-copy:before {
   content: "";
   position: absolute;
-  border: 4px solid transparent;
-  border-right: 30px solid #b4dbc0;
-  left: -30px;
-  top: 4px;
+  border: 7px solid transparent;
+  border-right: 70px solid #b4dbc0;
+  left: -75px;
+  top: 8px;
   width: 0;
   height: 0;
 }
-
-/* 1.8deg = 1% */
