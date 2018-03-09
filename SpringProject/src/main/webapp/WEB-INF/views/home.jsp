@@ -138,30 +138,11 @@
 	line-height: 0px;
 }
 
-@
-keyframes spin { 0% {
-	transform: rotate(0deg);
+@keyframes spin { 
+0% {transform: rotate(0deg);} 
+100% {transform: rotate(360deg);}
 }
-100%
-{
-transform
 
-
-:
-
- 
-
-rotate
-
-
-(360
-deg
-);
-
- 
-
-}
-}
 </style>
 	<div class="Ohno">
 		<span>Canon</span> <span>대시 보드</span>
@@ -304,7 +285,7 @@ deg
 			<div class="col-lg-3 col-md-6">
 				<div class="panel panel-red">
 					<div class="panel-footer">
-						<span class="pull-left">Front Detection</span> <span
+						<span class="pull-left">전방 장애물 감지</span> <span
 							class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 						<div id="loding" style="float: right;"></div>
 						<div class="clearfix"></div>
@@ -361,7 +342,7 @@ deg
 			<div class="col-lg-3 col-md-6">
 				<div class="panel panel-primary">
 					<div class="panel-footer">
-						<span class="pull-left">Action Control</span> <span
+						<span class="pull-left">AGV 출발/정지</span> <span
 							class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 						<div id="loding" style="float: right;"></div>
 						<div class="clearfix"></div>
@@ -371,13 +352,13 @@ deg
 						<div style="margin: 50px;"></div>
 						<div class="row" style="margin: auto; display: inline;">
 							<div class="huge" style="margin: auto; text-align: center;">
-								<button id="Onbutt" type="button" class="btn btn-primary"
-									onclick="stateButtonOn()">On</button>
-								<button id="Offbutt" type="button" class="btn btn-primary"
-									onclick="stateButtonOff()">Off</button>
+								<button id="Onbutt" type="button" class="btn btn-success"
+									onclick="stateButtonOn()">START</button>
+								<button id="Offbutt" type="button" class="btn btn-danger"
+									onclick="stateButtonOff()">STOP</button>
 							</div>
 							<div style="margin: auto; text-align: center;">
-								<div class="huge">Action Control</div>
+								<div class="huge">AGV</div>
 							</div>
 
 						</div>
@@ -413,6 +394,41 @@ deg
 							</div>
 							<div id="title">
 								<div id="Offb" style="text-align: center; display: block;"
+									class="huge">OFF</div>
+							</div>
+							<div style="margin: 80px;"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="panel panel-primary">
+					<div class="panel-footer">
+						<span class="pull-left">AGV Activating</span> <span class="pull-right"><i
+							class="fa fa-arrow-circle-right"></i></span>
+						<div id="loding" style="float: right;"></div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="panel-heading">
+						<div class="row"
+							style="margin: auto; display: inline; text-align: center;">
+							<!-- 
+							<div class="huge" style="margin: auto; text-align: center">
+								<button id="greenbutton" type="button"
+									class="btn btn-lg btn-secondary btn-toggle active"
+									data-toggle="button" aria-pressed="true" autocomplete="off"
+									style="align-items: center" disabled="disable">
+									<div class="handle"></div>
+								</button>
+							</div>
+							 -->
+							<div style="margin: 80px;"></div>
+							<div id="title">
+								<div id="Onb1" style="text-align: center; display: none;"
+									class="huge">ON</div>
+							</div>
+							<div id="title">
+								<div id="Offb1" style="text-align: center; display: block;"
 									class="huge">OFF</div>
 							</div>
 							<div style="margin: 80px;"></div>
@@ -466,6 +482,13 @@ deg
 			}else if (document.getElementById("Onb").style.display == 'block') {
 				document.getElementById("Onb").style.display = 'none';
 				document.getElementById("Offb").style.display = 'block';
+			}
+			if (document.getElementById("Offb1").style.display == 'block') {
+				document.getElementById("Offb1").style.display = 'none';
+				document.getElementById("Onb1").style.display = 'block';
+			}else if (document.getElementById("Onb1").style.display == 'block') {
+				document.getElementById("Onb1").style.display = 'none';
+				document.getElementById("Offb1").style.display = 'block';
 			}
 		}
 		//$(document.getElementById('greenbutton')).attr('disabled', false);

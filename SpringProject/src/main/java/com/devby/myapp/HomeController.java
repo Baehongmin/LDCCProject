@@ -99,7 +99,7 @@ public class HomeController {
 		//System.out.println(request.getAttributeNames());
 		//System.out.println(request.getParameterNames().asIterator().next().toString());
 		System.out.println(body.split("=")[1]);
-		
+		System.out.println(body);
 		String device_id = body.split("=")[1];
 		
 		
