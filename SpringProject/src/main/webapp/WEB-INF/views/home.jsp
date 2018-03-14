@@ -186,6 +186,15 @@
 				<h1 class="page-header"></h1>
 			</div>
 		</div>
+				<input id='text1' type="text" class="text-box" value="2"
+			visible='hidden' style='display: none' /> <input
+			onclick="send_message()" value="Send" type="button"> <input
+			type="submit" value="Stop" onclick="doClose()" /> <input id="joinOk"
+			type="button" value="Check" /> 
+		<input type="text" value="OID" visible='hidden'/>
+		<input type="text" value="KEY" visible='hidden'/>
+		<input
+			type="button" value="Go" onclick='onClickC()' /> 
 		<!-- /.row -->
 		<div class="row">
 			<div class="col-lg-3 col-md-6">
@@ -201,11 +210,11 @@
 						<div class="row" style="margin: auto; display: inline;">
 							<div class="huge" style="margin: auto; text-align: center;">
 								<textarea id="messageWindow0" readonly="true"
-									style="color: white; font-size: smaller; border: 0 solid black; background-color: transparent; overflow: hidden;"
+									style="text-align: center;color: white; font-size: smaller; border: 0 solid black; background-color: transparent; overflow: hidden;"
 									rows="1" cols="8"></textarea>
 							</div>
 							<div style="margin: 70px;"></div>
-							<div style="margin: auto; text-align: center;">Line tag</div>
+							<div id="BrfidM" style="margin: auto; text-align: center;">Line tag</div>
 						</div>
 					</div>
 				</div>
@@ -227,7 +236,7 @@
 									rows="1" cols="8"></textarea>
 							</div>
 							<div style="margin: 70px;"></div>
-							<div style="margin: auto; text-align: center;">Robot tag</div>
+							<div id="TrfidM" style="margin: auto; text-align: center;">Robot tag</div>
 						</div>
 					</div>
 
@@ -247,13 +256,13 @@
 							<div class="huge" style="margin: auto; text-align: center;">
 								<fieldset>
 									<textarea id="messageWindow2" readonly="true"
-										style="color: white; font-size: smaller; border: 0 solid black; background-color: transparent; overflow: hidden;"
+										style="text-align: center;color: white; font-size: smaller; border: 0 solid black; background-color: transparent; overflow: hidden;"
 										rows="1" cols="8"></textarea>
 
 								</fieldset>
 							</div>
 							<div style="margin: 70px;"></div>
-							<div style="margin: auto; text-align: center;">Line Error</div>
+							<div id="LerrorM"style="margin: auto; text-align: center;">Line Error</div>
 						</div>
 					</div>
 				</div>
@@ -275,7 +284,7 @@
 									rows="2" cols="16"></textarea>
 							</div>
 							<div style="margin: 45px;"></div>
-							<div style="margin: auto; text-align: center;">Crash Check
+							<div id="CcheckM" style="margin: auto; text-align: center;">Crash Check
 							</div>
 						</div>
 
@@ -295,12 +304,11 @@
 						<div class="row" style="margin: auto; display: inline;">
 							<div class="huge" style="margin: auto; text-align: center">
 								<textarea id="messageWindow4" readonly="true"
-									style="color: white; border: 0 solid black; font-size: smaller; background-color: transparent; overflow: hidden;"
+									style="text-align: center;color: white; border: 0 solid black; font-size: smaller; background-color: transparent; overflow: hidden;"
 									rows="1" cols="8"></textarea>
 							</div>
 							<div style="margin: 70px;"></div>
-							<div style="margin: auto; text-align: center">Front
-								Detection</div>
+							<div id="FDetecM" style="margin: auto; text-align: center">Front Detection</div>
 
 						</div>
 					</div>
@@ -332,7 +340,7 @@
 								</div>
 							</div>
 							<div style="margin: 30px;"></div>
-							<div style="margin: auto; text-align: center;">Bettery</div>
+							<div id="BetteryM" style="margin: auto; text-align: center;">Bettery</div>
 
 						</div>
 					</div>
@@ -442,58 +450,17 @@
 
 		<div class="col-lg-4"></div>
 		<!-- /#wrapper -->
-
-
-
-		<input id='text' type="text" class="text-box" value="2"
-			visible='hidden' style='display: none' /> <input
-			onclick="send_message()" value="Send" type="button"> <input
-			type="submit" value="Stop" onclick="doClose()" /> <input id="joinOk"
-			type="button" value="Check" /> 
-		<input type="text" value="OID" visible='hidden'/>
-		<input type="text" value="KEY" visible='hidden'/>
-		<input
-			type="button" value="Go" onclick='onClickC()' /> 
 	</div>
+	
+
+	
 	<script type="text/javascript">
-		var text = new Array();
-		for (i = 0; i < 6; i++) {
-			text[i] = document.getElementById("messageWindow" + i);
-		}
 		var wsUri = "ws://127.0.0.1:18080/echo";
-		var textarea = document.getElementById("messageWindow");
-		//var textarea1 = document.getElementById("messageWindow1");
-		var textarea2 = document.getElementById("messageWindow2");
 
 		function onClickC() {
-			var result = Math.floor(Math.random() * 100) + 1
-			document.getElementById('text').value = result;
-			$(document.getElementById('text')).keyup();
-			if(result<20){
-				document.getElementById("messageWindow5").value = "LOW";
-			}else if(result<80){
-				document.getElementById("messageWindow5").value = "MIDDLE";
-			}else{
-				document.getElementById("messageWindow5").value = "HIGH";
-			}
-			if (document.getElementById("Offb").style.display == 'block') {
-				document.getElementById("Offb").style.display = 'none';
-				document.getElementById("Onb").style.display = 'block';
-			}else if (document.getElementById("Onb").style.display == 'block') {
-				document.getElementById("Onb").style.display = 'none';
-				document.getElementById("Offb").style.display = 'block';
-			}
-			if (document.getElementById("Offb1").style.display == 'block') {
-				document.getElementById("Offb1").style.display = 'none';
-				document.getElementById("Onb1").style.display = 'block';
-			}else if (document.getElementById("Onb1").style.display == 'block') {
-				document.getElementById("Onb1").style.display = 'none';
-				document.getElementById("Offb1").style.display = 'block';
-			}
+			getCseData("0001000100010001_device002");
 		}
-		//$(document.getElementById('greenbutton')).attr('disabled', false);
-		//$(document.getElementById('greenbutton')).click();
-		//$(document.getElementById('greenbutton')).attr('disabled', true);		
+		
 		function stateButtonOn() {
 			if (document.getElementById("Offb").style.display == 'block') {
 				document.getElementById("Offb").style.display = 'none';
@@ -508,15 +475,60 @@
 		}
 
 		function onMessage(event) {
+			
+			
+			var obj = JSON.parse(event.data);
+			if(obj.name == "temperature"){
+				document.getElementById("messageWindow0").value = obj.con;
+				document.getElementById("BrfidM").innerHTML = obj.ct;
+			}
+			if(obj.name == "temperature"){
+				document.getElementById("messageWindow1").value = obj.con;
+				document.getElementById("TrfidM").innerHTML = obj.ct;
+			}
+			
+				document.getElementById("messageWindow2").value = obj.con;
+				document.getElementById("LerrorM").innerHTML = obj.ct;
+			
+			
+				document.getElementById("messageWindow3").value = obj.con;
+				document.getElementById("CcheckM").innerHTML = obj.ct;
+			
+			
+				document.getElementById("messageWindow4").value = obj.con;
+				document.getElementById("FDetecM").innerHTML = obj.ct;
+			
+			
+				document.getElementById('text1').value = obj.con;
+				$(document.getElementById('text1')).keyup();
+				if(obj.con<20){
+					document.getElementById("messageWindow5").value = "LOW";
+				}else if(obj.con<80){
+					document.getElementById("messageWindow5").value = "MIDDLE";
+				}else{
+					document.getElementById("messageWindow5").value = "HIGH";
+				}
+				document.getElementById("BetteryM").innerHTML = obj.ct;
+			
+			
+			if (document.getElementById("Offb").style.display == 'block' && obj.con == "23") {
+				document.getElementById("Offb").style.display = 'none';
+				document.getElementById("Onb").style.display = 'block';
+			}else if (document.getElementById("Onb").style.display == 'block' && obj.con == "23") {
+				document.getElementById("Onb").style.display = 'none';
+				document.getElementById("Offb").style.display = 'block';
+			}
+			if (document.getElementById("Offb1").style.display == 'block'&& obj.con == "23") {
+				document.getElementById("Offb1").style.display = 'none';
+				document.getElementById("Onb1").style.display = 'block';
+			}else if (document.getElementById("Onb1").style.display == 'block'&& obj.con == "23") {
+				document.getElementById("Onb1").style.display = 'none';
+				document.getElementById("Offb1").style.display = 'block';
+			}
+			
+			//document.getElementById("messageWindow0").value = obj.con;
+			//text[0].value = event.data + "\n";
 
-			text[0].value = "도착지A " + event.data + "\n";
-			//text[0].value = event.data;
-			text[1].value = "출발" + event.data + "\n";
-			text[2].value = "라인이탈" + event.data + "\n";
-			text[3].value = "충돌방지를 위해 우선 작동 중" + event.data + "\n";
-			text[4].value = "전방장애물" + event.data + "\n";
-			//text[5].value = "LOW" + event.data + "\n";
-			//text[6].value = "전원" + event.data + "\n";
 
 		}
 		function send_message() {
@@ -585,7 +597,6 @@
 	<script
 		src="${pageContext.request.contextPath}/resources/dist/js/sb-admin-2.js"></script>
 
-
 	<script
 		src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'>
 		jQuery.noConflict();
@@ -594,6 +605,72 @@
 	<script src="../../resources/js/index.js"></script>
 
 	<script type="text/javascript">
+	window.onload = function () {
+	getCseData("0001000100010001_device002");
+	send_message();
+	}
+	function getCseData(device_id){
+		//var device_id = "";
+		var param = {
+				device_id : "0001000100010001_device002"
+			};
+
+			$.ajax({
+				url : "/onem2m/data",
+				type : "POST",
+				//dataType : 'json',
+				contentType : "application/json",
+				data : JSON.stringify(param),
+				processData: false,
+				success : function(data) {
+					console.log(data);
+						document.getElementById("messageWindow0").value = data.Brfid.con;
+						document.getElementById("BrfidM").innerHTML = data.Brfid.ct;
+						document.getElementById("messageWindow1").value = data.Trfid.con;
+						document.getElementById("TrfidM").innerHTML = data.Trfid.ct;
+						document.getElementById("messageWindow2").value = data.Lerror.con;
+						document.getElementById("LerrorM").innerHTML = data.Lerror.ct;
+						document.getElementById("messageWindow3").value = data.Ccheck.con;
+						document.getElementById("CcheckM").innerHTML = data.Ccheck.ct;
+						document.getElementById("messageWindow4").value = data.Fdetec.con;
+						document.getElementById("FDetecM").innerHTML = data.Fdetec.ct;
+						
+						document.getElementById('text1').value = data.Bettery.con;
+						$(document.getElementById('text1')).keyup();
+						if(data.Bettery.con<20){
+							document.getElementById("messageWindow5").value = "LOW";
+						}else if(data.Bettery.con<80){
+							document.getElementById("messageWindow5").value = "MIDDLE";
+						}else{
+							document.getElementById("messageWindow5").value = "HIGH";
+						}
+						document.getElementById("BetteryM").innerHTML = data.Bettery.ct;				
+						
+						if (document.getElementById("Offb").style.display == 'block' && data.AGVonf.con == "23") {
+							document.getElementById("Offb").style.display = 'none';
+							document.getElementById("Onb").style.display = 'block';
+						}else if (document.getElementById("Onb").style.display == 'block' && data.AGVonf.con == "23") {
+							document.getElementById("Onb").style.display = 'none';
+							document.getElementById("Offb").style.display = 'block';
+						}
+						if (document.getElementById("Offb1").style.display == 'block'&& data.AGVactiva.con == "23") {
+							document.getElementById("Offb1").style.display = 'none';
+							document.getElementById("Onb1").style.display = 'block';
+						}else if (document.getElementById("Onb1").style.display == 'block'&& data.AGVactiva.con == "23") {
+							document.getElementById("Onb1").style.display = 'none';
+							document.getElementById("Offb1").style.display = 'block';
+						}
+						
+				},
+				error : function(data) {
+					console.log("s : " + data);
+					//alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+
+				}
+
+			});
+	}
+	/*
 		var device_id = "";
 		$("#joinOk").bind("click", function() {
 			var param = {
@@ -604,10 +681,51 @@
 				url : "/onem2m/data",
 				type : "POST",
 				//dataType : 'json',
-				//contentType : "application/json",
-				data : param,
+				contentType : "application/json",
+				data : JSON.stringify(param),
+				processData: false,
 				success : function(data) {
 					console.log(data);
+						document.getElementById("messageWindow0").value = data.Brfid.con;
+						if(data.Brfid.con=="23"){
+							alert(data.Brfid.name+"   "+data.Brfid.ct);
+						}
+						document.getElementById("BrfidM").innerHTML = data.Brfid.ct;
+						document.getElementById("messageWindow1").value = data.Trfid.con;
+						document.getElementById("TrfidM").innerHTML = data.Trfid.ct;
+						document.getElementById("messageWindow2").value = data.Lerror.con;
+						document.getElementById("LerrorM").innerHTML = data.Lerror.ct;
+						document.getElementById("messageWindow3").value = data.Ccheck.con;
+						document.getElementById("CcheckM").innerHTML = data.Ccheck.ct;
+						document.getElementById("messageWindow4").value = data.Fdetec.con;
+						document.getElementById("FDetecM").innerHTML = data.Fdetec.ct;
+						
+						document.getElementById('text1').value = data.Bettery.con;
+						$(document.getElementById('text1')).keyup();
+						if(data.Bettery.con<20){
+							document.getElementById("messageWindow5").value = "LOW";
+						}else if(data.Bettery.con<80){
+							document.getElementById("messageWindow5").value = "MIDDLE";
+						}else{
+							document.getElementById("messageWindow5").value = "HIGH";
+						}
+						document.getElementById("BetteryM").innerHTML = data.Bettery.ct;				
+						
+						if (document.getElementById("Offb").style.display == 'block' && data.AGVonf.con == "23") {
+							document.getElementById("Offb").style.display = 'none';
+							document.getElementById("Onb").style.display = 'block';
+						}else if (document.getElementById("Onb").style.display == 'block' && data.AGVonf.con == "23") {
+							document.getElementById("Onb").style.display = 'none';
+							document.getElementById("Offb").style.display = 'block';
+						}
+						if (document.getElementById("Offb1").style.display == 'block'&& data.AGVactiva.con == "23") {
+							document.getElementById("Offb1").style.display = 'none';
+							document.getElementById("Onb1").style.display = 'block';
+						}else if (document.getElementById("Onb1").style.display == 'block'&& data.AGVactiva.con == "23") {
+							document.getElementById("Onb1").style.display = 'none';
+							document.getElementById("Offb1").style.display = 'block';
+						}
+						
 				},
 				error : function(data) {
 					console.log("s : " + data);
@@ -616,7 +734,9 @@
 				}
 
 			});
+			
 		});
+		*/
 	</script>
 	<!-- 
 	POST /~/charlot/base/S0001000100010001_device002/temperature HTTP/1.1

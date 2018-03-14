@@ -1,5 +1,6 @@
 package com.devby.myapp;
 
+import java.util.HashMap;
 import java.util.HashSet;
 
 import java.util.Set;
@@ -136,26 +137,9 @@ public class SocketHandler extends TextWebSocketHandler implements InitializingB
 			@Override
 
 			public void run() {
-
-				while (true) {
-
-					try {
-
 						//sendMessage("send message index " + K);
 						sendMessage(K);
-						Thread.sleep(1000);
-
-					} catch (InterruptedException e) {
-
-						e.printStackTrace();
-
-						break;
-
 					}
-
-				}
-
-			}
 
 		};
 
