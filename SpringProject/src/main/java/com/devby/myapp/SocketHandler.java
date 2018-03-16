@@ -108,9 +108,7 @@ public class SocketHandler extends TextWebSocketHandler implements InitializingB
 			if (session.isOpen()) {
 
 				try {
-                    //System.out.println("sssss : " +message);
 					session.sendMessage(new TextMessage(message));
-
 				} catch (Exception ignored) {
 
 					this.logger.error("fail to send message!", ignored);

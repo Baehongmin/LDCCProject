@@ -44,7 +44,7 @@ import org.apache.http.util.EntityUtils;
 public class HomeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-
+	static String deid = "0001000200010002_robot01";
 	@Autowired
 	private SocketHandler socketHandler;
 
@@ -78,6 +78,7 @@ public class HomeController {
 			JSONObject cin = (JSONObject) rep.get("m2m:cin");
 			pMap.put("ct",(String) cin.get("ct"));
 			pMap.put("con",(String) cin.get("con"));
+			pMap.put("OID", ((String) cin.get("cr")).split("S")[1]);
 			return pMap;
 		} else {
 			return pMap;
@@ -101,6 +102,11 @@ public class HomeController {
 		// JSONObject sgn = (JSONObject) result.get("m2m:cin");
 		return (String) result.get("device_id");
 	}
+	private static String paser3(String body) throws Exception {
+		JSONParser jsonParser = new JSONParser();
+		JSONObject result = (JSONObject) jsonParser.parse(body);
+		return (String) result.get("Ukey");
+	}
 
 //	@RequestMapping(value = "/dashboard", method = RequestMethod.POST)
 //	@ResponseBody
@@ -123,16 +129,20 @@ public class HomeController {
 		// System.out.println(request.getParameterNames().asIterator().next().toString());
 		// System.out.println(body.split("=")[1]);
 		HashMap<String, Object> data = new HashMap<String, Object>();
-		body = paser1(body);
+		String Device = paser1(body);
+		deid = Device;
+		String Ukey = "bdd60bac-6e36-a0b9-cab4-5f2ec02bd0c7";
+		//String URL = "http://10.2.1.8:12080/~/charlot/base";
+		String URL = "http://127.0.0.1:8080/~/charlot/base";
 		//System.out.println(body); 
-		Map divA = ReadinitDatas("http://127.0.0.1:8080/~/charlot/base","temperature",body, "b6f05af0-9850-081a-0def-4ebb4c465295");
-		Map divB = ReadinitDatas("http://127.0.0.1:8080/~/charlot/base", "temperature",body, "b6f05af0-9850-081a-0def-4ebb4c465295");
-		Map divC = ReadinitDatas("http://127.0.0.1:8080/~/charlot/base", "temperature",body, "b6f05af0-9850-081a-0def-4ebb4c465295");
-		Map divD = ReadinitDatas("http://127.0.0.1:8080/~/charlot/base", "temperature",body, "b6f05af0-9850-081a-0def-4ebb4c465295");
-		Map divE = ReadinitDatas("http://127.0.0.1:8080/~/charlot/base", "temperature",body, "b6f05af0-9850-081a-0def-4ebb4c465295");
-		Map divF = ReadinitDatas("http://127.0.0.1:8080/~/charlot/base", "temperature",body, "b6f05af0-9850-081a-0def-4ebb4c465295");
-		Map divG = ReadinitDatas("http://127.0.0.1:8080/~/charlot/base", "temperature",body, "b6f05af0-9850-081a-0def-4ebb4c465295");
-		Map divH = ReadinitDatas("http://127.0.0.1:8080/~/charlot/base", "temperature",body, "b6f05af0-9850-081a-0def-4ebb4c465295");
+		Map divA = ReadinitDatas(URL,"bottomrfid",Device, Ukey);
+		Map divB = ReadinitDatas(URL, "toprfid",Device, Ukey);
+		Map divC = ReadinitDatas(URL, "linetracer",Device, Ukey);
+		Map divD = ReadinitDatas(URL, "casystem",Device, Ukey);
+		Map divE = ReadinitDatas(URL, "obstacle",Device, Ukey);
+		Map divF = ReadinitDatas(URL, "battery",Device, Ukey);
+		Map divG = ReadinitDatas(URL, "power",Device, Ukey);
+		Map divH = ReadinitDatas(URL, "running",Device, Ukey);
 		
 		//SocketHandler.SetMe(A);
 		data.put("Brfid",divA);
@@ -266,11 +276,12 @@ public class HomeController {
 	 public String realTime(@PathVariable String container_id, @RequestBody String body, Model model) throws
 	 Exception {
 		 
-		 HashMap <String,String> hmbody = new HashMap();
-		 hmbody = paser(body);
-		 hmbody.put("name", container_id);
+		HashMap <String,String> hmbody = new HashMap();
+		hmbody = paser(body);
+		hmbody.put("name", container_id);
 	 System.out.println("cotainer_id : " + container_id);
 	 System.out.println("body : " + (String)hmbody.get("con"));
+	 //System.out.println();
 	 //System.out.println(hmbody.get(container_id));
 	 //String result = container_id+"|"+body;
 	 //socketHandler.sendMessage(result);
@@ -280,8 +291,32 @@ public class HomeController {
 	 body = json.toString();
 	 System.out.println(body);
 	 //socketHandler.SetMe(body);
+	 //socketHandler.sendMessage(body);
+	 if(deid.equals((String)hmbody.get("OID"))) {
 	 socketHandler.sendMessage(body);
+	 }
+	 
 	 return body;
 
+	 }
+	 
+	 @RequestMapping(value = "/switchOnoff", method = RequestMethod.POST)
+	 @ResponseBody
+	 public void switchOnoff(@RequestBody String body, Model model) throws
+	 Exception {
+		JSONParser jsonParser = new JSONParser();
+		JSONObject result = (JSONObject) jsonParser.parse(body);
+		String Device_id = (String) result.get("device_id");
+		String cmd = (String) result.get("cmd");
+		//System.out.println(Device_id);
+		//System.out.println(cmd);
+		if(Device_id=="0001000200010002_robot01") {
+		sendMgmt("http://127.0.0.1:8080/~/charlot/base", Device_id, "runswitch", cmd, null,null, "ad51a165-5da9-d822-2539-1872f585a8de");
+		//sendMgmt("http://10.2.1.8:12080/~/charlot/base", Device_id, "runswitch", cmd, null,null, "ad51a165-5da9-d822-2539-1872f585a8de");
+		}
+		if(Device_id=="0001000200010002_robot02") {
+		sendMgmt("http://127.0.0.1:8080/~/charlot/base", Device_id, "runswitch", cmd, null,null, "f6b509c1-9586-499a-db76-0d35a4351f84");	
+		//sendMgmt("http://10.2.1.8:12080/~/charlot/base", Device_id, "runswitch", cmd, null,null, "f6b509c1-9586-499a-db76-0d35a4351f84");
+		}
 	 }
 }

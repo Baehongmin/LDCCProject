@@ -46,33 +46,34 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/style.css">
 
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 </head>
 
-<body>
+<body style="margin-left: 10px;margin-right: 10px">
 	<br />
-	<!-- 
-	<input onclick="send_message()" value="Send" type="button">
-	<input type="submit" value="Stop" onclick="doClose()" />
-	<div id="output"></div>
-
-	<button type="button" class="btn btn-default">come</button>
-	<div class="col-sm-5">
-		<button type="button" class="btn btn-xs btn-toggle"
-			data-toggle="button" aria-pressed="false" autocomplete="off">
-			<div class="handle"></div>
-		</button>
-	</div>
- -->
-
 
 	<style>
+
+.textareac{
+margin-top:70px; 
+color: white; 
+font-size: smaller; 
+border: 0 solid black; 
+background-color: transparent; 
+overflow: hidden;"
+margin:auto;
+text-align: center;
+
+}
+
+.gradtext {
+    background: #55ffaa;
+    background: -webkit-linear-gradient(left, #56ADDF, #BCA9F5);
+    background:    -moz-linear-gradient(right, #56ADDF, #BCA9F5);
+    background:      -o-linear-gradient(right, #56ADDF, #BCA9F5);
+    background:         linear-gradient(to right, #56ADDF, #BCA9F5);
+    color: transparent;
+	height: 270px;
+}
 #title {
 	text-align: center;
 	color: #fff;
@@ -142,7 +143,19 @@
 0% {transform: rotate(0deg);} 
 100% {transform: rotate(360deg);}
 }
-
+.Boldand{
+	color : black;
+	font-size: 15px;
+	font-weight: bold;
+}
+.Bottomtext{
+	color : white;
+	font-size: 20px;
+	font-weight: bold;
+	margin: auto;
+	text-align: center;
+	margin-top:70px;
+}
 </style>
 	<div class="Ohno">
 		<span>Canon</span> <span>대시 보드</span>
@@ -182,61 +195,59 @@
 
 -->
 		<div class="row">
-			<div style="border: 1px; padding: 10px; height: 300px;">
-				<h1 class="page-header"></h1>
-			</div>
+		<div style="border: 1px; padding: 10px; height: 100px;">
 		</div>
-				<input id='text1' type="text" class="text-box" value="2"
-			visible='hidden' style='display: none' /> <input
-			onclick="send_message()" value="Send" type="button"> <input
-			type="submit" value="Stop" onclick="doClose()" /> <input id="joinOk"
-			type="button" value="Check" /> 
-		<input type="text" value="OID" visible='hidden'/>
-		<input type="text" value="KEY" visible='hidden'/>
-		<input
-			type="button" value="Go" onclick='onClickC()' /> 
+		</div>
+			<input id='text1' type="text" class="text-box" value="2"
+			visible='hidden' style='display: none' /> 
+			<!-- <input id="joinOk" type="button" value="Check" /> --> 
+<div class="dropdown"style="margin-top: 200px">
+  <button id = "Dbutton" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+     DEVICE_ID NAME
+  </button>
+  <div class="dropdown-menu">
+    <a id = "link1" onclick ='getCseData("0001000200010002_robot01");changeBox()' class="dropdown-item">Robot 1ST</a>
+    <a id = "link2" onclick ='getCseData("0001000200010002_robot02");changeBox2()' class="dropdown-item">Robot 2ND</a>
+  </div>
+  <input class="btn btn-danger" type="button" value="UWB"/>
+</div>
+		<!-- <input type="button" value="Go" onclick='onClickC()' /> --> 
 		<!-- /.row -->
-		<div class="row">
+		<div class="row" style="margin-top: 10px">
 			<div class="col-lg-3 col-md-6">
-				<div class="panel panel-primary">
+				<div class="panel panel-red">
 					<div class="panel-footer">
-						<span class="pull-left">Bottom RFID</span> <span
-							class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+						<span class="Boldand">Bottom RFID</span> <span
+							class="pull-right"></span>
 						<div id="loding" style="float: right;"></div>
 						<div class="clearfix"></div>
 					</div>
-					<div class="panel-heading">
-						<div style="margin: 70px;"></div>
+					<div class="gradtext">
 						<div class="row" style="margin: auto; display: inline;">
 							<div class="huge" style="margin: auto; text-align: center;">
-								<textarea id="messageWindow0" readonly="true"
-									style="text-align: center;color: white; font-size: smaller; border: 0 solid black; background-color: transparent; overflow: hidden;"
-									rows="1" cols="8"></textarea>
+								<textarea class = "textareac"id="messageWindow0" readonly="true" rows="1" cols="8"></textarea>
 							</div>
-							<div style="margin: 70px;"></div>
-							<div id="BrfidM" style="margin: auto; text-align: center;">Line tag</div>
+							
+							<div id="BrfidM" class="Bottomtext">Line tag</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6">
-				<div class="panel panel-primary">
+				<div class="panel panel-red">
 					<div class="panel-footer">
-						<span class="pull-left">Top RFID</span> <span class="pull-right"><i
-							class="fa fa-arrow-circle-right"></i></span>
+						<span class="Boldand">Top RFID</span> <span class="pull-right"></span>
 						<div id="loding" style="float: right;"></div>
 						<div class="clearfix"></div>
 					</div>
-					<div class="panel-heading">
-						<div style="margin: 70px;"></div>
+					<div class="gradtext">
+						
 						<div class="row" style="margin: auto; display: inline;">
 							<div class="huge" style="margin: auto; text-align: center;">
-								<textarea id="messageWindow1" readonly="true"
-									style="text-align: center; color: white; font-size: smaller; border: 0 solid black; background-color: transparent; overflow: hidden;"
-									rows="1" cols="8"></textarea>
+								<textarea class = "textareac" id="messageWindow1" readonly="true" rows="1" cols="8"></textarea>
 							</div>
-							<div style="margin: 70px;"></div>
-							<div id="TrfidM" style="margin: auto; text-align: center;">Robot tag</div>
+							
+							<div id="TrfidM" class="Bottomtext">Robot tag</div>
 						</div>
 					</div>
 
@@ -245,24 +256,20 @@
 			<div class="col-lg-3 col-md-6">
 				<div class="panel panel-red">
 					<div class="panel-footer">
-						<span class="pull-left">Line Error</span> <span class="pull-right"><i
-							class="fa fa-arrow-circle-right"></i></span>
+						<span class="Boldand">Line Error</span> <span class="pull-right"></span>
 						<div id="loding" style="float: right;"></div>
 						<div class="clearfix"></div>
 					</div>
-					<div class="panel-heading">
-						<div style="margin: 70px;"></div>
+					<div class="gradtext">
+					
 						<div class="row" style="margin: auto; display: inline;">
 							<div class="huge" style="margin: auto; text-align: center;">
 								<fieldset>
-									<textarea id="messageWindow2" readonly="true"
-										style="text-align: center;color: white; font-size: smaller; border: 0 solid black; background-color: transparent; overflow: hidden;"
-										rows="1" cols="8"></textarea>
-
+									<textarea class = "textareac" id="messageWindow2" readonly="true" rows="1" cols="10"></textarea>
 								</fieldset>
 							</div>
-							<div style="margin: 70px;"></div>
-							<div id="LerrorM"style="margin: auto; text-align: center;">Line Error</div>
+				
+							<div id="LerrorM" class="Bottomtext">Line Error</div>
 						</div>
 					</div>
 				</div>
@@ -270,21 +277,18 @@
 			<div class="col-lg-3 col-md-6">
 				<div class="panel panel-red">
 					<div class="panel-footer">
-						<span class="pull-left">Crash Check</span> <span
-							class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+						<span class="Boldand">Crash Check</span> <span
+							class="pull-right"></span>
 						<div id="loding" style="float: right;"></div>
 						<div class="clearfix"></div>
 					</div>
-					<div class="panel-heading">
-						<div style="margin: 45px;"></div>
+					<div class="gradtext">
 						<div class="row" style="margin: auto; display: inline;">
 							<div class="huge" style="margin: auto; text-align: center;">
-								<textarea id="messageWindow3" readonly="true"
-									style="color: white; text-align: center; font-size: smaller; border: 0 solid black; background-color: transparent; overflow: hidden;"
-									rows="2" cols="16"></textarea>
+								<textarea style="margin-top:30px;"class = "textareac" id="messageWindow3" readonly="true" rows="2" cols="20"></textarea>
 							</div>
-							<div style="margin: 45px;"></div>
-							<div id="CcheckM" style="margin: auto; text-align: center;">Crash Check
+	
+							<div id="CcheckM" class="Bottomtext">Crash Check
 							</div>
 						</div>
 
@@ -294,21 +298,19 @@
 			<div class="col-lg-3 col-md-6">
 				<div class="panel panel-red">
 					<div class="panel-footer">
-						<span class="pull-left">전방 장애물 감지</span> <span
-							class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+						<span class="Boldand">전방 장애물 감지</span> <span
+							class="pull-right"></span>
 						<div id="loding" style="float: right;"></div>
 						<div class="clearfix"></div>
 					</div>
-					<div class="panel-heading">
-						<div style="margin: 70px;"></div>
+					<div class="gradtext">
+						
 						<div class="row" style="margin: auto; display: inline;">
 							<div class="huge" style="margin: auto; text-align: center">
-								<textarea id="messageWindow4" readonly="true"
-									style="text-align: center;color: white; border: 0 solid black; font-size: smaller; background-color: transparent; overflow: hidden;"
-									rows="1" cols="8"></textarea>
+								<textarea style="margin-top:30px;"class = "textareac" id="messageWindow4" readonly="true" rows="2" cols="8"></textarea>
 							</div>
-							<div style="margin: 70px;"></div>
-							<div id="FDetecM" style="margin: auto; text-align: center">Front Detection</div>
+					
+							<div id="FDetecM" class="Bottomtext">Front Detection</div>
 
 						</div>
 					</div>
@@ -317,19 +319,16 @@
 			<div class="col-lg-3 col-md-6">
 				<div class="panel panel-red">
 					<div class="panel-footer">
-						<span class="pull-left">Bettery</span> <span class="pull-right"><i
-							class="fa fa-arrow-circle-right"></i></span>
+						<span class="Boldand">Battery</span> <span class="pull-right"></span>
 						<div id="loding" style="float: right;"></div>
 						<div class="clearfix"></div>
 					</div>
-					<div class="panel-heading">
+					<div class="gradtext">
 						<div class="row" style="margin: auto; display: inline;">
 							<div class="container">
 								<div class="guage-holder">
 									<div style="margin: auto; text-align: center">
-										<textarea id="messageWindow5" readonly="true"
-											style="color: white; text-align: center; font-size: smaller; border: 0 solid black; background-color: transparent; overflow: hidden;"
-											rows="1" cols="16"></textarea>
+										<textarea style="margin-top:0px;font-size: 15px"class = "textareac" id="messageWindow5" readonly="true" rows="1" cols="16"></textarea>
 									</div>
 									<div class="circle-mask">
 										<div class="circle">
@@ -339,8 +338,8 @@
 									<div class="gauge-copy"></div>
 								</div>
 							</div>
-							<div style="margin: 30px;"></div>
-							<div id="BetteryM" style="margin: auto; text-align: center;">Bettery</div>
+							
+							<div id="BetteryM" class="Bottomtext" style="margin-top: 30px">Battery</div>
 
 						</div>
 					</div>
@@ -348,25 +347,33 @@
 			</div>
 
 			<div class="col-lg-3 col-md-6">
-				<div class="panel panel-primary">
+				<div class="panel panel-red">
 					<div class="panel-footer">
-						<span class="pull-left">AGV 출발/정지</span> <span
-							class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+						<span class="Boldand">AGV 출발/정지</span> <span
+							class="pull-right"></span>
 						<div id="loding" style="float: right;"></div>
 						<div class="clearfix"></div>
 
 					</div>
-					<div class="panel-heading">
-						<div style="margin: 50px;"></div>
+					<div class="gradtext">
+						
 						<div class="row" style="margin: auto; display: inline;">
-							<div class="huge" style="margin: auto; text-align: center;">
+							
+							<div style="margin-top:70px; auto; text-align: center;">
+							<div id="title">
+								<div id="Onb1" style="text-align: center; display: none;"
+									class="huge">주행 중</div>
+							</div>
+							<div id="title">
+								<div id="Offb1" style="text-align: center; display: block;"
+									class="huge">정지</div>
+							</div>
+							<div class="huge" style="margin-top:40px; text-align: center;">
 								<button id="Onbutt" type="button" class="btn btn-success"
 									onclick="stateButtonOn()">START</button>
 								<button id="Offbutt" type="button" class="btn btn-danger"
 									onclick="stateButtonOff()">STOP</button>
 							</div>
-							<div style="margin: auto; text-align: center;">
-								<div class="huge">AGV</div>
 							</div>
 
 						</div>
@@ -375,14 +382,14 @@
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6">
-				<div class="panel panel-primary">
+				<div class="panel panel-red">
 					<div class="panel-footer">
-						<span class="pull-left">AGV ON/OFF</span> <span class="pull-right"><i
+						<span class="Boldand">AGV PowerStatus</span> <span class="pull-right"><i
 							class="fa fa-arrow-circle-right"></i></span>
 						<div id="loding" style="float: right;"></div>
 						<div class="clearfix"></div>
 					</div>
-					<div class="panel-heading">
+					<div class="gradtext">
 						<div class="row"
 							style="margin: auto; display: inline; text-align: center;">
 							<!-- 
@@ -395,7 +402,7 @@
 								</button>
 							</div>
 							 -->
-							<div style="margin: 80px;"></div>
+							<div style="margin: 100px;"></div>
 							<div id="title">
 								<div id="Onb" style="text-align: center; display: none;"
 									class="huge">ON</div>
@@ -404,42 +411,7 @@
 								<div id="Offb" style="text-align: center; display: block;"
 									class="huge">OFF</div>
 							</div>
-							<div style="margin: 80px;"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-6">
-				<div class="panel panel-primary">
-					<div class="panel-footer">
-						<span class="pull-left">AGV Activating</span> <span class="pull-right"><i
-							class="fa fa-arrow-circle-right"></i></span>
-						<div id="loding" style="float: right;"></div>
-						<div class="clearfix"></div>
-					</div>
-					<div class="panel-heading">
-						<div class="row"
-							style="margin: auto; display: inline; text-align: center;">
-							<!-- 
-							<div class="huge" style="margin: auto; text-align: center">
-								<button id="greenbutton" type="button"
-									class="btn btn-lg btn-secondary btn-toggle active"
-									data-toggle="button" aria-pressed="true" autocomplete="off"
-									style="align-items: center" disabled="disable">
-									<div class="handle"></div>
-								</button>
-							</div>
-							 -->
-							<div style="margin: 80px;"></div>
-							<div id="title">
-								<div id="Onb1" style="text-align: center; display: none;"
-									class="huge">ON</div>
-							</div>
-							<div id="title">
-								<div id="Offb1" style="text-align: center; display: block;"
-									class="huge">OFF</div>
-							</div>
-							<div style="margin: 80px;"></div>
+
 						</div>
 					</div>
 				</div>
@@ -451,83 +423,116 @@
 		<div class="col-lg-4"></div>
 		<!-- /#wrapper -->
 	</div>
-	
 
 	
 	<script type="text/javascript">
+		//var wsUri = "ws://210.93.172.174/echo";
+		//var wsUri = "http://210.93.172.174/echo";
 		var wsUri = "ws://127.0.0.1:18080/echo";
-
+		function changeBox(){
+			
+			document.getElementById("Dbutton").innerHTML = document.getElementById("link1").innerHTML
+		}
+		function changeBox2(){
+			
+			document.getElementById("Dbutton").innerHTML = document.getElementById("link2").innerHTML
+		}
 		function onClickC() {
 			getCseData("0001000100010001_device002");
 		}
 		
 		function stateButtonOn() {
-			if (document.getElementById("Offb").style.display == 'block') {
-				document.getElementById("Offb").style.display = 'none';
-				document.getElementById("Onb").style.display = 'block';
+			if(document.getElementById("Dbutton").innerHTML == "Robot 1ST"){
+				mgmt("0001000200010002_robot01","ON");
+			}else if(document.getElementById("Dbutton").innerHTML == "Robot 2ND"){
+				mgmt("0001000200010002_robot02","ON");
 			}
+			
 		}
 		function stateButtonOff() {
-			if (document.getElementById("Onb").style.display == 'block') {
-				document.getElementById("Onb").style.display = 'none';
-				document.getElementById("Offb").style.display = 'block';
+			if(document.getElementById("Dbutton").innerHTML == "Robot 1ST"){
+				mgmt("0001000200010002_robot01","OFF");
+			}else if(document.getElementById("Dbutton").innerHTML == "Robot 2ND"){
+				mgmt("0001000200010002_robot02","OFF");
 			}
+			
 		}
 
 		function onMessage(event) {
 			
 			
 			var obj = JSON.parse(event.data);
-			if(obj.name == "temperature"){
-				document.getElementById("messageWindow0").value = obj.con;
+			if(obj.name == "bottomrfid"){
+				document.getElementById("messageWindow0").value = "0x"+obj.con;
 				document.getElementById("BrfidM").innerHTML = obj.ct;
 			}
-			if(obj.name == "temperature"){
-				document.getElementById("messageWindow1").value = obj.con;
+			if(obj.name == "toprfid"){
+				document.getElementById("messageWindow1").value = "0x"+obj.con;
 				document.getElementById("TrfidM").innerHTML = obj.ct;
 			}
-			
-				document.getElementById("messageWindow2").value = obj.con;
+			if(obj.name == "linetracer" && obj.con == "2"){
+				document.getElementById("messageWindow2").value = "라인 진입";
 				document.getElementById("LerrorM").innerHTML = obj.ct;
+			}else if(obj.name == "linetracer" && obj.con == "1"){
+				alert("라인이탈!\n"+obj.ct);
+				document.getElementById("messageWindow2").value = "라인 이탈";
+				document.getElementById("LerrorM").innerHTML = obj.ct;
+			}
 			
-			
-				document.getElementById("messageWindow3").value = obj.con;
+			if(obj.name == "casystem" && obj.con =="3"){
+				document.getElementById("messageWindow3").value = "충돌 방지 시스템 완료 및 AGV 재출발";
 				document.getElementById("CcheckM").innerHTML = obj.ct;
-			
-			
-				document.getElementById("messageWindow4").value = obj.con;
+			}else if(obj.name == "casystem" && obj.con =="1"){
+				alert("충돌 방지 시스템 발동!\n"+obj.ct);
+				document.getElementById("messageWindow3").value = "충돌 방지를 위해 대기 상태";
+				document.getElementById("CcheckM").innerHTML = obj.ct;
+			}
+			if(obj.name == "obstacle" && obj.con =="1"){
+				alert("장애물 발견!\n"+obj.ct);
+				document.getElementById("messageWindow4").value = "장애물 있음";
 				document.getElementById("FDetecM").innerHTML = obj.ct;
-			
-			
-				document.getElementById('text1').value = obj.con;
+			}else if(obj.name == "obstacle" && obj.con =="2"){
+				document.getElementById("messageWindow4").value =  "장애물 없음";
+				document.getElementById("FDetecM").innerHTML = obj.ct;
+			}
+			if(obj.name == "battery"){
+			if(obj.con == "1"){
+				alert("Battery LoW!\n"+obj.ct);
+				document.getElementById("messageWindow5").value = "LOW";
+				document.getElementById('text1').value = "15";
 				$(document.getElementById('text1')).keyup();
-				if(obj.con<20){
-					document.getElementById("messageWindow5").value = "LOW";
-				}else if(obj.con<80){
-					document.getElementById("messageWindow5").value = "MIDDLE";
-				}else{
-					document.getElementById("messageWindow5").value = "HIGH";
-				}
-				document.getElementById("BetteryM").innerHTML = obj.ct;
-			
-			
-			if (document.getElementById("Offb").style.display == 'block' && obj.con == "23") {
+			}else if(obj.con == "2"){
+				document.getElementById("messageWindow5").value = "MIDDLE";
+				document.getElementById('text1').value = "50";
+				$(document.getElementById('text1')).keyup();
+			}else if(obj.con == "3"){
+				document.getElementById("messageWindow5").value = "HIGH";
+				document.getElementById('text1').value = "85";
+				$(document.getElementById('text1')).keyup();
+			}
+			document.getElementById("BetteryM").innerHTML = obj.ct;	
+			}
+
+			if(obj.name == "power"){
+			if (document.getElementById("Offb").style.display == 'block' && obj.con == "ON") {
 				document.getElementById("Offb").style.display = 'none';
 				document.getElementById("Onb").style.display = 'block';
-			}else if (document.getElementById("Onb").style.display == 'block' && obj.con == "23") {
+			}else if (document.getElementById("Onb").style.display == 'block' && obj.con == "OFF") {
 				document.getElementById("Onb").style.display = 'none';
 				document.getElementById("Offb").style.display = 'block';
 			}
-			if (document.getElementById("Offb1").style.display == 'block'&& obj.con == "23") {
+			
+			}
+			if(obj.name == "running"){
+			if (document.getElementById("Offb1").style.display == 'block' && obj.con == "3") {;
 				document.getElementById("Offb1").style.display = 'none';
 				document.getElementById("Onb1").style.display = 'block';
-			}else if (document.getElementById("Onb1").style.display == 'block'&& obj.con == "23") {
+			}else if (document.getElementById("Onb1").style.display == 'block' && obj.con == "1") {
 				document.getElementById("Onb1").style.display = 'none';
 				document.getElementById("Offb1").style.display = 'block';
 			}
-			
-			//document.getElementById("messageWindow0").value = obj.con;
-			//text[0].value = event.data + "\n";
+			}
+
 
 
 		}
@@ -536,8 +541,7 @@
 			websocket = new WebSocket(wsUri);
 
 			websocket.onopen = function(event) {
-
-				onOpen(event)
+				console.log(event);
 
 			};
 
@@ -554,11 +558,9 @@
 			};
 
 		}
-		function onOpen(event) {
-			textarea.value += "connect\n";
-		}
+		
 		function onError(event) {
-			alert(event.data);
+			alert(event);
 		}
 
 		function doClose() {
@@ -606,13 +608,14 @@
 
 	<script type="text/javascript">
 	window.onload = function () {
-	getCseData("0001000100010001_device002");
+	getCseData("0001000200010002_robot01");
 	send_message();
 	}
-	function getCseData(device_id){
-		//var device_id = "";
+	function getCseData(device){
+		
+		var OID = device;
 		var param = {
-				device_id : "0001000100010001_device002"
+				"device_id" : OID,
 			};
 
 			$.ajax({
@@ -624,39 +627,74 @@
 				processData: false,
 				success : function(data) {
 					console.log(data);
+					
 						document.getElementById("messageWindow0").value = data.Brfid.con;
-						document.getElementById("BrfidM").innerHTML = data.Brfid.ct;
+						document.getElementById("BrfidM").innerHTML = "0x"+data.Brfid.ct;
 						document.getElementById("messageWindow1").value = data.Trfid.con;
-						document.getElementById("TrfidM").innerHTML = data.Trfid.ct;
-						document.getElementById("messageWindow2").value = data.Lerror.con;
-						document.getElementById("LerrorM").innerHTML = data.Lerror.ct;
-						document.getElementById("messageWindow3").value = data.Ccheck.con;
-						document.getElementById("CcheckM").innerHTML = data.Ccheck.ct;
-						document.getElementById("messageWindow4").value = data.Fdetec.con;
-						document.getElementById("FDetecM").innerHTML = data.Fdetec.ct;
+						document.getElementById("TrfidM").innerHTML = "0x"+data.Trfid.ct;
 						
-						document.getElementById('text1').value = data.Bettery.con;
-						$(document.getElementById('text1')).keyup();
-						if(data.Bettery.con<20){
-							document.getElementById("messageWindow5").value = "LOW";
-						}else if(data.Bettery.con<80){
-							document.getElementById("messageWindow5").value = "MIDDLE";
+						if(data.Lerror.con == "1"){
+						document.getElementById("messageWindow2").value = "라인 이탈";
+						document.getElementById("LerrorM").innerHTML = data.Lerror.ct;
+						}else if(data.Lerror.con == "2"){
+						document.getElementById("messageWindow2").value = "라인 진입";
+						document.getElementById("LerrorM").innerHTML = data.Lerror.ct;
 						}else{
+							document.getElementById("messageWindow2").value = data.Lerror.con;
+							document.getElementById("LerrorM").innerHTML = data.Lerror.ct;
+						}
+						
+						if(data.Ccheck.con == "1"){
+						document.getElementById("messageWindow3").value = "충돌 방지를 위해 대기 상태";
+						document.getElementById("CcheckM").innerHTML = data.Ccheck.ct;
+						}else if(data.Ccheck.con == "3"){
+							document.getElementById("messageWindow3").value = "충돌 방지 시스템 완료 및 AGV 재출발";
+							document.getElementById("CcheckM").innerHTML = data.Ccheck.ct;
+						}else{
+							document.getElementById("messageWindow3").value = data.Ccheck.con;
+							document.getElementById("CcheckM").innerHTML = data.Ccheck.ct;
+						}
+						
+						if(data.Fdetec.con == "1"){
+							document.getElementById("messageWindow4").value = "장애물 있음";
+							document.getElementById("FDetecM").innerHTML = data.Fdetec.ct;
+						}else if(data.Fdetec.con == "2"){
+							document.getElementById("messageWindow4").value =  "장애물 없음";
+							document.getElementById("FDetecM").innerHTML = data.Fdetec.ct;
+						}else{
+							document.getElementById("messageWindow4").value = data.Fdetec.con;
+							document.getElementById("FDetecM").innerHTML = data.Fdetec.ct;
+						}
+						
+						if(data.Bettery.con == "1"){
+							document.getElementById("messageWindow5").value = "LOW";
+							document.getElementById('text1').value = "15";
+							$(document.getElementById('text1')).keyup();
+						}else if(data.Bettery.con == "2"){
+							document.getElementById("messageWindow5").value = "MIDDLE";
+							document.getElementById('text1').value = "50";
+							$(document.getElementById('text1')).keyup();
+						}else if(data.Bettery.con == "3"){
 							document.getElementById("messageWindow5").value = "HIGH";
+							document.getElementById('text1').value = "85";
+							$(document.getElementById('text1')).keyup();
+						}else{
+							document.getElementById("messageWindow5").value = data.Bettery.con;
 						}
 						document.getElementById("BetteryM").innerHTML = data.Bettery.ct;				
 						
-						if (document.getElementById("Offb").style.display == 'block' && data.AGVonf.con == "23") {
+						if (document.getElementById("Offb").style.display == 'block' && data.AGVonf.con == "ON") {
 							document.getElementById("Offb").style.display = 'none';
 							document.getElementById("Onb").style.display = 'block';
-						}else if (document.getElementById("Onb").style.display == 'block' && data.AGVonf.con == "23") {
+						}else if (document.getElementById("Onb").style.display == 'block' && data.AGVonf.con == "OFF") {;
 							document.getElementById("Onb").style.display = 'none';
 							document.getElementById("Offb").style.display = 'block';
 						}
-						if (document.getElementById("Offb1").style.display == 'block'&& data.AGVactiva.con == "23") {
+						
+						if (document.getElementById("Offb1").style.display == 'block'&& data.AGVactiva.con == "3") {;
 							document.getElementById("Offb1").style.display = 'none';
 							document.getElementById("Onb1").style.display = 'block';
-						}else if (document.getElementById("Onb1").style.display == 'block'&& data.AGVactiva.con == "23") {
+						}else if (document.getElementById("Onb1").style.display == 'block'&& data.AGVactiva.con == "1") {
 							document.getElementById("Onb1").style.display = 'none';
 							document.getElementById("Offb1").style.display = 'block';
 						}
@@ -670,6 +708,34 @@
 
 			});
 	}
+	
+	function mgmt(oid,cmd) {
+		var param = {
+			"device_id" : oid,
+			"cmd" : cmd
+		};
+
+		$.ajax({
+			url : "/switchOnoff",
+			type : "POST",
+			//dataType : 'json',
+			contentType : "application/json",
+			data : JSON.stringify(param),
+			processData: false,
+			success : function(data) {
+				console.log(data);
+					
+			},
+			error : function(data) {
+				console.log("s : " + data);
+				//alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+
+			}
+
+		});
+		
+	}
+	
 	/*
 		var device_id = "";
 		$("#joinOk").bind("click", function() {
@@ -738,16 +804,7 @@
 		});
 		*/
 	</script>
-	<!-- 
-	POST /~/charlot/base/S0001000100010001_device002/temperature HTTP/1.1
-	Host: 127.0.0.1:8080 Accept: application/json X-M2M-RI:
-	1520472953_11_3ad439ed-f5e0-45e3-b3c9-237d878b1257 X-M2M-Origin:
-	/S0001000100010001_device002 Content-Type:
-	application/vnd.onem2m-res+json;ty=4 Authorization: Bearer
-	b6f05af0-9850-081a-0def-4ebb4c465295 Cache-Control: no-cache
-	Postman-Token: 8b2d1fd8-ff7f-495e-9af5-d03885bc1752 { "m2m:cin": {
-	"cnf": "text", "con": "15" } }
- -->
+
 </body>
 
 </html>
