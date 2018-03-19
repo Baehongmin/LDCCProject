@@ -66,7 +66,7 @@ public class HomeController {
 	}
 
 	private HashMap paser(String body) throws Exception {
-		HashMap <String, String> pMap = new HashMap();
+		HashMap<String, String> pMap = new HashMap();
 		JSONParser jsonParser = new JSONParser();
 		JSONObject result = (JSONObject) jsonParser.parse(body);
 		JSONObject sgn = (JSONObject) result.get("m2m:sgn");
@@ -76,17 +76,17 @@ public class HomeController {
 
 		if (om.get("op").toString().equals("1")) {
 			JSONObject cin = (JSONObject) rep.get("m2m:cin");
-			pMap.put("ct",(String) cin.get("ct"));
-			pMap.put("con",(String) cin.get("con"));
+			pMap.put("ct", (String) cin.get("ct"));
+			pMap.put("con", (String) cin.get("con"));
 			pMap.put("OID", ((String) cin.get("cr")).split("S")[1]);
 			return pMap;
 		} else {
 			return pMap;
 		}
 	}
-	
-	private  HashMap paser2(String body) throws Exception {
-		HashMap <String, String> pMap = new HashMap();
+
+	private HashMap paser2(String body) throws Exception {
+		HashMap<String, String> pMap = new HashMap();
 		JSONParser jsonParser = new JSONParser();
 		JSONObject result = (JSONObject) jsonParser.parse(body);
 		JSONObject cin = (JSONObject) result.get("m2m:cin");
@@ -95,29 +95,30 @@ public class HomeController {
 		return pMap;
 	}
 
-	
 	private static String paser1(String body) throws Exception {
 		JSONParser jsonParser = new JSONParser();
 		JSONObject result = (JSONObject) jsonParser.parse(body);
 		// JSONObject sgn = (JSONObject) result.get("m2m:cin");
 		return (String) result.get("device_id");
 	}
+
 	private static String paser3(String body) throws Exception {
 		JSONParser jsonParser = new JSONParser();
 		JSONObject result = (JSONObject) jsonParser.parse(body);
 		return (String) result.get("Ukey");
 	}
 
-//	@RequestMapping(value = "/dashboard", method = RequestMethod.POST)
-//	@ResponseBody
-//	public String dashboard(@RequestBody String body, Model model) throws Exception {
-//		body = paser1(body);
-//		System.out.println("body : " + body);
-//		// socketHandler.sendMessage(body);
-//		// SocketHandler.SetMe(body);
-//		return body;
-//
-//	}
+	// @RequestMapping(value = "/dashboard", method = RequestMethod.POST)
+	// @ResponseBody
+	// public String dashboard(@RequestBody String body, Model model) throws
+	// Exception {
+	// body = paser1(body);
+	// System.out.println("body : " + body);
+	// // socketHandler.sendMessage(body);
+	// // SocketHandler.SetMe(body);
+	// return body;
+	//
+	// }
 
 	@SuppressWarnings("unlikely-arg-type")
 	@RequestMapping(value = "/onem2m/data", method = RequestMethod.POST)
@@ -132,29 +133,29 @@ public class HomeController {
 		String Device = paser1(body);
 		deid = Device;
 		String Ukey = "bdd60bac-6e36-a0b9-cab4-5f2ec02bd0c7";
-		//String URL = "http://10.2.1.8:12080/~/charlot/base";
-		String URL = "http://127.0.0.1:8080/~/charlot/base";
-		//System.out.println(body); 
-		Map divA = ReadinitDatas(URL,"bottomrfid",Device, Ukey);
-		Map divB = ReadinitDatas(URL, "toprfid",Device, Ukey);
-		Map divC = ReadinitDatas(URL, "linetracer",Device, Ukey);
-		Map divD = ReadinitDatas(URL, "casystem",Device, Ukey);
-		Map divE = ReadinitDatas(URL, "obstacle",Device, Ukey);
-		Map divF = ReadinitDatas(URL, "battery",Device, Ukey);
-		Map divG = ReadinitDatas(URL, "power",Device, Ukey);
-		Map divH = ReadinitDatas(URL, "running",Device, Ukey);
-		
-		//SocketHandler.SetMe(A);
-		data.put("Brfid",divA);
-		data.put("Trfid",divB);
-		data.put("Lerror",divC);
-		data.put("Ccheck",divD);
-		data.put("Fdetec",divE);
-		data.put("Bettery",divF);
-		data.put("AGVonf",divG);
-		data.put("AGVactiva",divH);
-		//System.out.println(((HashMap)data.get("Brfid")).get("con"));
-		//String device_id = body;
+		String URL = "http://10.2.1.8:12080/~/charlot/base";
+		//String URL = "http://127.0.0.1:8080/~/charlot/base";
+		// System.out.println(body);
+		Map divA = ReadinitDatas(URL, "bottomrfid", Device, Ukey);
+		Map divB = ReadinitDatas(URL, "toprfid", Device, Ukey);
+		Map divC = ReadinitDatas(URL, "linetracer", Device, Ukey);
+		Map divD = ReadinitDatas(URL, "casystem", Device, Ukey);
+		Map divE = ReadinitDatas(URL, "obstacle", Device, Ukey);
+		Map divF = ReadinitDatas(URL, "battery", Device, Ukey);
+		Map divG = ReadinitDatas(URL, "power", Device, Ukey);
+		Map divH = ReadinitDatas(URL, "running", Device, Ukey);
+
+		// SocketHandler.SetMe(A);
+		data.put("Brfid", divA);
+		data.put("Trfid", divB);
+		data.put("Lerror", divC);
+		data.put("Ccheck", divD);
+		data.put("Fdetec", divE);
+		data.put("Battery", divF);
+		data.put("AGVonf", divG);
+		data.put("AGVactiva", divH);
+		// System.out.println(((HashMap)data.get("Brfid")).get("con"));
+		// String device_id = body;
 		return data;
 
 	}
@@ -214,7 +215,6 @@ public class HomeController {
 
 	}
 
-	
 	/**
 	 * 
 	 * @param iotPlatformUrl
@@ -228,9 +228,10 @@ public class HomeController {
 	 * @throws ParseException
 	 * @throws IOException
 	 */
-	public HashMap ReadinitDatas(String iotPlatform_url, String container_id,String device_id, String UKey) throws ParseException, IOException {
+	public HashMap ReadinitDatas(String iotPlatform_url, String container_id, String device_id, String UKey)
+			throws ParseException, IOException {
 		HashMap returnMap = new HashMap();
-		String resourceUrl = iotPlatform_url + "/S" + device_id + "/" +container_id+"/la";
+		String resourceUrl = iotPlatform_url + "/S" + device_id + "/" + container_id + "/la";
 		System.out.println("iotPlatformResourceUrl : " + resourceUrl);
 		System.out.println("OID : " + device_id);
 		CloseableHttpClient httpclient = HttpClients.createDefault();
@@ -247,19 +248,19 @@ public class HomeController {
 					org.apache.http.HttpEntity entity = (org.apache.http.HttpEntity) res.getEntity();
 					String reasonPhrase = EntityUtils.toString(entity);
 					System.out.println("CSE Instance Json : " + reasonPhrase);
-					
+
 					try {
-						//System.out.println(reasonPhrase);
+						// System.out.println(reasonPhrase);
 						returnMap = paser2(reasonPhrase);
 						returnMap.put("name", container_id);
-						//String init_tem_value = reasonPhrase;
-						
+						// String init_tem_value = reasonPhrase;
+
 						return returnMap;
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					
+
 				} else {
 					System.out.println("Read Init Datas eerr");
 				}
@@ -269,54 +270,48 @@ public class HomeController {
 		} finally {
 			httpclient.close();
 		}
-		return returnMap; 
+		return returnMap;
 	}
-	 @RequestMapping(value = "/dashboard/{container_id}", method = RequestMethod.POST)
-	 @ResponseBody
-	 public String realTime(@PathVariable String container_id, @RequestBody String body, Model model) throws
-	 Exception {
-		 
-		HashMap <String,String> hmbody = new HashMap();
+
+	@RequestMapping(value = "/dashboard/{container_id}", method = RequestMethod.POST)
+	@ResponseBody
+	public String realTime(@PathVariable String container_id, @RequestBody String body, Model model) throws Exception {
+
+		HashMap<String, String> hmbody = new HashMap();
 		hmbody = paser(body);
 		hmbody.put("name", container_id);
-	 System.out.println("cotainer_id : " + container_id);
-	 System.out.println("body : " + (String)hmbody.get("con"));
-	 //System.out.println();
-	 //System.out.println(hmbody.get(container_id));
-	 //String result = container_id+"|"+body;
-	 //socketHandler.sendMessage(result);
-	 //socketHandler.SetMe(body);
-	 JSONObject json = new JSONObject();
-	 json.putAll( hmbody );
-	 body = json.toString();
-	 System.out.println(body);
-	 //socketHandler.SetMe(body);
-	 //socketHandler.sendMessage(body);
-	 if(deid.equals((String)hmbody.get("OID"))) {
-	 socketHandler.sendMessage(body);
-	 }
-	 
-	 return body;
+		System.out.println("cotainer_id : " + container_id);
+		System.out.println("body : " + (String) hmbody.get("con"));
+		JSONObject json = new JSONObject();
+		json.putAll(hmbody);
+		body = json.toString();
+		System.out.println(body);
+		if (deid.equals((String) hmbody.get("OID"))) {
+			socketHandler.sendMessage(body);
+		}
 
-	 }
-	 
-	 @RequestMapping(value = "/switchOnoff", method = RequestMethod.POST)
-	 @ResponseBody
-	 public void switchOnoff(@RequestBody String body, Model model) throws
-	 Exception {
+		return body;
+
+	}
+
+	@RequestMapping(value = "/switchOnoff", method = RequestMethod.POST)
+	@ResponseBody
+	public void switchOnoff(@RequestBody String body, Model model) throws Exception {
 		JSONParser jsonParser = new JSONParser();
 		JSONObject result = (JSONObject) jsonParser.parse(body);
 		String Device_id = (String) result.get("device_id");
 		String cmd = (String) result.get("cmd");
-		//System.out.println(Device_id);
-		//System.out.println(cmd);
-		if(Device_id=="0001000200010002_robot01") {
-		sendMgmt("http://127.0.0.1:8080/~/charlot/base", Device_id, "runswitch", cmd, null,null, "ad51a165-5da9-d822-2539-1872f585a8de");
-		//sendMgmt("http://10.2.1.8:12080/~/charlot/base", Device_id, "runswitch", cmd, null,null, "ad51a165-5da9-d822-2539-1872f585a8de");
+		// System.out.println(Device_id);
+		// System.out.println(cmd);
+		if (Device_id == "0001000200010002_robot01") {
+			//sendMgmt("http://127.0.0.1:8080/~/charlot/base", Device_id, "runswitch", cmd, null, null,	"ad51a165-5da9-d822-2539-1872f585a8de");
+			 sendMgmt("http://10.2.1.8:12080/~/charlot/base", Device_id, "runswitch", cmd,
+			 null,null, "ad51a165-5da9-d822-2539-1872f585a8de");
 		}
-		if(Device_id=="0001000200010002_robot02") {
-		sendMgmt("http://127.0.0.1:8080/~/charlot/base", Device_id, "runswitch", cmd, null,null, "f6b509c1-9586-499a-db76-0d35a4351f84");	
-		//sendMgmt("http://10.2.1.8:12080/~/charlot/base", Device_id, "runswitch", cmd, null,null, "f6b509c1-9586-499a-db76-0d35a4351f84");
+		if (Device_id == "0001000200010002_robot02") {
+			//sendMgmt("http://127.0.0.1:8080/~/charlot/base", Device_id, "runswitch", cmd, null, null, "f6b509c1-9586-499a-db76-0d35a4351f84");
+			 sendMgmt("http://10.2.1.8:12080/~/charlot/base", Device_id, "runswitch", cmd,
+			 null,null, "f6b509c1-9586-499a-db76-0d35a4351f84");
 		}
-	 }
+	}
 }
