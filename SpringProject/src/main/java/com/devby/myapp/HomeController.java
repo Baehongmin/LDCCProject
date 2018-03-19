@@ -296,22 +296,25 @@ public class HomeController {
 
 	@RequestMapping(value = "/switchOnoff", method = RequestMethod.POST)
 	@ResponseBody
-	public void switchOnoff(@RequestBody String body, Model model) throws Exception {
+	public String switchOnoff(@RequestBody String body, Model model) throws Exception {
 		JSONParser jsonParser = new JSONParser();
 		JSONObject result = (JSONObject) jsonParser.parse(body);
 		String Device_id = (String) result.get("device_id");
 		String cmd = (String) result.get("cmd");
-		// System.out.println(Device_id);
+		String resultString = "";
+		System.out.println(Device_id);
 		// System.out.println(cmd);
-		if (Device_id == "0001000200010002_robot01") {
+		if (Device_id.equals("0001000200010002_robot01")) {
 			//sendMgmt("http://127.0.0.1:8080/~/charlot/base", Device_id, "runswitch", cmd, null, null,	"ad51a165-5da9-d822-2539-1872f585a8de");
 			 sendMgmt("http://10.2.1.8:12080/~/charlot/base", Device_id, "runswitch", cmd,
 			 null,null, "ad51a165-5da9-d822-2539-1872f585a8de");
 		}
-		if (Device_id == "0001000200010002_robot02") {
+		if (Device_id.equals("0001000200010002_robot02")) {
 			//sendMgmt("http://127.0.0.1:8080/~/charlot/base", Device_id, "runswitch", cmd, null, null, "f6b509c1-9586-499a-db76-0d35a4351f84");
 			 sendMgmt("http://10.2.1.8:12080/~/charlot/base", Device_id, "runswitch", cmd,
 			 null,null, "f6b509c1-9586-499a-db76-0d35a4351f84");
 		}
+		resultString = "true";
+		return resultString;
 	}
 }

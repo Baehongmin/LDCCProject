@@ -24,15 +24,7 @@
 	href="${pageContext.request.contextPath}/resources/vendor/metisMenu/metisMenu.min.css"
 	rel="stylesheet">
 
-<!-- Custom CSS -->
-<link
-	href="${pageContext.request.contextPath}/resources/dist/css/sb-admin-2.css"
-	rel="stylesheet">
 
-<!-- Morris Charts CSS -->
-<link
-	href="${pageContext.request.contextPath}/resources/vendor/morrisjs/morris.css"
-	rel="stylesheet">
 
 <!-- button CSS -->
 <link rel="stylesheet"
@@ -48,15 +40,16 @@
 
 </head>
 
-<body style="background-color:#262627;  margin-left: 10px;margin-right: 10px">
+<body style="background-color:#e9ecef;  margin-left: 1%;margin-right: 1%">
 	<br />
 
 	<style>
 
 .textareac{
 margin-top:70px; 
-color: white; 
-font-size: smaller; 
+color: black; 
+font-size: xx-large;
+font-weight:bold;
 border: 0 solid black; 
 background-color: transparent; 
 overflow: hidden;"
@@ -67,10 +60,10 @@ text-align: center;
 
 .gradtext {
     background: #55ffaa;
-    background: -webkit-linear-gradient(left, #6190E8, #ACB6E5);
-    background:    -moz-linear-gradient(right, #6190E8, #ACB6E5);
-    background:      -o-linear-gradient(right, #6190E8, #ACB6E5);
-    background:         linear-gradient(to right, #6190E8, #ACB6E5);
+    background: -webkit-linear-gradient(left, #FFFFFF, #FFFFFF);
+    background:    -moz-linear-gradient(right, #FFFFFF, #FFFFFF);
+    background:      -o-linear-gradient(right, #FFFFFF, #FFFFFF);
+    background:         linear-gradient(to right, #FFFFFF, #FFFFFF);
     color: transparent;
 	height: 270px;
 }
@@ -86,12 +79,10 @@ text-align: center;
 }
 #title {
 	text-align: center;
-	color: #fff;
+	color: #000;
 	box-shadow: none;
-	text-shadow: rgb(255, 255, 255) 0px 0px 10px, rgb(255, 255, 255) 0px 0px
-		20px, rgb(255, 255, 255) 0px 0px 30px, rgb(0, 255, 255) 0px 0px 40px,
-		rgb(0, 255, 255) 0px 0px 70px, rgb(0, 255, 255) 0px 0px 80px,
-		rgb(0, 255, 255) 0px 0px 100px;
+	font-size:xx-large;
+	font-weight:bold;
 	transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
 	-webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
 	-webkit-transform: none;
@@ -109,7 +100,7 @@ text-align: center;
 	height: 10px;
 	margin: auto;
 	text-align: center;
-	color: #F5C4B6;
+	color: #000000;
 	line-height: 0.85;
 	font-family: Tahoma, Geneva, sans-serif;
 	font-weight: bold;
@@ -125,9 +116,9 @@ text-align: center;
 	font-size: 40px;
 	position: relative;
 	z-index: 1;
-	text-shadow: 5px 0 0 #F94F6A, -5px 0 0 #F94F6A, 0 5px 0 #F94F6A, 0 -5px
-		0 #F94F6A, 4px 4px #F94F6A, -4px -4px 0 #F94F6A, 4px -4px 0 #F94F6A,
-		-4px 4px 0 #F94F6A;
+	text-shadow: 5px 0 0 #A3CCA3, -5px 0 0 #A3CCA3, 0 5px 0 #A3CCA3, 0 -5px
+		0 #A3CCA3, 4px 4px #A3CCA3, -4px -4px 0 #A3CCA3, 4px -4px 0 #A3CCA3,
+		-4px 4px 0 #A3CCA3;
 	-webkit-transform: rotate(-3deg);
 	transform: rotate(-3deg);
 	-webkit-transform-origin: 0 0;
@@ -159,7 +150,7 @@ text-align: center;
 	font-weight: bold;
 }
 .Bottomtext{
-	color : white;
+	color : black;
 	font-size: 20px;
 	font-weight: bold;
 	margin: auto;
@@ -167,66 +158,36 @@ text-align: center;
 	margin-top:70px;
 }
 </style>
-	<div class="Ohno">
+	
+	<div class="Ohno"style="margin-top: 50px">
 		<span>Canon</span> <span>dash board</span>
 		<!-- <h1 class="page-header">Canon Dashboard</h1> -->
 	</div>
 	<div id="wrapper">
 		<!-- /.col-lg-12 -->
 
-		<!-- 
-		<style>
-		
-.video-container {
-	margin: 0;
-	padding-bottom: 75%;
-	max-width: 100%;
-	height: 0;
-	position: relative;
-	overflow: hidden;
-}
-
-.video-container iframe, .video-container object, .video-container embed
-	{
-	margin: 0;
-	padding: 0;
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-</style>
-		<div class="video-container"
-			style="border: 1px; padding: 10px; height: 500px;">
-
-			<iframe width="100" height="100" src="http://www.lotte.net"></iframe>
-		</div>
-
--->
 		<div class="row">
-		<div style="border: 1px; padding: 10px; height: 100px;">
-		</div>
+		
 		</div>
 			<input id='text1' type="text" class="text-box" value="2"
 			visible='hidden' style='display: none' /> 
 			<!-- <input id="joinOk" type="button" value="Check" /> --> 
 <div class="dropdown"style="margin-top: 200px">
-  <button id = "Dbutton" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+  <button id = "Dbutton" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
      DEVICE_ID NAME
   </button>
   <div class="dropdown-menu">
     <a id = "link1" onclick ='getCseData("0001000200010002_robot01");changeBox()' class="dropdown-item">Robot 1ST</a>
     <a id = "link2" onclick ='getCseData("0001000200010002_robot02");changeBox2()' class="dropdown-item">Robot 2ND</a>
   </div>
-  <input class="btn btn-danger" type="button" value="UWB"/>
+  <input class="btn btn-success" type="button" value="UWB"/>
 </div>
 		<!-- <input type="button" value="Go" onclick='onClickC()' /> --> 
 		<!-- /.row -->
 		<div class="row" style="margin-top: 10px">
 			<div class="col-lg-3 col-md-6">
-				<div class="panel panel-red">
-					<div class="panel-footer">
+				<div class="panel panel-default">
+					<div class="panel-footer" style="background-color: #A3CCA3">
 						<span class="Boldand">Bottom RFID</span> <span
 							class="pull-right"></span>
 						<div id="loding" style="float: right;"></div>
@@ -244,8 +205,8 @@ text-align: center;
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6">
-				<div class="panel panel-red">
-					<div class="panel-footer">
+				<div class="panel panel-default">
+					<div class="panel-footer" style="background-color: #A3CCA3">
 						<span class="Boldand">Top RFID</span> <span class="pull-right"></span>
 						<div id="loding" style="float: right;"></div>
 						<div class="clearfix"></div>
@@ -264,8 +225,8 @@ text-align: center;
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6">
-				<div class="panel panel-red">
-					<div class="panel-footer">
+				<div class="panel panel-default">
+					<div class="panel-footer" style="background-color: #A3CCA3">
 						<span class="Boldand">Line Error</span> <span class="pull-right"></span>
 						<div id="loding" style="float: right;"></div>
 						<div class="clearfix"></div>
@@ -285,8 +246,8 @@ text-align: center;
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6">
-				<div class="panel panel-red">
-					<div class="panel-footer">
+				<div class="panel panel-default">
+					<div class="panel-footer" style="background-color: #A3CCA3">
 						<span class="Boldand">Crash Check</span> <span
 							class="pull-right"></span>
 						<div id="loding" style="float: right;"></div>
@@ -306,8 +267,8 @@ text-align: center;
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6">
-				<div class="panel panel-red">
-					<div class="panel-footer">
+				<div class="panel panel-default">
+					<div class="panel-footer" style="background-color: #A3CCA3">
 						<span class="Boldand">전방 장애물 감지</span> <span
 							class="pull-right"></span>
 						<div id="loding" style="float: right;"></div>
@@ -327,8 +288,8 @@ text-align: center;
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6">
-				<div class="panel panel-red">
-					<div class="panel-footer">
+				<div class="panel panel-default">
+					<div class="panel-footer" style="background-color: #A3CCA3">
 						<span class="Boldand">Battery</span> <span class="pull-right"></span>
 						<div id="loding" style="float: right;"></div>
 						<div class="clearfix"></div>
@@ -357,8 +318,8 @@ text-align: center;
 			</div>
 
 			<div class="col-lg-3 col-md-6">
-				<div class="panel panel-red">
-					<div class="panel-footer">
+				<div class="panel panel-default">
+					<div class="panel-footer" style="background-color: #A3CCA3">
 						<span class="Boldand">AGV 출발/정지</span> <span
 							class="pull-right"></span>
 						<div id="loding" style="float: right;"></div>
@@ -392,8 +353,8 @@ text-align: center;
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6">
-				<div class="panel panel-red">
-					<div class="panel-footer">
+				<div class="panel panel-default">
+					<div class="panel-footer" style="background-color: #A3CCA3">
 						<span class="Boldand">AGV PowerStatus</span> <span class="pull-right"><i
 							class="fa fa-arrow-circle-right"></i></span>
 						<div id="loding" style="float: right;"></div>
@@ -576,7 +537,7 @@ text-align: center;
 			websocket.onerror = function(event) {
 
 				onError(event)
-
+				
 			};
 
 		}
@@ -609,17 +570,7 @@ text-align: center;
 	<script
 		src="${pageContext.request.contextPath}/resources/vendor/metisMenu/metisMenu.min.js"></script>
 
-	<!-- Morris Charts JavaScript -->
-	<script
-		src="${pageContext.request.contextPath}/resources/vendor/raphael/raphael.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/vendor/morrisjs/morris.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/data/morris-data.js"></script>
-
-	<!-- Custom Theme JavaScript -->
-	<script
-		src="${pageContext.request.contextPath}/resources/dist/js/sb-admin-2.js"></script>
+	
 
 	<script
 		src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'>
