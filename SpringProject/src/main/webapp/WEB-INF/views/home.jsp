@@ -48,7 +48,7 @@
 
 </head>
 
-<body style="margin-left: 10px;margin-right: 10px">
+<body style="background-color:#262627;  margin-left: 10px;margin-right: 10px">
 	<br />
 
 	<style>
@@ -67,10 +67,20 @@ text-align: center;
 
 .gradtext {
     background: #55ffaa;
-    background: -webkit-linear-gradient(left, #56ADDF, #BCA9F5);
-    background:    -moz-linear-gradient(right, #56ADDF, #BCA9F5);
-    background:      -o-linear-gradient(right, #56ADDF, #BCA9F5);
-    background:         linear-gradient(to right, #56ADDF, #BCA9F5);
+    background: -webkit-linear-gradient(left, #6190E8, #ACB6E5);
+    background:    -moz-linear-gradient(right, #6190E8, #ACB6E5);
+    background:      -o-linear-gradient(right, #6190E8, #ACB6E5);
+    background:         linear-gradient(to right, #6190E8, #ACB6E5);
+    color: transparent;
+	height: 270px;
+}
+
+.gradtextchange {
+    background: #55ffaa;
+    background: -webkit-linear-gradient(left, #FA2222, #F39A9A);
+    background:    -moz-linear-gradient(right, #FA2222, #F39A9A);
+    background:      -o-linear-gradient(right, #FA2222, #F39A9A);
+    background:         linear-gradient(to right, #FA2222, #F39A9A);
     color: transparent;
 	height: 270px;
 }
@@ -158,7 +168,7 @@ text-align: center;
 }
 </style>
 	<div class="Ohno">
-		<span>Canon</span> <span>대시 보드</span>
+		<span>Canon</span> <span>dash board</span>
 		<!-- <h1 class="page-header">Canon Dashboard</h1> -->
 	</div>
 	<div id="wrapper">
@@ -260,7 +270,7 @@ text-align: center;
 						<div id="loding" style="float: right;"></div>
 						<div class="clearfix"></div>
 					</div>
-					<div class="gradtext">
+					<div id="lview" class="gradtext">
 					
 						<div class="row" style="margin: auto; display: inline;">
 							<div class="huge" style="margin: auto; text-align: center;">
@@ -282,7 +292,7 @@ text-align: center;
 						<div id="loding" style="float: right;"></div>
 						<div class="clearfix"></div>
 					</div>
-					<div class="gradtext">
+					<div id="cview" class="gradtext">
 						<div class="row" style="margin: auto; display: inline;">
 							<div class="huge" style="margin: auto; text-align: center;">
 								<textarea style="margin-top:30px;"class = "textareac" id="messageWindow3" readonly="true" rows="2" cols="20"></textarea>
@@ -303,7 +313,7 @@ text-align: center;
 						<div id="loding" style="float: right;"></div>
 						<div class="clearfix"></div>
 					</div>
-					<div class="gradtext">
+					<div id="fview" class="gradtext">
 						
 						<div class="row" style="margin: auto; display: inline;">
 							<div class="huge" style="margin: auto; text-align: center">
@@ -323,7 +333,7 @@ text-align: center;
 						<div id="loding" style="float: right;"></div>
 						<div class="clearfix"></div>
 					</div>
-					<div class="gradtext">
+					<div id="bview" class="gradtext">
 						<div class="row" style="margin: auto; display: inline;">
 							<div class="container">
 								<div class="guage-holder">
@@ -339,7 +349,7 @@ text-align: center;
 								</div>
 							</div>
 							
-							<div id="BetteryM" class="Bottomtext" style="margin-top: 30px">Battery</div>
+							<div id="BatteryM" class="Bottomtext" style="margin-top: 30px">Battery</div>
 
 						</div>
 					</div>
@@ -426,9 +436,9 @@ text-align: center;
 
 	
 	<script type="text/javascript">
-		//var wsUri = "ws://210.93.172.174/echo";
+		var wsUri = "ws://210.93.172.174/echo";
 		//var wsUri = "http://210.93.172.174/echo";
-		var wsUri = "ws://127.0.0.1:18080/echo";
+		//var wsUri = "ws://127.0.0.1:18080/echo";
 		function changeBox(){
 			
 			document.getElementById("Dbutton").innerHTML = document.getElementById("link1").innerHTML
@@ -460,7 +470,6 @@ text-align: center;
 
 		function onMessage(event) {
 			
-			
 			var obj = JSON.parse(event.data);
 			if(obj.name == "bottomrfid"){
 				document.getElementById("messageWindow0").value = "0x"+obj.con;
@@ -471,46 +480,59 @@ text-align: center;
 				document.getElementById("TrfidM").innerHTML = obj.ct;
 			}
 			if(obj.name == "linetracer" && obj.con == "2"){
+				document.getElementById("lview").className="gradtext";
 				document.getElementById("messageWindow2").value = "라인 진입";
 				document.getElementById("LerrorM").innerHTML = obj.ct;
-			}else if(obj.name == "linetracer" && obj.con == "1"){
-				alert("라인이탈!\n"+obj.ct);
+			}
+			if(obj.name == "linetracer" && obj.con == "1"){
+				//Messagebox.show();
+				//alert("라인이탈!\n"+obj.ct);
+				document.getElementById("lview").className="gradtextchange";
 				document.getElementById("messageWindow2").value = "라인 이탈";
 				document.getElementById("LerrorM").innerHTML = obj.ct;
 			}
 			
 			if(obj.name == "casystem" && obj.con =="3"){
+				document.getElementById("cview").className="gradtext";
 				document.getElementById("messageWindow3").value = "충돌 방지 시스템 완료 및 AGV 재출발";
 				document.getElementById("CcheckM").innerHTML = obj.ct;
 			}else if(obj.name == "casystem" && obj.con =="1"){
-				alert("충돌 방지 시스템 발동!\n"+obj.ct);
+				//alert("충돌 방지 시스템 발동!\n"+obj.ct);
+				//document.getElemnetById("cview").className="gradtextchange";
+				//$('cview').attr('class','gradtextchange');
+				document.getElementById("cview").className="gradtextchange";
 				document.getElementById("messageWindow3").value = "충돌 방지를 위해 대기 상태";
 				document.getElementById("CcheckM").innerHTML = obj.ct;
 			}
 			if(obj.name == "obstacle" && obj.con =="1"){
-				alert("장애물 발견!\n"+obj.ct);
+				//alert("장애물 발견!\n"+obj.ct);
+				document.getElementById("fview").className="gradtextchange";
 				document.getElementById("messageWindow4").value = "장애물 있음";
 				document.getElementById("FDetecM").innerHTML = obj.ct;
 			}else if(obj.name == "obstacle" && obj.con =="2"){
+				document.getElementById("fview").className="gradtext";
 				document.getElementById("messageWindow4").value =  "장애물 없음";
 				document.getElementById("FDetecM").innerHTML = obj.ct;
 			}
 			if(obj.name == "battery"){
 			if(obj.con == "1"){
-				alert("Battery LoW!\n"+obj.ct);
+				//alert("Battery LoW!\n"+obj.ct);
+				document.getElementById("bview").className="gradtextchange";
 				document.getElementById("messageWindow5").value = "LOW";
 				document.getElementById('text1').value = "15";
 				$(document.getElementById('text1')).keyup();
 			}else if(obj.con == "2"){
+				document.getElementById("bview").className="gradtext";
 				document.getElementById("messageWindow5").value = "MIDDLE";
 				document.getElementById('text1').value = "50";
 				$(document.getElementById('text1')).keyup();
 			}else if(obj.con == "3"){
+				document.getElementById("bview").className="gradtext";
 				document.getElementById("messageWindow5").value = "HIGH";
 				document.getElementById('text1').value = "85";
 				$(document.getElementById('text1')).keyup();
 			}
-			document.getElementById("BetteryM").innerHTML = obj.ct;	
+			document.getElementById("BatteryM").innerHTML = obj.ct;	
 			}
 
 			if(obj.name == "power"){
@@ -628,60 +650,73 @@ text-align: center;
 				success : function(data) {
 					console.log(data);
 					
-						document.getElementById("messageWindow0").value = data.Brfid.con;
-						document.getElementById("BrfidM").innerHTML = "0x"+data.Brfid.ct;
-						document.getElementById("messageWindow1").value = data.Trfid.con;
-						document.getElementById("TrfidM").innerHTML = "0x"+data.Trfid.ct;
+						document.getElementById("messageWindow0").value = "0x"+data.Brfid.con;
+						document.getElementById("BrfidM").innerHTML = data.Brfid.ct;
+						document.getElementById("messageWindow1").value = "0x"+data.Trfid.con;
+						document.getElementById("TrfidM").innerHTML = data.Trfid.ct;
 						
 						if(data.Lerror.con == "1"){
+						document.getElementById("lview").className="gradtextchange";
 						document.getElementById("messageWindow2").value = "라인 이탈";
 						document.getElementById("LerrorM").innerHTML = data.Lerror.ct;
 						}else if(data.Lerror.con == "2"){
+						document.getElementById("lview").className="gradtext";
 						document.getElementById("messageWindow2").value = "라인 진입";
 						document.getElementById("LerrorM").innerHTML = data.Lerror.ct;
 						}else{
+							document.getElementById("lview").className="gradtextchange";
 							document.getElementById("messageWindow2").value = data.Lerror.con;
 							document.getElementById("LerrorM").innerHTML = data.Lerror.ct;
 						}
 						
 						if(data.Ccheck.con == "1"){
+							document.getElementById("cview").className="gradtextchange";
 						document.getElementById("messageWindow3").value = "충돌 방지를 위해 대기 상태";
 						document.getElementById("CcheckM").innerHTML = data.Ccheck.ct;
 						}else if(data.Ccheck.con == "3"){
+							document.getElementById("cview").className="gradtext";
 							document.getElementById("messageWindow3").value = "충돌 방지 시스템 완료 및 AGV 재출발";
 							document.getElementById("CcheckM").innerHTML = data.Ccheck.ct;
 						}else{
+							document.getElementById("cview").className="gradtextchange";
 							document.getElementById("messageWindow3").value = data.Ccheck.con;
 							document.getElementById("CcheckM").innerHTML = data.Ccheck.ct;
 						}
 						
 						if(data.Fdetec.con == "1"){
+							document.getElementById("fview").className="gradtextchange";
 							document.getElementById("messageWindow4").value = "장애물 있음";
 							document.getElementById("FDetecM").innerHTML = data.Fdetec.ct;
 						}else if(data.Fdetec.con == "2"){
+							document.getElementById("fview").className="gradtext";
 							document.getElementById("messageWindow4").value =  "장애물 없음";
 							document.getElementById("FDetecM").innerHTML = data.Fdetec.ct;
 						}else{
+							document.getElementById("fview").className="gradtextchange";
 							document.getElementById("messageWindow4").value = data.Fdetec.con;
 							document.getElementById("FDetecM").innerHTML = data.Fdetec.ct;
 						}
 						
-						if(data.Bettery.con == "1"){
+						if(data.Battery.con == "1"){
+							document.getElementById("bview").className="gradtextchange";
 							document.getElementById("messageWindow5").value = "LOW";
 							document.getElementById('text1').value = "15";
 							$(document.getElementById('text1')).keyup();
-						}else if(data.Bettery.con == "2"){
+						}else if(data.Battery.con == "2"){
+							document.getElementById("bview").className="gradtext";
 							document.getElementById("messageWindow5").value = "MIDDLE";
 							document.getElementById('text1').value = "50";
 							$(document.getElementById('text1')).keyup();
-						}else if(data.Bettery.con == "3"){
+						}else if(data.Battery.con == "3"){
+							document.getElementById("bview").className="gradtext";
 							document.getElementById("messageWindow5").value = "HIGH";
 							document.getElementById('text1').value = "85";
 							$(document.getElementById('text1')).keyup();
 						}else{
-							document.getElementById("messageWindow5").value = data.Bettery.con;
+							document.getElementById("bview").className="gradtextchange";
+							document.getElementById("messageWindow5").value = data.Battery.con;
 						}
-						document.getElementById("BetteryM").innerHTML = data.Bettery.ct;				
+						document.getElementById("BatteryM").innerHTML = data.Battery.ct;				
 						
 						if (document.getElementById("Offb").style.display == 'block' && data.AGVonf.con == "ON") {
 							document.getElementById("Offb").style.display = 'none';
@@ -766,16 +801,16 @@ text-align: center;
 						document.getElementById("messageWindow4").value = data.Fdetec.con;
 						document.getElementById("FDetecM").innerHTML = data.Fdetec.ct;
 						
-						document.getElementById('text1').value = data.Bettery.con;
+						document.getElementById('text1').value = data.Battery.con;
 						$(document.getElementById('text1')).keyup();
-						if(data.Bettery.con<20){
+						if(data.Battery.con<20){
 							document.getElementById("messageWindow5").value = "LOW";
-						}else if(data.Bettery.con<80){
+						}else if(data.Battery.con<80){
 							document.getElementById("messageWindow5").value = "MIDDLE";
 						}else{
 							document.getElementById("messageWindow5").value = "HIGH";
 						}
-						document.getElementById("BetteryM").innerHTML = data.Bettery.ct;				
+						document.getElementById("BatteryM").innerHTML = data.Battery.ct;				
 						
 						if (document.getElementById("Offb").style.display == 'block' && data.AGVonf.con == "23") {
 							document.getElementById("Offb").style.display = 'none';
