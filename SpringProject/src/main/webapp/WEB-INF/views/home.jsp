@@ -37,7 +37,9 @@
 
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/style.css">
-
+	
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Brush+Script" rel="stylesheet">
 </head>
 
 <body style="background-color:#e9ecef;  margin-left: 1%;margin-right: 1%">
@@ -46,18 +48,20 @@
 	<style>
 
 .textareac{
-margin-top:70px; 
+margin-top:40px; 
 color: black; 
-font-size: xx-large;
+font-size: 40px;
 font-weight:bold;
 border: 0 solid black; 
 background-color: transparent; 
 overflow: hidden;"
 margin:auto;
 text-align: center;
-
+resize: none;
 }
-
+.marginx{
+margin-top:5px;
+}
 .gradtext {
     background: #55ffaa;
     background: -webkit-linear-gradient(left, #FFFFFF, #FFFFFF);
@@ -81,7 +85,7 @@ text-align: center;
 	text-align: center;
 	color: #000;
 	box-shadow: none;
-	font-size:xx-large;
+	font-size:50px;
 	font-weight:bold;
 	transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
 	-webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
@@ -96,7 +100,7 @@ text-align: center;
 }
 
 .Ohno {
-	width: 400px;
+	width: 1000px;
 	height: 10px;
 	margin: auto;
 	text-align: center;
@@ -110,34 +114,31 @@ text-align: center;
 	font-size: 100px;
 }
 
+
 .Ohno span:nth-child(2) {
-	font-family: 'Pacifico', cursive;
+	font-family: 'Nanum Gothic', sans-serif;
 	font-weight: 400;
-	font-size: 40px;
+	font-size: 80px;
 	position: relative;
 	z-index: 1;
-	text-shadow: 5px 0 0 #A3CCA3, -5px 0 0 #A3CCA3, 0 5px 0 #A3CCA3, 0 -5px
-		0 #A3CCA3, 4px 4px #A3CCA3, -4px -4px 0 #A3CCA3, 4px -4px 0 #A3CCA3,
-		-4px 4px 0 #A3CCA3;
-	-webkit-transform: rotate(-3deg);
-	transform: rotate(-3deg);
-	-webkit-transform-origin: 0 0;
+
 	transform-origin: 0 0;
-	color: #fff;
-	margin-top: -1px;
+	color: #000;
+	margin-top: 30px;
 }
 
 #loding {
 	margin: auto;
-	width: 20px;
-	height: 20px;
-	border: 5px solid #f3f3f3;
-	border-top: 5px solid #3498db;
+	width: 40px;
+	height: 40px;
+	border: 10px solid #f3f3f3;
+	border-top: 10px solid #3498db;
 	border-radius: 50%;
 	animation: spin 2s linear infinite;
 	background-color: #fff;
 	text-align: center;
 	line-height: 0px;
+	margin-top:5px;
 }
 
 @keyframes spin { 
@@ -146,8 +147,9 @@ text-align: center;
 }
 .Boldand{
 	color : black;
-	font-size: 15px;
+	font-size: 30px;
 	font-weight: bold;
+	
 }
 .Bottomtext{
 	color : black;
@@ -157,12 +159,20 @@ text-align: center;
 	text-align: center;
 	margin-top:70px;
 }
+
 </style>
+
+    
+
+	<div class="Ohno"style="width:80%;margin-top: 50px">
 	
-	<div class="Ohno"style="margin-top: 50px">
-		<span>Canon</span> <span>dash board</span>
+		<span>AGV 로봇관제</span> <span id="titlesub">1번 로봇</span>
 		<!-- <h1 class="page-header">Canon Dashboard</h1> -->
 	</div>
+<div>
+<img src='/resources/lotte.png' style="width:8%; vertical-align: middle" />
+<img src='/resources/cannon.png' style="width:15%; float:right;" />
+</div>
 	<div id="wrapper">
 		<!-- /.col-lg-12 -->
 
@@ -172,26 +182,31 @@ text-align: center;
 			<input id='text1' type="text" class="text-box" value="2"
 			visible='hidden' style='display: none' /> 
 			<!-- <input id="joinOk" type="button" value="Check" /> --> 
-<div class="dropdown"style="margin-top: 200px">
-  <button id = "Dbutton" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+<div class="dropdown"style="margin-top: 40px">
+  <button id = "Dbutton" type="button" class="btn btn-success dropdown-toggle btn-lg" data-toggle="dropdown" value="1">
      DEVICE_ID NAME
   </button>
   <div class="dropdown-menu">
-    <a id = "link1" onclick ='getCseData("0001000200010002_robot01");changeBox()' class="dropdown-item">Robot 1ST</a>
-    <a id = "link2" onclick ='getCseData("0001000200010002_robot02");changeBox2()' class="dropdown-item">Robot 2ND</a>
+    <a id = "link1" onclick ='getCseData("0001000200010002_robot01");changeBox()' class="dropdown-item">1번 로봇</a>
+    <a id = "link2" onclick ='getCseData("0001000200010002_robot02");changeBox2()' class="dropdown-item">2번 로봇</a>
   </div>
-  <input class="btn btn-success" type="button" value="UWB"/>
+  <input class="btn btn-success btn-lg" type="button" value="UWB"/>
+  <div id= "nowdate" class ='right-box' style="float: right;font-size: 30px;color: black;font-weight: bold;">
+  
+  </div>
 </div>
 		<!-- <input type="button" value="Go" onclick='onClickC()' /> --> 
 		<!-- /.row -->
 		<div class="row" style="margin-top: 10px">
 			<div class="col-lg-3 col-md-6">
 				<div class="panel panel-default">
-					<div class="panel-footer" style="background-color: #A3CCA3">
+					<div class="panel-footer" style="background-color: #A3CCA3;height: 80px">
+						<div class=marginx>
 						<span class="Boldand">Bottom RFID</span> <span
 							class="pull-right"></span>
 						<div id="loding" style="float: right;"></div>
 						<div class="clearfix"></div>
+						</div>
 					</div>
 					<div class="gradtext">
 						<div class="row" style="margin: auto; display: inline;">
@@ -206,10 +221,12 @@ text-align: center;
 			</div>
 			<div class="col-lg-3 col-md-6">
 				<div class="panel panel-default">
-					<div class="panel-footer" style="background-color: #A3CCA3">
+					<div class="panel-footer" style="background-color: #A3CCA3;height: 80px">
+					<div class=marginx>
 						<span class="Boldand">Top RFID</span> <span class="pull-right"></span>
 						<div id="loding" style="float: right;"></div>
 						<div class="clearfix"></div>
+					</div>
 					</div>
 					<div class="gradtext">
 						
@@ -226,16 +243,18 @@ text-align: center;
 			</div>
 			<div class="col-lg-3 col-md-6">
 				<div class="panel panel-default">
-					<div class="panel-footer" style="background-color: #A3CCA3">
+					<div class="panel-footer" style="background-color: #A3CCA3;height: 80px">
+					<div class=marginx>
 						<span class="Boldand">Line Error</span> <span class="pull-right"></span>
 						<div id="loding" style="float: right;"></div>
 						<div class="clearfix"></div>
 					</div>
+					</div>
 					<div id="lview" class="gradtext">
 					
-						<div class="row" style="margin: auto; display: inline;">
+						<div class="row" style="margin-top: 20px;margin: auto; display: inline;">
 							<div class="huge" style="margin: auto; text-align: center;">
-								<fieldset>
+								<fieldset style="margin-top: 10px">
 									<textarea class = "textareac" id="messageWindow2" readonly="true" rows="1" cols="10"></textarea>
 								</fieldset>
 							</div>
@@ -247,19 +266,21 @@ text-align: center;
 			</div>
 			<div class="col-lg-3 col-md-6">
 				<div class="panel panel-default">
-					<div class="panel-footer" style="background-color: #A3CCA3">
+					<div class="panel-footer" style="background-color: #A3CCA3;height: 80px">
+					<div class=marginx>
 						<span class="Boldand">Crash Check</span> <span
 							class="pull-right"></span>
 						<div id="loding" style="float: right;"></div>
 						<div class="clearfix"></div>
 					</div>
+					</div>
 					<div id="cview" class="gradtext">
 						<div class="row" style="margin: auto; display: inline;">
 							<div class="huge" style="margin: auto; text-align: center;">
-								<textarea style="margin-top:30px;"class = "textareac" id="messageWindow3" readonly="true" rows="2" cols="20"></textarea>
+								<textarea style="margin-top:30px;"class = "textareac" id="messageWindow3" readonly="true" rows="2" cols="16"></textarea>
 							</div>
 	
-							<div id="CcheckM" class="Bottomtext">Crash Check
+							<div id="CcheckM" class="Bottomtext" style="margin-top:40px;">Crash Check
 							</div>
 						</div>
 
@@ -268,20 +289,22 @@ text-align: center;
 			</div>
 			<div class="col-lg-3 col-md-6">
 				<div class="panel panel-default">
-					<div class="panel-footer" style="background-color: #A3CCA3">
+					<div class="panel-footer" style="background-color: #A3CCA3;height: 80px">
+					<div class=marginx>
 						<span class="Boldand">전방 장애물 감지</span> <span
 							class="pull-right"></span>
 						<div id="loding" style="float: right;"></div>
 						<div class="clearfix"></div>
 					</div>
+					</div>
 					<div id="fview" class="gradtext">
 						
 						<div class="row" style="margin: auto; display: inline;">
 							<div class="huge" style="margin: auto; text-align: center">
-								<textarea style="margin-top:30px;"class = "textareac" id="messageWindow4" readonly="true" rows="2" cols="8"></textarea>
+								<textarea style="margin-top:50px;"class = "textareac" id="messageWindow4" readonly="true" rows="1" cols="10"></textarea>
 							</div>
 					
-							<div id="FDetecM" class="Bottomtext">Front Detection</div>
+							<div id="FDetecM" class="Bottomtext"style="margin-top:70px;">Front Detection</div>
 
 						</div>
 					</div>
@@ -289,18 +312,22 @@ text-align: center;
 			</div>
 			<div class="col-lg-3 col-md-6">
 				<div class="panel panel-default">
-					<div class="panel-footer" style="background-color: #A3CCA3">
+					<div class="panel-footer" style="background-color: #A3CCA3;height: 80px">
+					<div class=marginx>
 						<span class="Boldand">Battery</span> <span class="pull-right"></span>
 						<div id="loding" style="float: right;"></div>
 						<div class="clearfix"></div>
 					</div>
+					</div>
 					<div id="bview" class="gradtext">
+					
 						<div class="row" style="margin: auto; display: inline;">
 							<div class="container">
-								<div class="guage-holder">
-									<div style="margin: auto; text-align: center">
-										<textarea style="margin-top:0px;font-size: 15px"class = "textareac" id="messageWindow5" readonly="true" rows="1" cols="16"></textarea>
-									</div>
+							
+								<div class="guage-holder" style="margin-top: 30px">
+									
+										<textarea style="font-size: 30px;margin-top: 0px;"class = "textareac" id="messageWindow5" readonly="true" rows="1" cols="8"></textarea>
+									
 									<div class="circle-mask">
 										<div class="circle">
 											<div class="circle-inner"></div>
@@ -310,7 +337,7 @@ text-align: center;
 								</div>
 							</div>
 							
-							<div id="BatteryM" class="Bottomtext" style="margin-top: 30px">Battery</div>
+							<div id="BatteryM" class="Bottomtext" style="margin-top: 10px">Battery</div>
 
 						</div>
 					</div>
@@ -319,18 +346,19 @@ text-align: center;
 
 			<div class="col-lg-3 col-md-6">
 				<div class="panel panel-default">
-					<div class="panel-footer" style="background-color: #A3CCA3">
+					<div class="panel-footer" style="background-color: #A3CCA3;height: 80px">
+					<div class=marginx>
 						<span class="Boldand">AGV 출발/정지</span> <span
 							class="pull-right"></span>
 						<div id="loding" style="float: right;"></div>
 						<div class="clearfix"></div>
-
+</div>
 					</div>
 					<div class="gradtext">
 						
 						<div class="row" style="margin: auto; display: inline;">
 							
-							<div style="margin-top:70px; auto; text-align: center;">
+							<div style="margin-top:50px; auto; text-align: center;">
 							<div id="title">
 								<div id="Onb1" style="text-align: center; display: none;"
 									class="huge">주행 중</div>
@@ -340,9 +368,9 @@ text-align: center;
 									class="huge">정지</div>
 							</div>
 							<div class="huge" style="margin-top:40px; text-align: center;">
-								<button id="Onbutt" type="button" class="btn btn-success"
+								<button id="Onbutt" type="button" class="btn btn-success btn-lg"
 									onclick="stateButtonOn()">START</button>
-								<button id="Offbutt" type="button" class="btn btn-danger"
+								<button id="Offbutt" type="button" class="btn btn-danger btn-lg"
 									onclick="stateButtonOff()">STOP</button>
 							</div>
 							</div>
@@ -354,26 +382,19 @@ text-align: center;
 			</div>
 			<div class="col-lg-3 col-md-6">
 				<div class="panel panel-default">
-					<div class="panel-footer" style="background-color: #A3CCA3">
+					<div class="panel-footer" style="background-color: #A3CCA3;height: 80px">
+					<div class=marginx>
 						<span class="Boldand">AGV PowerStatus</span> <span class="pull-right"><i
 							class="fa fa-arrow-circle-right"></i></span>
 						<div id="loding" style="float: right;"></div>
 						<div class="clearfix"></div>
 					</div>
+					</div>
 					<div class="gradtext">
 						<div class="row"
 							style="margin: auto; display: inline; text-align: center;">
-							<!-- 
-							<div class="huge" style="margin: auto; text-align: center">
-								<button id="greenbutton" type="button"
-									class="btn btn-lg btn-secondary btn-toggle active"
-									data-toggle="button" aria-pressed="true" autocomplete="off"
-									style="align-items: center" disabled="disable">
-									<div class="handle"></div>
-								</button>
-							</div>
-							 -->
-							<div style="margin: 100px;"></div>
+							
+							<div style="margin: 60px;"></div>
 							<div id="title">
 								<div id="Onb" style="text-align: center; display: none;"
 									class="huge">ON</div>
@@ -381,6 +402,8 @@ text-align: center;
 							<div id="title">
 								<div id="Offb" style="text-align: center; display: block;"
 									class="huge">OFF</div>
+							</div>
+							<div id="ApowerS" class="Bottomtext" style="margin-top:50px;">power
 							</div>
 
 						</div>
@@ -395,7 +418,6 @@ text-align: center;
 		<!-- /#wrapper -->
 	</div>
 
-	
 	<script type="text/javascript">
 		var wsUri = "ws://210.93.172.174/echo";
 		//var wsUri = "http://210.93.172.174/echo";
@@ -403,27 +425,31 @@ text-align: center;
 		function changeBox(){
 			
 			document.getElementById("Dbutton").innerHTML = document.getElementById("link1").innerHTML
+			document.getElementById("titlesub").innerHTML = document.getElementById("link1").innerHTML
+			document.getElementById("Dbutton").value = "1"
 		}
 		function changeBox2(){
 			
 			document.getElementById("Dbutton").innerHTML = document.getElementById("link2").innerHTML
+			document.getElementById("titlesub").innerHTML = document.getElementById("link2").innerHTML
+			document.getElementById("Dbutton").value = "2"
 		}
 		function onClickC() {
 			getCseData("0001000100010001_device002");
 		}
 		
 		function stateButtonOn() {
-			if(document.getElementById("Dbutton").innerHTML == "Robot 1ST"){
+			if(document.getElementById("Dbutton").value=="1"){
 				mgmt("0001000200010002_robot01","ON");
-			}else if(document.getElementById("Dbutton").innerHTML == "Robot 2ND"){
+			}else if(document.getElementById("Dbutton").value=="2"){
 				mgmt("0001000200010002_robot02","ON");
 			}
 			
 		}
 		function stateButtonOff() {
-			if(document.getElementById("Dbutton").innerHTML == "Robot 1ST"){
+			if(document.getElementById("Dbutton").value=="1"){
 				mgmt("0001000200010002_robot01","OFF");
-			}else if(document.getElementById("Dbutton").innerHTML == "Robot 2ND"){
+			}else if(document.getElementById("Dbutton").value=="2"){
 				mgmt("0001000200010002_robot02","OFF");
 			}
 			
@@ -434,39 +460,42 @@ text-align: center;
 			var obj = JSON.parse(event.data);
 			if(obj.name == "bottomrfid"){
 				document.getElementById("messageWindow0").value = "0x"+obj.con;
-				document.getElementById("BrfidM").innerHTML = obj.ct;
+				document.getElementById("BrfidM").innerHTML = "";
+				document.getElementById("BrfidM").innerHTML += obj.ct;
 			}
 			if(obj.name == "toprfid"){
 				document.getElementById("messageWindow1").value = "0x"+obj.con;
-				document.getElementById("TrfidM").innerHTML = obj.ct;
+				document.getElementById("TrfidM").innerHTML = "";
+				document.getElementById("TrfidM").innerHTML += obj.ct;
 			}
 			if(obj.name == "linetracer" && obj.con == "2"){
 				document.getElementById("lview").className="gradtext";
 				document.getElementById("messageWindow2").value = "라인 진입";
-				document.getElementById("LerrorM").innerHTML = obj.ct;
+				document.getElementById("LerrorM").innerHTML = "";
+				document.getElementById("LerrorM").innerHTML += obj.ct;
 			}
 			if(obj.name == "linetracer" && obj.con == "1"){
 				//Messagebox.show();
 				//alert("라인이탈!\n"+obj.ct);
 				document.getElementById("lview").className="gradtextchange";
 				document.getElementById("messageWindow2").value = "라인 이탈";
-				document.getElementById("LerrorM").innerHTML = obj.ct;
+				document.getElementById("LerrorM").innerHTML = "";
+				document.getElementById("LerrorM").innerHTML += obj.ct;
 			}
 			
 			if(obj.name == "casystem" && obj.con =="3"){
 				document.getElementById("cview").className="gradtext";
 				document.getElementById("messageWindow3").value = "충돌 방지 시스템 완료 및 AGV 재출발";
+				document.getElementById("CcheckM").innerHTML = "";
 				document.getElementById("CcheckM").innerHTML = obj.ct;
 			}else if(obj.name == "casystem" && obj.con =="1"){
-				//alert("충돌 방지 시스템 발동!\n"+obj.ct);
-				//document.getElemnetById("cview").className="gradtextchange";
-				//$('cview').attr('class','gradtextchange');
 				document.getElementById("cview").className="gradtextchange";
 				document.getElementById("messageWindow3").value = "충돌 방지를 위해 대기 상태";
+				document.getElementById("CcheckM").innerHTML = "";
 				document.getElementById("CcheckM").innerHTML = obj.ct;
 			}
 			if(obj.name == "obstacle" && obj.con =="1"){
-				//alert("장애물 발견!\n"+obj.ct);
+
 				document.getElementById("fview").className="gradtextchange";
 				document.getElementById("messageWindow4").value = "장애물 있음";
 				document.getElementById("FDetecM").innerHTML = obj.ct;
@@ -504,7 +533,7 @@ text-align: center;
 				document.getElementById("Onb").style.display = 'none';
 				document.getElementById("Offb").style.display = 'block';
 			}
-			
+			document.getElementById("ApowerS").innerHTML = obj.ct;	
 			}
 			if(obj.name == "running"){
 			if (document.getElementById("Offb1").style.display == 'block' && obj.con == "3") {;
@@ -583,6 +612,12 @@ text-align: center;
 	window.onload = function () {
 	getCseData("0001000200010002_robot01");
 	send_message();
+	getDate();
+	}
+	function getDate(){
+		var d = new Date();
+		var date = d.getFullYear() +"년 "+(d.getMonth()+1)+"월 "+d.getDate()+"일";
+		document.getElementById("nowdate").innerHTML = date;
 	}
 	function getCseData(device){
 		
@@ -602,50 +637,61 @@ text-align: center;
 					console.log(data);
 					
 						document.getElementById("messageWindow0").value = "0x"+data.Brfid.con;
-						document.getElementById("BrfidM").innerHTML = data.Brfid.ct;
+						document.getElementById("BrfidM").innerHTML = "";
+						document.getElementById("BrfidM").innerHTML += data.Brfid.ct;
 						document.getElementById("messageWindow1").value = "0x"+data.Trfid.con;
-						document.getElementById("TrfidM").innerHTML = data.Trfid.ct;
+						document.getElementById("TrfidM").innerHTML = "";
+						document.getElementById("TrfidM").innerHTML += data.Trfid.ct;
 						
 						if(data.Lerror.con == "1"){
 						document.getElementById("lview").className="gradtextchange";
 						document.getElementById("messageWindow2").value = "라인 이탈";
-						document.getElementById("LerrorM").innerHTML = data.Lerror.ct;
+						document.getElementById("LerrorM").innerHTML = "";
+						document.getElementById("LerrorM").innerHTML += data.Lerror.ct;
 						}else if(data.Lerror.con == "2"){
 						document.getElementById("lview").className="gradtext";
 						document.getElementById("messageWindow2").value = "라인 진입";
-						document.getElementById("LerrorM").innerHTML = data.Lerror.ct;
+						document.getElementById("LerrorM").innerHTML = "";
+						document.getElementById("LerrorM").innerHTML += data.Lerror.ct;
 						}else{
 							document.getElementById("lview").className="gradtextchange";
 							document.getElementById("messageWindow2").value = data.Lerror.con;
-							document.getElementById("LerrorM").innerHTML = data.Lerror.ct;
+							document.getElementById("LerrorM").innerHTML = "";
+							document.getElementById("LerrorM").innerHTML += data.Lerror.ct;
 						}
 						
 						if(data.Ccheck.con == "1"){
 							document.getElementById("cview").className="gradtextchange";
 						document.getElementById("messageWindow3").value = "충돌 방지를 위해 대기 상태";
-						document.getElementById("CcheckM").innerHTML = data.Ccheck.ct;
+						document.getElementById("CcheckM").innerHTML = "";
+						document.getElementById("CcheckM").innerHTML += data.Ccheck.ct;
 						}else if(data.Ccheck.con == "3"){
 							document.getElementById("cview").className="gradtext";
 							document.getElementById("messageWindow3").value = "충돌 방지 시스템 완료 및 AGV 재출발";
-							document.getElementById("CcheckM").innerHTML = data.Ccheck.ct;
+							document.getElementById("CcheckM").innerHTML = "";
+							document.getElementById("CcheckM").innerHTML += data.Ccheck.ct;
 						}else{
 							document.getElementById("cview").className="gradtextchange";
 							document.getElementById("messageWindow3").value = data.Ccheck.con;
-							document.getElementById("CcheckM").innerHTML = data.Ccheck.ct;
+							document.getElementById("CcheckM").innerHTML = "";
+							document.getElementById("CcheckM").innerHTML += data.Ccheck.ct;
 						}
 						
 						if(data.Fdetec.con == "1"){
 							document.getElementById("fview").className="gradtextchange";
 							document.getElementById("messageWindow4").value = "장애물 있음";
-							document.getElementById("FDetecM").innerHTML = data.Fdetec.ct;
+							document.getElementById("FDetecM").innerHTML = "";
+							document.getElementById("FDetecM").innerHTML += data.Fdetec.ct;
 						}else if(data.Fdetec.con == "2"){
 							document.getElementById("fview").className="gradtext";
 							document.getElementById("messageWindow4").value =  "장애물 없음";
-							document.getElementById("FDetecM").innerHTML = data.Fdetec.ct;
+							document.getElementById("FDetecM").innerHTML = "";
+							document.getElementById("FDetecM").innerHTML += data.Fdetec.ct;
 						}else{
 							document.getElementById("fview").className="gradtextchange";
 							document.getElementById("messageWindow4").value = data.Fdetec.con;
-							document.getElementById("FDetecM").innerHTML = data.Fdetec.ct;
+							document.getElementById("FDetecM").innerHTML = "";
+							document.getElementById("FDetecM").innerHTML += data.Fdetec.ct;
 						}
 						
 						if(data.Battery.con == "1"){
@@ -667,14 +713,19 @@ text-align: center;
 							document.getElementById("bview").className="gradtextchange";
 							document.getElementById("messageWindow5").value = data.Battery.con;
 						}
-						document.getElementById("BatteryM").innerHTML = data.Battery.ct;				
+						document.getElementById("BatteryM").innerHTML = "";
+						document.getElementById("BatteryM").innerHTML += data.Battery.ct;				
 						
 						if (document.getElementById("Offb").style.display == 'block' && data.AGVonf.con == "ON") {
 							document.getElementById("Offb").style.display = 'none';
 							document.getElementById("Onb").style.display = 'block';
+							document.getElementById("ApowerS").innerHTML = "";
+							document.getElementById("ApowerS").innerHTML += data.AGVonf.ct;
 						}else if (document.getElementById("Onb").style.display == 'block' && data.AGVonf.con == "OFF") {;
 							document.getElementById("Onb").style.display = 'none';
 							document.getElementById("Offb").style.display = 'block';
+							document.getElementById("ApowerS").innerHTML = "";
+							document.getElementById("ApowerS").innerHTML += data.AGVonf.ct;
 						}
 						
 						if (document.getElementById("Offb1").style.display == 'block'&& data.AGVactiva.con == "3") {;

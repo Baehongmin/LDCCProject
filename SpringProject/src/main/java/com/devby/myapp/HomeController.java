@@ -18,6 +18,7 @@ import org.json.simple.parser.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.datetime.joda.DateTimeParser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -64,7 +65,26 @@ public class HomeController {
 
 		return "home";
 	}
-
+	
+	private String datepaser(String datetype) throws Exception{
+		String finaldate = "";
+		//finaldate += "날짜 : ";
+		//finaldate += datetype.substring(0, 4);
+		//finaldate += "/";
+		//finaldate += datetype.substring(4, 6);
+		//finaldate += "/";
+		//finaldate += datetype.substring(6, 8);
+		finaldate += "갱신 시간 : ";
+		finaldate += datetype.substring(9, 11);
+		finaldate += ":";
+		finaldate += datetype.substring(11, 13);
+		finaldate += ":";
+		finaldate += datetype.substring(13, 15);
+		
+		
+		return finaldate;
+	}
+	
 	private HashMap paser(String body) throws Exception {
 		HashMap<String, String> pMap = new HashMap();
 		JSONParser jsonParser = new JSONParser();
@@ -76,7 +96,10 @@ public class HomeController {
 
 		if (om.get("op").toString().equals("1")) {
 			JSONObject cin = (JSONObject) rep.get("m2m:cin");
-			pMap.put("ct", (String) cin.get("ct"));
+			String date=datepaser((String) cin.get("ct"));
+			//pMap.put("ct", (String) cin.get("ct"));
+			pMap.put("ct", date);
+			System.out.println(date);
 			pMap.put("con", (String) cin.get("con"));
 			pMap.put("OID", ((String) cin.get("cr")).split("S")[1]);
 			return pMap;
@@ -90,7 +113,10 @@ public class HomeController {
 		JSONParser jsonParser = new JSONParser();
 		JSONObject result = (JSONObject) jsonParser.parse(body);
 		JSONObject cin = (JSONObject) result.get("m2m:cin");
-		pMap.put("ct", (String) cin.get("ct"));
+		String date=datepaser((String) cin.get("ct"));
+		//pMap.put("ct", (String) cin.get("ct"));
+		pMap.put("ct", date);
+		//pMap.put("ct", (String) cin.get("ct"));
 		pMap.put("con", (String) cin.get("con"));
 		return pMap;
 	}
